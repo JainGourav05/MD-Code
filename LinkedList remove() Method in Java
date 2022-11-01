@@ -1,0 +1,58 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645012034868-Article_197.png)
+### Introduction
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<h3>LinkedList remove() method</h3>
+<p><strong>Description</strong>:
+This method is used to remove and retrieve the head of this list.</p>
+<p><strong>Syntax</strong>:
+LinkedList.remove()</p>
+<p><strong>Parameters</strong>:
+This method does not take any parameters.</p>
+<p><strong>Return value</strong>:
+Returns the removed element i.e, head of this list.</p>
+<p><strong>Throws</strong>:
+NoSuchElementException - If the list is empty</p>
+<p>[TABS_R id=5531]</p>
+<p><strong>Output</strong>:
+Original LinkedList:[1, 2, 3, 4, 5]
+New LinkedList:[2, 3, 4, 5]</p>
+<h3>LinkedList remove(int index) method</h3>
+<p><strong>Description</strong>:
+This method is used to remove the element at a specific index from the Linked List.</p>
+<p><strong>Syntax</strong>:
+LinkedList.remove(int index)</p>
+<p><strong>Parameter</strong>:
+index - Index of the element to be removed from the LinkedList</p>
+<p><strong>Return value</strong>:
+Return the element that is removed from the linked list.</p>
+<p><strong>Throws</strong>:
+IndexOutOfBoundsException - If the specified index is less than 0 or greater than the size of this list.</p>
+
+[TABS_R id=5759]
+
+<p><strong>Output</strong>
+Original LinkedList:[1, 2, 3, 4, 5]
+New LinkedList:[1, 2, 4, 5]</p>
+<h3>LinkedList remove(Object O) method</h3>
+<p><strong>Description</strong>:
+This method is used to remove the first occurrence of this object, which means the first occurrence of the element from the Linked List.</p>
+<p><strong>Syntax</strong>:
+LinkedList.remove(Object O)</p>
+<p><strong>Parameter</strong>:
+The parameter O specifies the element of the LinkedList which is to be removed.</p>
+<p><strong>Return value</strong>:
+It will return true if the specified element is found in the LinkedList.</p>
+<p><strong>Throws</strong>:</p>
+<ul>
+<li>ClassCastException – If the specified element has a type that is incompatible with this collection(optional).</li>
+<li>NullPointerException – If the user specifies the null element and null is not allowed by this collection (optional).</li>
+<li>UnsupportedOperationException – If the collection does not support the remove operation.</li>
+</ul>
+
+[TABS_R id=5760]
+
+<p><strong>Output</strong>
+Original LinkedList:[a, b, c, d, e]
+New LinkedList:[b, d, e]</p>
+<p>This article explains how to use the LinkedList remove() method in Java.
+.If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked Lists)</a>.</p>
