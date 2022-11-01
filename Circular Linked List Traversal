@@ -1,0 +1,48 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645185780350-Circular%20traversal-04.png)
+
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a circular linked list. We have to traverse the list and print its elements.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's try to understand the problem with help of example.</p>
+<p>Suppose the given circular linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-9.png" alt="" /></p>
+<p>Now, we have to traverse this list. So, the output after traversing the list and printing every element will be: 1 7 18 15</p>
+<p><strong>Input :</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-9.png" alt="" /></p>
+<p><strong>Output:</strong> 1 7 18 15</p>
+<p><strong>Explanation:</strong> We will traverse the given list and while traversing we will print its elements which is the output.</p>
+<h3>Helpful Observations</h3>
+<p>This question is not a very complex one. </p>
+<p>Let us first think about how we will traverse the circular linked list. </p>
+<ul>
+<li>As we already know, there is no NULL node in a circular linked list and hence, no endpoint. The last node of the list points back to the first node of the list.</li>
+<li>So, how can we do a successful traversal of the circular linked list?
+We can counter this by considering any node as the starting point. This is possible because, after a complete traversal, we will reach the starting node again. So, we can use any node as the starting point.</li>
+</ul>
+<p>Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>Which node should we choose as our starting node? </p>
+<ul>
+<li>The head node will make our life easier as we already have a pointer to the head of the list. </li>
+</ul>
+<p>Create a node temp and make it point to the head. Now, keep incrementing temp while temp is not equal to the head of the list. In every iteration, print the temp’s data. </p>
+<p>As explained already, we are using the head as our starting node, and terminating the loop when we are reaching the head again. </p>
+<h3>Algorithm</h3>
+<ul>
+<li>If the head is NULL, simply return because the list is empty.</li>
+<li>Create a node temp and make it point to the head of the list.</li>
+<li>Now, with the help of a do-while loop, keep printing the temp - &gt; data and increment the temp, while temp is not equal to the head of the list.</li>
+<li>As we have chosen the head as our starting point, we are terminating the loop when we are reaching the head again.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Circular-Linked-List-Traversal-1.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4101]</p>
+<h3>Output</h3>
+<p>Contents of Circular Linked List:
+1 7 18 15 </p>
+<p><strong>Time Complexity:</strong> O(n), since we are traversing the linked list once.
+[forminator_quiz id="4102"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to traverse a circular linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
