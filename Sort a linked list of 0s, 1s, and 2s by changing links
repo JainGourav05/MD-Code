@@ -1,0 +1,83 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926302503-113.Sort%20a%20linked%20list%20of%200s%2C%201s%2C%20and%202s%20by%20changing%20links_Artboard%202.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Proper understanding of concepts based on Linked Lists can give you an edge in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a linked list containing 0s, 1s, and 2s, and we are required to sort this linked list. </p>
+<h5>Example</h5>
+<p>Input:</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/input-14.png)
+
+Output:
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/example-output-5.png)
+
+<h3>Problem Statement Understanding</h3>
+<p>Let’s learn programming languages online and try to understand</p>
+<p>Suppose we are given a linked list 1 → 2 → 0 → 1 → 0 → NULL, now the problem is demanding that we have to sort the linked list such that our original linked list after sorting  should look like:
+Final resultant linked list after sorting:-  0 → 0 → 1 → 1 → 2   → NULL</p>
+<p><strong>Explanation:</strong> So basically we have to sort the linked list such that in final sorted linked list all the nodes with value 0 comes before the nodes with value 1 and all the nodes with value 1 comes before the nodes with value 2.</p>
+<p>Say if the input linked list is</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/example-input-5.png)
+
+now in this case after sorting the input linked list our final linked list will look like:
+Final resultant linked list after sorting:-
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/example-output-5.png)
+
+<p>So now I think from the above examples it is clear what the problem is demanding.</p>
+<p>Let’s think how we can approach this problem.</p>
+<h3>Approach 1</h3>
+<p>As we can see in the problem that our linked list only contains nodes with values 0, 1, and 2, so one simple solution will be to count the number of 0's, 1's, and 2's. </p>
+<ul>
+<li>
+<p>After counting the number of 0's, 1's, and 2's, fill the first P (where P is count of 0's) nodes with 0, then next Q (where Q is count of 1's) nodes with 1 and last R (where R is count of 2's) nodes with 2.</p>
+</li>
+<li>
+<p>After filling the nodes with 0's, 1's, and 2's, our final linked list will be sorted, and we will get our desired result. </p>
+</li>
+</ul>
+<p>But there is one problem, that this solution does not work when these values have associated data with them. </p>
+<ul>
+<li>For example, If these three 0's, 1's, and 2's represent three different colors and with these colors different types of objects have been associated and have to sort the objects based on colors.</li>
+</ul>
+<p>So now we will see how can we solve this problem and finally sort the list.</p>
+<h3>Approach 2</h3>
+<p>The above problem could be solved by changing the links:</p>
+<ul>
+<li>If we can change the links of nodes such that all the nodes having value of 0 gets together and forms a separate linked list containing all the nodes with value 0. Similarly, the nodes with value 1 and 2 also get together and form their separate linked list.</li>
+<li>After separate linked list for  0's, 1's, and 2's have been formed:
+1) We will make the head of linked list containing 0's as the head of the final sorted linked list.
+2) We will make the tail of linked list of 0's point to the head of linked list of 1's and the tail of linked list of 1's point to the head of linked list of 2's.
+3) Also, we will make tail of linked list of 2's point to NULL.</li>
+<li>Finally, we can return our final sorted linked list by returning the head of linked list of 0's.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Traverse through the list one by one. </li>
+<li>Maintain three pointers designated <strong>ptr0</strong>, <strong>ptr1</strong>, and <strong>ptr2</strong> that refer to the current ending nodes of linked lists with 0, 1, and 2 elements, respectively. </li>
+<li>We append each explored Node to the end of its associated list:
+1) Node with value 0 will be appended to the end of linked list of 0's.
+2) Node with value 1 will be appended to end of linked list of 1's.
+3) Node with value 2 will be appended to the end of linked lists of 2's.</li>
+<li>Finally, we join the three lists together. For joining the three lists together we will utilize three dummy pointers <strong>temp0</strong>, <strong>temp1</strong>, and <strong>temp2</strong> that act as dummy headers for the three lists to avoid multiple null tests.</li>
+<li>Finally, we will return the head of the linked list of 0's.</li>
+</ul>
+<h3>Dry Run</h3>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Sort-a-linked-list-of-0s-1s-and-2s-by-changing-links-1.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Sort-a-linked-list-of-0s-1s-and-2s-by-changing-links-2.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Sort-a-linked-list-of-0s-1s-and-2s-by-changing-links-3.png)
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4328]</p>
+<h3>Output:</h3>
+<p>Original Linked List:
+1  2  0  1  0<br />
+Sorted Linked List:
+0  0  1  1  2  </p>
+<p><strong>Time Complexity:</strong> O(n), where n is the number of nodes in the linked list.
+[forminator_quiz id="4329"]</p>
+<p>In this article, we have tried to explain the most efficient algorithm for sorting a linked list of 0s, 1s, and 2s by changing links. This problem is interesting as well as important from the interview’s point of view. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
