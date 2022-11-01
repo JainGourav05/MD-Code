@@ -1,0 +1,70 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644921996084-86%20Pairwise-05.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a linked list and we have to swap the elements in a pairwise manner. It is not allowed to swap the data, only links should be changed.</p>
+<p>Let me explain this with an example - if the linked list is
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/52_1-01.png" alt="" />
+then the function should change it to
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/52_2-01.png" alt="" />
+Well, this is one of the most popular questions to be asked in interviews and may seem a bit difficult at first but it is easy to comprehend.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's first understand the problem statement with the help of an example.
+Linked list = 1-&gt;2-&gt;3-&gt;4-&gt;5,
+The term <strong>Pairwise swap</strong> indicates that we need to swap the positions of the adjacent two nodes in the linked list.
+So,</p>
+<ul>
+<li>1-&gt;2 will become 2-&gt;1</li>
+<li>3-&gt;4 will become 4-&gt;3</li>
+<li>5 has no one to be paired with hence it remains as it is.</li>
+</ul>
+<p>Finally the linked list will be = 2-&gt;1-&gt;4-&gt;3-&gt;5.</p>
+<p>Let's take an example with an even length linked list.
+Linked list = 4-&gt;1-&gt;6-&gt;3-&gt;8-&gt;9
+So performing pairwise swap,</p>
+<ul>
+<li>4-&gt;1 will become 1-&gt;4.</li>
+<li>6-&gt;3 will become 3-&gt;6.</li>
+<li>8-&gt;9 will become 9-8.</li>
+</ul>
+<p>Finally the linked list will be = 1-&gt;4-&gt;3-&gt;6-&gt;9-&gt;8.</p>
+<p>You should take more examples and get the output according to the above understanding. Analyzing different examples will help you create the logic for this question.</p>
+<h3>Approach</h3>
+<p>I hope you got a basic idea on what we need to do to solve this question.
+The idea is simple, we have to change the links of the nodes alternatively for every 2 nodes. We will traverse the linked list from the beginning and for every two nodes, we will change the pointers of the next nodes to previous nodes.</p>
+<p>Since it is clear <strong>what</strong> we need to do, take some time and think on <strong>how</strong> we are going to do it.</p>
+<h4>Helpful Observations</h4>
+<ol>
+<li>
+<p>Since we need to swap two nodes, that is change the links, we should have two pointers pointing on the nodes.</p>
+</li>
+<li>
+<p>Suppose linked list = &amp;1-&gt;2-&gt;3-&gt;4,and two pointers be prev and curr.</p>
+<ol>
+<li>The prev pointing to the node(1) and curr pointing to the node(2).</li>
+<li>We can see that we need to change curr-&gt;next and point it to prev i.e 2-&gt;1.</li>
+<li>Also finally the linked list will be 2-&gt;1-&gt;4-&gt;3 i.e. the next of nodes with value 1 will point to the node with value 4, so that means prev-&gt;next should be curr-&gt;next-&gt;next. (Think why this step should be done before step 2).</li>
+<li>Step 3 should be done before Step 2 because we need to access node(4) from node(2) but in step 2, node(2)-&gt;next is changed to node(1), hence connection to node(4) is lost.</li>
+<li>Or we can simply store in temporary node node(2)-&gt;next and follow the above steps in given order.</li>
+</ol>
+</li>
+<li>
+<p>There are some corner conditions to handle, take some examples, use the above observations and try to get those corner conditions.</p>
+</li>
+<li>
+<p>Below is the proper algorithm for the question.</p>
+</li>
+</ol>
+<h3>Algorithm</h3>
+<ul>
+<li>Initialize prev and curr pointers.</li>
+<li>Traverse the list, store in temp node the value of curr-&gt;next and change next of curr as of the prev node.</li>
+<li>If temp is NULL or temp is the last node then change prev-&gt;next to NULL and break the iteration. (Above mentioned corner conditions).</li>
+<li>Else we have to change next of prev to next of next of curr.</li>
+<li>Update prev and curr nodes for next iteration.
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/52_3-01.png" alt="" /></li>
+</ul>
+<p><strong>Code Implementation</strong>
+[TABS_R id=3463]</p>
+<p><strong>Output</strong>: 2 1 4 3 5</p>
+<p><strong>Space Complexity</strong>: O(1), constant space required as no extra space is used.
+[forminator_quiz id="3466"]</p>
+<p>In this blog, we have discussed how to swap pairwise nodes and return the modified linked list by changing the links of the nodes directly in the most efficient way. This is a quite popular interview problem and advised to practice this and understand how to solve similar problems. To practice, similar types of problems check out PrepBytes - <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">MYCODE | Contest</a></p>
