@@ -1,0 +1,56 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645001078871-Article_143.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a LinkedList and are asked to swap the K<sup>th</sup> node from the beginning with the K<sup>th</sup> node from the end in the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>According to the problem statement, a LinkedList is given and we need to swap the K<sup>th</sup> node from the beginning with the K<sup>th</sup> node from the end in the linked list.</p>
+<p>Let’s try to understand the problem statement with the help of examples.</p>
+<p>If the given Linked List is: head → 1 → 2 → 3 → 4 →5 and K = 2.</p>
+<ul>
+<li>As we can see, that 2<sup>nd</sup> node from the beginning of the linked list is node with value 2 and 2<sup>nd</sup> node from the end of the linked list is node with value 4, so now according to the problem these two nodes needs to be swapped.</li>
+<li>Our output Linked List after swapping the nodes will look like: head →1 → 4 → 3 → 2 →5</li>
+</ul>
+<p>If the linked list is: head → 1 → 3 → 5 → 7 → 9 → 11 → 13 → 15  and K = 3.</p>
+<ul>
+<li>In this 3<sup>rd</sup> node from the beginning of the linked list is node with value 5 and 3<sup>nd</sup> node from the end of the linked list is node with value 11, so after swapping these nodes, our output linked list will look like: head → 1 → 3 → 11 → 7 → 9 → 5 → 13 → 15.</li>
+</ul>
+<h5>Some more examples</h5>
+<p>Sample Input 1: head → 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 and K = 5
+Sample output 1: head → 1 -&gt; 5 -&gt; 3 -&gt; 4 -&gt; 2 -&gt; 6</p>
+<p>Sample Input 2: head → 2 -&gt; 4 -&gt; 6 -&gt; 8 -&gt; 10 -&gt; 12 and K = 3
+Sample output 2: head → 2 -&gt; 4 -&gt; 8 -&gt; 6 -&gt; 10 -&gt; 12</p>
+<p><strong>Note:</strong> Here, we are taking one-based indexing in the above examples.</p>
+<p>Now I think from the above example, the problem statement is clear. So let's see how we will approach it.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem. </p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach the problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>To solve this problem, we simply find the k<sup>th</sup> node from the starting and end and will also keep track of their previous nodes, which will help us to make connections between the nodes while swapping.</li>
+<li>Also, remember that (N-K+1)<sup>th</sup> node (N is the length of the linked list) from the starting will be the K<sup>th</sup> node from the last. We will also utilize this information.</li>
+</ul>
+<p>Let's move to the algorithm section to see all the steps we will be performing while swapping the K<sup>th</sup> node from the beginning of the list with the K<sup>th</sup> from the end of the list.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Iterate the linked list and find the K<sup>th</sup> node and (N-K+1)<sup>th</sup> node from the beginning of the linked list. Also, find the previous nodes of K<sup>th</sup> node and (N-K+1)<sup>th</sup> node.</li>
+<li>If the previous node of K<sup>th</sup> node is not null, connect the previous of K<sup>th</sup> node to the (N-K+1)<sup>th</sup> node. Similarly, if (N-K)<sup>th</sup> node is not null, join this node to the K<sup>th</sup> node of the linked list.
+<strong>Note:</strong> There might be a case if (N-K+1)<sup>th</sup> node's next is K<sup>th</sup> node, so in this case (K-1)<sup>th</sup> node is same as (N-K+1)<sup>th</sup> node. So the statement <strong>(K-1)<sup>th</sup> node's next = (N-K+1)<sup>th</sup> node</strong> creates a self-loop and this self loop will be broken when we change (N-K+1)<sup>th</sup> node's next.</li>
+<li>Swap the next K<sup>th</sup> node and (N-K+1)<sup>th</sup> node. The statements used in swapping also break the self-loop if K<sup>th</sup> node's next is (N-K+1)<sup>th</sup> node or (N-K+1)<sup>th</sup> node's next is K<sup>th</sup> node.</li>
+<li>If our <strong>K == 1</strong>, we will change our head pointer to (N-K+1)<sup>th</sup> node, but if <strong>K == N</strong>, we will change head to K<sup>th</sup> node.</li>
+<li>Following all the above steps, our nodes will get swapped, and we will have our resultant linked list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-2.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5023]</p>
+<h4>Output</h4>
+<p>Our original Linked List: 2 4 6 8 10
+Linked List after swapping: 2 8 6 4 10 </p>
+<p><strong>Time Complexity</strong>: O(n), Traversing the list requires O(n) time.
+[forminator_quiz id="5024"]</p>
+<p>So, in this blog, we have tried to explain the most efficient way to swap K<sup>th</sup> node from beginning with K<sup>th</sup> node from the end in a Linked List. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
