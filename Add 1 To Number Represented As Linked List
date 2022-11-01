@@ -1,0 +1,86 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645185498768-Add%20to%201%20Number_Img1.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a number represented in the form of a linked list, we are required to add 1 to it and report the answer as a linked list.</p>
+<p><strong>For Example:</strong> Given is a Number 19999 in the form of a linked list, and after adding 1 to it, it should give the result as follows:
+</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/input-21.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/output-11.png)
+
+<h3>Problem Statement Understanding</h3>
+<p>The problem statement is quite straightforward, we are provided with a number represented in the form of a [linked list](https://www.prepbytes.com/blog/linked-list/squarerootn-th-node-in-a-linked-list/ "linked list") which means we will be getting the head/root of the linked list as our argument, and we have to add 1 to the number represented in the form of a linked list.</p>
+<p>Let's learn programming languages online and try to understand it more clearly using an example.</p>
+<p>Let's assume we are given the number 19999. So the linked list will be :</p>
+<ul>
+<li>Initial Linked List: 1 → 9 → 9 → 9 → 9</li>
+<li>We will be getting the head pointing to the 1<sup>st</sup> node of the linked list, which is 1 as our argument.</li>
+<li>So the head pointer will point to the first node:
+head →1 → 9 → 9 → 9 → 9</li>
+<li>After Adding 1, our linked list will become:
+head →2 → 0 → 0 → 0 → 0</li>
+<li>Which is the result after adding 1 to 19999 = 20000</li>
+</ul>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Add-1-To-Number-Represented-As-Linked-List-6.png)
+
+<p>At this point in time, we have understood the problem statement. Now try to formulate an approach for this problem.</p>
+<h4>Helpful Observation</h4>
+<ul>
+<li>Since we do an arithmetic operation starting from the one's place digit and then move towards the tenth place digit, hundredth place digit and so on, therefore we need to get hold of the one's place digit to add 1 to it.</li>
+<li>Now the one's place digit is the last digit of our number given in the form of a linked list. But we cannot move backside in the Singly Linked List, as only the next pointer is given.</li>
+<li>So we can reverse the linked list and do operations starting from the first node of the reversed linked list.</li>
+<li>So, our original linked list will be reversed and thus we can now simply add 1 to the head of the linked list (maintaining carry). Finally, we will reverse the list again and will output it as our final linked list.</li>
+</ul>
+<h3>Approach and Algorithm</h3>
+<ul>
+<li>Reverse the given Linked List. For example, the given linked list is 1 → 9 → 9 → 9 → 9, after reversing it will become 9 → 9 → 9 → 9 → 1.</li>
+<li>Start the linked list traversal, take 2 variable <strong>sum</strong> and <strong>carry</strong>.</li>
+<li>The variable <strong>sum</strong> will hold the value at a particular place (node) and <strong>carry</strong> will take forward the <strong>carry</strong> from the previous <strong>sum</strong> given by <strong>(sum/10)</strong>.</li>
+<li>Now, since we are adding 1, the sum can be either equal than 10 or less than 10.</li>
+<li>Therefore, <strong>carry will be 1 for a sum greater than 10</strong> and <strong>0 for a sum less than 10.</strong></li>
+<li>Keep moving forward in the list and store the appropriate value in the resultant list node given by <strong>sum%10</strong>.</li>
+<li>At last, again reverse the linked list to get the output in the correct format.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><strong>For addOne Function</strong></p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Add-1-To-Number-Represented-As-Linked-List-2.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Add-1-To-Number-Represented-As-Linked-List-3.png)
+
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4439]</p>
+<h4>Output</h4>
+<p>2 → 0 → 0 → 0 → 0</p>
+<p><strong>Time Complexity:</strong> O(n), Overall we are doing a total of 3 passes, 2 for reversing and 1 while adding, where n is the number of nodes in the given LinkedList.
+<strong>Space complexity:</strong> O(1), constant space complexity, as no extra space is used.</p>
+<h4>Can we Do Any Better ?</h4>
+<ul>
+<li>Now we have seen that for the above approach to work, we need to reverse the list twice. So we are doing two extra traversals worth O(N) complexity.</li>
+<li>However, if we observe carefully, we will see that it is the digit 9 which makes all the changes, for all other digits we just need to increment by 1. But in the case of 9 carry comes into the picture and modifies the whole list.</li>
+<li>So, we can try targeting the digit 9 itself. We don't need to reverse the linked list.</li>
+</ul>
+<h3>Approach and Algorithm</h3>
+<p>We will find the last node which is not 9. Now for this, there can be 3 scenarios:</p>
+<ul>
+<li><strong>Case1:</strong> If there exists no node which is not 9, it means every node is 9. For example 9-&gt;9-&gt;9-&gt;9. In such a case we will make every node value equal to 0 and add a new node with value 1 at the front of the list.</li>
+<li><strong>Case2:</strong> If the last node of the list is not 9, then simply increment the value of last node by 1.</li>
+<li><strong>Case3:</strong> If the node which is not 9 is somewhere in the middle, and after that, every node is 9. For example 1299, then in such cases increment the last non-nine node by 1 and make all nodes right to it as zero. So 1299 becomes 1300.</li>
+</ul>
+<p>We will take 2 pointers, one for storing the last node which is not 9, other for traversing the list. Then handle each case independently.</p>
+<h3>Dry Run</h3>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Add-1-To-Number-Represented-As-Linked-List-4.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Add-1-To-Number-Represented-As-Linked-List-4-2.png)
+
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4440]</p>
+<h4>Output</h4>
+<p>2 → 0 → 0 → 0 → 0</p>
+<p><strong>Time Complexity:</strong> O(n) only single pass, where n is the number of nodes in the given LinkedList.
+[forminator_quiz id="4441"]</p>
+<p>This blog tried to discuss the problem when we are given a number in the form of a linked list and we need to add 1 to it. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
