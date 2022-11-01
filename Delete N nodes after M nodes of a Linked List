@@ -1,0 +1,39 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645186620696-delete%20n%20nodes-05.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a singly linked list, a value M and a value N. We have to delete N nodes after M nodes of the given list. This means that we will keep M nodes, and delete N nodes, and will continue this till we reach the end of the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let the given list be 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 56 -&gt; 45 -&gt; 7 -&gt; 8 and the value of M=2 and N=2. This means that after every 2 node, we will delete 2 nodes. </p>
+<p>So, in the first step, our linked list  will be  1 -&gt; 2 -&gt; 56 -&gt; 45 -&gt; 7 -&gt; 8 . As we can see, we have removed the 3<sup>rd</sup> and 4<sup>th</sup> nodes from the list. Now, in the second step, our linked list will be 1 -&gt; 2 -&gt; 56 -&gt; 45. Now, we have reached the tail of the list. </p>
+<p>So, the final linked list is 1 - &gt; 2 - &gt; 56 - &gt; 45.</p>
+<p><strong>Input:</strong> M=2, N=2 </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Delete-N-nodes-after-M-nodes-of-a-Linked-List-input-01.png" alt="" /></p>
+<p><strong>Output:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Delete-N-nodes-after-M-nodes-of-a-Linked-List-output-01.png" alt="" /></p>
+<p><strong>Explanation:</strong> As the value of M is 2 and the value of N is 2, we will retain 2 nodes and delete 2 nodes till we reach the end of the list. </p>
+<p>This is an interesting question. It is not a complex one, but we have to look out for all the edge cases. Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>We are going to make use of list traversal here. First, we will skip M nodes. Now, if we reach the end of the list, then we will terminate the method, else, we will store the address of the M<sup>th</sup> node in the current and temp will point to the (M+1)<sup>th</sup> node which is next of current. Now, we will traverse the next N nodes, and increment temp. In the end, we will make the M<sup>th</sup> node point to the temp, and temp will become our new current. </p>
+<h3>Algorithm</h3>
+<ul>
+<li>Create a node current, and make it point to the head.</li>
+<li>Traverse through the list till the end is reached.</li>
+<li>Skip M nodes. We can do this with the help of a for loop. In every iteration, do current = current -&gt; next.</li>
+<li>Now, if the current becomes NULL, it means that we have reached the end of the list. We will terminate the method.</li>
+<li>Else, store the next of current in temp. Write a for loop that runs N times, and increment temp by 1 in each iteration.</li>
+<li>After the loop, make the current point to temp.</li>
+<li>The temp will become our new current.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Delete-N-nodes-after-M-nodes-of-a-Linked-List-dry-run-01.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3771]</p>
+<h4>Output</h4>
+<p><strong>Given Linked list</strong>
+1 2 3 4 56 45 7 8 </p>
+<p><strong>Linked list after deletion</strong>
+1 2 56 45</p>
+<p><strong>Time Complexity:</strong> O(n), as no nested traversal is needed.
+<strong>Space Complexity:</strong> O(1), as only temporary variables are being created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to delete N nodes after M nodes of a linked list. This is an important question when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
