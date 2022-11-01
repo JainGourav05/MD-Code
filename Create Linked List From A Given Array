@@ -1,0 +1,37 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645186740922-Create%20linked%20list_Artboard%201.png)
+
+### Problem Statement
+In this problem, we are given an array and are asked to create a [linked list](https://www.prepbytes.com/blog/miscellaneous/circular-linked-list-introduction-and-applications/ "linked list") from the given array. The idea is quite simple and this problem can be treated as a basic level problem for understanding how linked lists work.
+
+Let me explain this problem with an example test case-
+#### Sample Input 
+Array: arr[]={0, 2, 3, 5, 1}
+
+#### Sample Output 
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/74_1-01.png)
+
+### Approach
+The idea is to traverse the array from one end and for each element that we encounter we create a new node with that and insert that element into the linked list. 
+
+### Algorithm
+- Initially, traverse the array and for each element, create a new node for each element that we encounter.
+- Each new node is inserted into the linked list 
+- Finally, we return the head of the created linked list.
+
+### Dry Run
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/74_2-01.png)
+
+#### Code Implementation
+
+[TABS_R id=3716]
+
+#### Output: 
+0-&gt;2-&gt;3-&gt;5-&gt;1
+
+[forminator_quiz id="3504"]
+
+**Space complexity:** O(1), no extra space is used in this approach.
+
+This blog tried to explain how easily you can create a linked list from a given array of elements and described their time and space complexities. To practice more problems on LinkedList you can check out at PrepBytes [Linked List](https://mycode.prepbytes.com/interview-coding/practice/linked-list).
