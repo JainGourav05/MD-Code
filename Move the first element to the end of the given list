@@ -1,0 +1,66 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644916706727-84move-the-first-element_Artboard%203.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a singly linked list. We have to move the first element of the linked list to the end of the list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with the help of a few examples by referring some best sites to learn coding</p>
+<p>Suppose the given list is 1 → 7 → 13 → 15. </p>
+<ul>
+<li>According to the problem statement, we have to move the first element of the linked list to the end of the list. </li>
+<li>So to move the first element to the end of the list, we will have to remove the first element from its position and make it the last element. If we move the first element to the end of the list, the resultant list will look like 7 → 13 → 15 → 1</li>
+</ul>
+<p>Now let’s take another example, say if the given list is 3 → 5 → 8 → 10.</p>
+<ul>
+<li>We will move the first element of the list to the end of the list such that our resultant list will look like 5 → 8 → 10 → 3</li>
+</ul>
+<p><strong>Explanation:</strong> As we can see, the first element of the list is moved to the end of the list.</p>
+<h5>Some more examples</h5>
+
+**Input**
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/input-2-10.png)
+
+**Output**
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/output2.png)
+
+**Input**
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/input-16.png)
+
+**Output**
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/output-8.png)
+
+<p>This question is not a very complex one. Let us first think about what we will need to complete the required task. </p>
+<ul>
+<li>We will need a pointer to the first node and,</li>
+<li>Another pointer to the last node. </li>
+<li>Now that we know that we need these two pointers, we can easily find them with the [help of list traversal](https://www.prepbytes.com/blog/linked-list/circular-linked-list-traversal/ "help of list traversal").</li>
+</ul>
+<p>Let us have a glance at the approach.</p>
+<h3>Approach and Algorithm</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>Create two pointers, <strong>first</strong> and <strong>last</strong>. Both will initially point to the head. </li>
+<li>Now, <strong>first</strong> will keep pointing to the head and with the help of a while loop, we will increment the <strong>last</strong> pointer till it reaches the end of the list.</li>
+<li>Now, we will make head point to the next of <strong>first</strong>, as after the required task of moving the first node to the end of the list, the second node will become the new head. </li>
+<li>After that, we will make the next of the <strong>last</strong> point to <strong>first</strong>, as now <strong>first</strong> is the new last node of the list. </li>
+<li>In the end, we will make next of the <strong>first</strong> point to NULL, as it is now the last node of the list.</li>
+<li>Finally, after the above steps, we will have successfully moved the first element of the linked list to the end of the list.</li>
+</ul>
+<h3>Dry Run</h3>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Move-the-first-element-to-the-end-of-the-given-list.png)
+
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4457]</p>
+<h4>Output</h4>
+<p>Linked list before
+1 7 13 15
+Linked list after
+7 13 15 1 </p>
+<p>[forminator_quiz id="4456"]
+<strong>Space Complexity:</strong> O(1), as only temporary variables are being created</p>
+<p>So, in this article, we have tried to explain the most efficient approach to move the first element to the end of the given list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
