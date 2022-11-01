@@ -1,0 +1,49 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645186253479-Iterative%20and%20recursive_Artboard%201.png)
+<h3>Problem statement</h3>
+<p>Given a singly linked list, find its length.</p>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Find-Length-Of-A-Linked-List-Iterative-And-Recursive-input-01.png" alt="" /></p>
+<p><strong>Output:</strong> 4.
+As there are 4 nodes in the linked list.</p>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Find-Length-Of-A-Linked-List-Iterative-And-Recursive-input-2-01.png" alt="" /></p>
+<p><strong>Output:</strong> 0.
+As there is no node in the linked list.</p>
+<p>How do we define the length of a linked list?
+The length of a linked list is the total number of nodes in it.</p>
+<h3>Approach (Iterative)</h3>
+<p>We know how to iterate through the linked list. In an iteration, we visit each node exactly once. We can keep track of the count of each node visited and that will be the length of the linked list.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Initialize answer as 0.</li>
+<li>Iterate through the linked list and for each iteration increment the answer by 1.</li>
+<li>After the iteration completes, return the answer.</li>
+</ul>
+<h3>Implementation:</h3>
+<p>[TABS_R id=3743]</p>
+<h4>Output</h4>
+<p>4</p>
+<p><strong>Time complexity:</strong> O(n), since we are traversing the linked list once.
+<strong>Space complexity:</strong> O(1), as we aren’t using any extra space.
+Here, ‘n’ is the number of nodes in the linked list.</p>
+<h3>Approach (Recursive)</h3>
+<p>To solve this problem recursively, we need to break this problem down into subproblems as we do in all recursive approaches.</p>
+<p>For a given node of a linked list, we know it will contribute 1 to the total length. So, now we need to find the length of the linked list following the current node and add 1 to it. Finding the length of the remaining list can be seen as the same problem and hence can be solved by calling the same function for the next node.</p>
+<p>So, the length of a linked list with ‘head’ as a pointer to 1<sup>st</sup> node can be written as: <strong>length(head) = 1 + length(head-&gt;next)</strong></p>
+<p>The length will be 0 for an empty linked list. This can be used as the base case in our recursive function.</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Find-Length-Of-A-Linked-List-Iterative-And-Recursive-dry-run-01.png" alt="" /></p>
+<p>Since it is clear what we need to do, take some time and think about how we are going to do it.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>If head points to NULL, return 0. (base case)</li>
+<li>Else recursively call the same function for head-&gt;next and add 1 to its result.</li>
+<li>Return the answer.</li>
+</ul>
+<h3>Implementation</h3>
+<p>[TABS_R id=3744]</p>
+<h4>Output</h4>
+<p>4</p>
+<p><strong>Time complexity:</strong> O(n), as we are completely traversing the linked list once.
+<strong>Space complexity:</strong> O(n), due to recursive function call stack.</p>
+<p>Here ‘n’ is the number of nodes in the linked list.</p>
+<p>Through this article, we learned how to find the length of a singly linked list using both iterative and recursive methods. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
