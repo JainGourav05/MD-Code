@@ -1,0 +1,46 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644925835076-103.Remove%20all%20occurrences%20of%20duplicates-04.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a sorted Singly Linked List. We have to remove all the occurrences of duplicate nodes in the list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with examples.</p>
+<p>Suppose if the given sorted list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-3.png" alt="" /></p>
+<p>Now, we have to remove all the occurrences of duplicates from this list. As we can see, 39 is the only repeating value (which have more than 1 occurrences in the linked list), so we will delete all the nodes which have the value 39.</p>
+<p>So, the final linked list after deletion:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/final-linked-list-1-2.png" alt="" /></p>
+<p>If the given sorted list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-2-3.png" alt="" /></p>
+<p>Now, as we can see that 2 and 3 are the only repeating values in the linked list (which have more than 1 occurrences in the linked list) so we will have to remove all the occurrences of 2 and 3 from this list. </p>
+<p>So, the final linked list after deletion:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/final-linked-list-2-2.png" alt="" /></p>
+<p><strong>Explanation:</strong> All the nodes which appear more than once have been deleted from the input linked list. The only nodes which appear exactly once in the list remain in the list.</p>
+<p>This question is not a very complex one. We have to make use of list traversal in the question. Let us have a glance at the approach.</p>
+<p>Before moving to the approach, just try to think how you can solve this problem?</p>
+<h3>Approach</h3>
+<p>The approach is going to be pretty simple. We will maintain a previous pointer which will point to the node just previous to the block of nodes for which we will check for the duplicates, i.e. the previous pointer will point to the last node which has no duplicate.</p>
+<p>As long as we will keep finding duplicates, we will keep traversing through the list. As soon as the duplicates end, we will make the previous pointer point to the next of the last duplicate node of that block. Let us have a look at the algorithm.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Create a node dummy which will point to the head of the list, and another node previous which will point to the last node which has no duplicate (initially previous will be pointing to dummy).</li>
+<li>Create another node that will be used to traverse through the list. Let us call this node current.</li>
+<li>Traverse using current till the end of the list.</li>
+<li>Now, as long as the data of next of previous is equal to the data of next of current,  increment current by 1.</li>
+<li>If the current stays the same, i.e. no duplicate in the current block, then <strong>previous = previous - &gt; next</strong>.  By doing this, we are just incrementing the previous.</li>
+<li>Else, there are duplicates, so, <strong>previous - &gt; next = current - &gt; next</strong>. The reason for doing this is that the previous is pointing to the last node which has no duplicates, and the current has been increased, which means there are duplicates. So, we will make the previous point to the next of current in order to remove the duplicates.</li>
+<li>Increment current by one.</li>
+<li>After the traversal, make head point to the next of the dummy node.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Remove-all-occurrence-of-duplicates-from-a-sorted-linked-list-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3863]</p>
+<h3>Output</h3>
+<p>List before removal of duplicates
+23 29 39 39 44
+List after removal of duplicates
+23 29 44</p>
+<p>[forminator_quiz id="3864"]
+<strong>Space Complexity:</strong> O(1), as only temporary variables are being created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to delete all occurrences of duplicates from a sorted linked list. It looks like a nested traversal, but it is not. This is an important question when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
