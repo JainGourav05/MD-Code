@@ -1,0 +1,42 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922208742-90.Print-nodes_Artboard%203.png)
+<h3>Problem Statement</h3>
+<p>Given two singly linked lists l1 and l2. l2 is a singly linked list containing various indices in sorted order. We need to print the data in l1 at indices mentioned in l2. (indices are 1 based).</p>
+<p><strong>Input</strong>
+l1: </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Print-Nodes-Of-Linked-List-At-Given-indexes-input-01.png" alt="" /></p>
+<p>l2: </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Print-Nodes-Of-Linked-List-At-Given-indexes_input_2-01.png" alt="" /></p>
+<p><strong>Output</strong>
+5 10 1</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s understand this problem with the above example. We have 5 -&gt; 18 -&gt; 9 -&gt; 10 -&gt; 1 -&gt; 73 -&gt; 11 as l1 the given linked list and 1 -&gt; 4 -&gt; 5 as l2 the linked list containing the indices to print. </p>
+<p>Lets mark the indices of the nodes of given linked list l1.</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Print-Nodes-Of-Linked-List-At-Given-indexes-01.png" alt="" /></p>
+<p>Now let’s look at the required list of indices and find the corresponding nodes.
+The given list of indices l2 is: 1 -&gt; 4 -&gt; 5
+Node at index 1 = 5
+Node at index 4 = 10
+Node at index 5 = 1</p>
+<p>So we print 5 10 1 as the output.</p>
+<h3>Approach</h3>
+<p>I hope you got a basic idea of what we need to do to solve this problem. The idea is simple, since the linked list containing indices (l2) is sorted, we just need to iterate through the linked list containing values (l1) while keeping track of the current index and the index to print. Whenever the current index and index to print match, we print the value at that index and update the index to print with the next node in the linked list l2, and move to the next node in l2.</p>
+<p>Since it is clear what we need to do, take some time and think about how we are going to do it.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Declare 2 variables <strong>curr_indx</strong> and <strong>indx_to_print</strong> and initialize them as curr_indx = 1 and indx_to_print = l2-&gt;val i.e. the first index to print.</li>
+<li>Now iterate through the linked list l1 till we reach the end of either of the linked list.</li>
+<li>In each iteration compare the value of curr_indx with indx_to_print. If they match</li>
+<li>Print the value of the current node in l1.</li>
+<li>Move to the next node in l2</li>
+<li>If there are more nodes in l2 (i.e. l2!=NULL), then update the value in indx_to_print with the value in l2.</li>
+<li>Increment the curr_indx by 1.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Print-Nodes-Of-Linked-List-At-Given-indexes-dry-run-01.png" alt="" /></p>
+<h3>Implementation</h3>
+<p>[TABS_R id=3729]</p>
+<h4>Output</h4>
+<p>5 10 1</p>
+<p><strong>Time complexity:</strong> O(n), where n is the length of the linked list.
+<strong>Space complexity:</strong> O(1), as we aren’t using any extra space.</p>
+<p>Through this article, we learned how to print the nodes of a linked list at given indices. Problems like these are good for strengthening your concepts in LinkedList. I would highly recommend you to practice more such problems from <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
