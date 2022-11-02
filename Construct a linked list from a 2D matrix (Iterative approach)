@@ -1,0 +1,72 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645528590182-2D%20matrix%28iterative%20approach%29_Artboard%201.png)
+
+<h3>Problem Statement</h3>
+<p>In this problem, we would be given a 2D matrix, and we need to construct a linked list from it.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's see what the problem is demanding.</p>
+<ul>
+<li>In this problem, we will be given a 2D matrix, and we just need to establish the link between all the elements of the matrix.</li>
+<li>Considering the elements of the matrix as a node of a linked list, we need to connect a node with its immediate right and down element in the respective matrix.</li>
+<li>If there is no element present to the immediate right or immediate down of an element, then we need to consider the immediate right and down elements as NULL.</li>
+</ul>
+<p>Let us try to understand the problem statement with the help of examples.</p>
+<h4>Input</h4>
+<h5>2 6 3 <br /></h5>
+<h5>7 1 9 <br /></h5>
+<h5>5 4 8</h5>
+<h2>Output</h2>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-1.png" alt="" />
+<strong>Explanation</strong></p>
+<ul>
+<li>In the above example, all the nodes are connected in the same manner as they are present in the matrix.</li>
+<li>For example, Node <strong>6</strong> is pointing to two different nodes, i.e., its right pointer points to its immediate right element, which is <strong>3</strong> and its down pointer points to its immediate down element which is <strong>1</strong>.</li>
+<li>When there are no nodes present to the immediate right or down of an element, i.e., for boundary elements, it is considered as the end of the list, and they are made to point NULL pointer. For example, as there is no right element of <strong>9</strong>, so its right pointer is made to point NULL pointer.</li>
+</ul>
+<h4>Input</h4>
+<h5>0 4 8 <br /></h5>
+<h5>3 7 2 <br /></h5>
+<h3>Output</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-2.png" alt="" /></p>
+<p>Now, I hope from the above examples the problem is clear. So now, let's think about how we can approach this problem?</p>
+<p>In the next section, have a look at some helpful observations.</p>
+<h4>Helpful observations</h4>
+<ul>
+<li>We need to construct a linked list in which each node will have two pointers named right and down.</li>
+<li>We just need to create a <a href="https://www.prepbytes.com/blog/linked-list/recursive-selection-sort-for-singly-linked-list-swapping-node-links/" title="node">node</a> for each cell of the matrix and then attach it to its right and down elements, respectively.</li>
+<li>Remember to point to a NULL pointer when we reach the boundary of the matrix.</li>
+</ul>
+<h3>Approach</h3>
+<ul>
+<li>We will first create <strong>N</strong> (<strong>N</strong> = number of rows) linked lists, where i<sup>th</sup> linked list  will contain all the elements of the i<sup>th</sup> row of the given matrix. Each node of i<sup>th</sup> linked list will store the address of its immediate right element from the matrix in its right link.</li>
+<li>We will create an array of pointers that will keep track of the address of the first nodes of all <strong>N</strong> lists that are created in the previous step.</li>
+<li>Then, we will traverse all lists one by one, and while traversing for i<sup>th</sup> list, we will assign the down pointer of each node to its corresponding immediate down element in (i+1)<sup>th</sup> list.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Create an array of pointers (say <strong>head</strong>) of size equal to the number of rows in the matrix.</li>
+<li>Create a for loop that will traverse through all the matrix rows and inside this for loop initialize the <strong>head[i]</strong> to NULL.</li>
+<li>Create a nested for loop (inner loop of for loop which we created in previous step) to traverse the column elements of the matrix and while traversing create new nodes having value equal to the value at corrsponding position in the original matrix and then, check if <strong>head[i]</strong> is NULL or not. 
+<ul>
+<li>If <strong>head[i]</strong> is NULL, that means we are at the first column, so we need to store the address of the newly created node into this <strong>head[i]</strong>.</li>
+<li>If <strong>head[i]</strong> is not NULL, we will attach this current node in the i<sup>th</sup> linked list.</li>
+<li>Then store the address of this node in the <strong>righttemp</strong> variable so that we can attach the new node after this node further.</li>
+</ul></li>
+<li>After the execution of the above nested for loops, we need to loop through the head array again and connect down pointers of the corresponding i<sup>th</sup> list to (i+1)<sup>th</sup> list.</li>
+<li>Now return <strong>head[0]</strong> from the function, as it would contain the address of the first node of the newly created linked list.</li>
+<li>After performing the above steps, we would get our desired linked list constructed from the given 2-D  matrix.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-3.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-4.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-5.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-6.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-linked-list-from-a-2D-matrix-7.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4492]</p>
+<h4>Output</h4>
+<p>2 6 3 <br />
+7 1 9 <br />
+5 4 8</p>
+<p><strong>Time Complexity:</strong> O(n*m), where <strong>n</strong> is the number of rows in the matrix and <strong>m</strong> is the number of columns in the matrix.
+[forminator_quiz id="4493"] </p>
+<p>So, in this blog, we have tried to explain how you can construct a linked list from a 2-D matrix in the most optimal way.  If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
