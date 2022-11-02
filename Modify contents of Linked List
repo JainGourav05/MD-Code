@@ -1,0 +1,94 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644916445879-81modifycontent_Artboard%206.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we would be given a linked list, and we need to modify the values of the first half nodes such that the value of the i<sup>th</sup> node will be equal to the value of (N-i-1)<sup>th</sup> node minus the value of the i<sup>th</sup> node.</p>
+<p><strong>Note:</strong> If the number of nodes is odd, then the value of the middle node will remain unchanged.</p>
+<h3>Problem Statement Understanding</h3>
+<p>To understand this problem statement, let us take examples by referring the best online programming courses.</p>
+<p>If the given linked list is :</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input.png" alt="" /></p>
+<p>then according to the problem statement:</p>
+<ul>
+<li>At first, focus on the first and last node and change the value of the first node to <strong>(22 - 3) = 19</strong>.</li>
+<li>Then for the second node, its value will be updated to the value equal to the last-second node value minus the value of the second node, i.e., <strong>(18-12) = 6</strong>.</li>
+<li>Similarly, the value of the third node will be <strong>(5-1) = 4</strong>.</li>
+<li>So, the final linked list after modification will be: </li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output.png" alt="" /></p>
+<p>Let us take another example:
+If the linked list is 4→1→10→42→5→NULL.</p>
+<ul>
+<li>After changing the values of the first half of <a href="https://www.prepbytes.com/blog/linked-list/recursive-selection-sort-for-singly-linked-list-swapping-node-links/" title="nodes">nodes</a> in the fashion mentioned above, our output linked list will be 1→41→10→42→5→NULL</li>
+<li>Note that the number of nodes in the linked list is <strong>odd</strong>, so we will not change the <strong>middle</strong> node, i.e., node <strong>10</strong>.</li>
+</ul>
+<p>Now, I think the problem statement is clear, so let's see how we can approach it. Any ideas? If not, it's okay, and we will see how we can approach it in the next section.</p>
+<h3>Approach 1</h3>
+<ul>
+<li>Find the first element of the second half of the linked list, i.e., find the middle node of the linked list.</li>
+<li>Push all elements starting from the node found above till the last of the linked list into a stack.</li>
+<li>Now using a temporary pointer, temp iterate the linked list starting from the head until the stack is not empty and modify <strong>temp→data</strong> by doing <strong>temp→data = (s.top() - temp→data)</strong> and then pop the element from the stack.</li>
+<li>Finally, when the traversal is over, we will have our final modified list as per the problem statement.</li>
+</ul>
+<h3>Algorithm 1</h3>
+<ul>
+<li>Initialize two pointers with the head of the list and name them <strong>slow</strong> and <strong>fast</strong>.</li>
+<li>Find the <strong>mid-node</strong> of the list by moving the <strong>slow</strong> pointer one node at a time and the <strong>fast</strong> pointer two nodes at a time, till <strong>fast</strong> or <strong>fast →next</strong> are not NULL.</li>
+<li>Now once you reach the end, check whether the fast pointer is NULL or not
+<ul>
+<li>If it is NULL then the number of nodes in the list is <strong>even</strong>, then no need to update the <strong>slow</strong> pointer as it will point to the first element of the second half of the list.</li>
+<li>If it is not NULL that means the number of nodes in the list is <strong>odd</strong> so, to point to the first element of the second half of the list, we need to move the <strong>slow</strong> pointer by one node.</li>
+</ul></li>
+<li>Now, we have the starting point of the second half of the list so, we will start iterating the list from here and push all data of nodes in the <strong>stack</strong> till the end of the list.</li>
+<li>Now, we will begin an iteration from the starting of the list and change the value of each node to the difference of the stack’s top element and the current node at which we are in the iteration, and then we will pop the element from the stack.</li>
+<li>We will repeat the above step till the stack is not empty.</li>
+</ul>
+<p>We will get our desired list by following the above steps.</p>
+<p><strong>Time complexity:</strong> O(n), Where n is the number of nodes in the list.
+<strong>Space Complexity:</strong> O(n), Where n is the number of nodes in the list</p>
+<p>As you can see that in the above approach, we used an extra space of O(n) because we were pushing the elements of the second half of the list in the stack.</p>
+<p>Can we improve this to constant extra space?</p>
+<ul>
+<li>The answer is yes, we can improve our algorithm, refer below to get an idea of the constant extra space approach.</li>
+</ul>
+<h4>Helpful Observations</h4>
+<ul>
+<li>Notice that we cannot move backward in a linked list, so we need to devise a way by which we can traverse the list in forward and backward directions.</li>
+<li>This can be only done if we first break the list from the middle into two parts and then reverse the second half.</li>
+<li>After doing this, we can treat each half as two different lists, and moving forward in the second half of the list would eventually mean to iterate in the list in the backward direction as it is reversed.</li>
+<li>Then, we can keep one pointer at the starting of each half, modify the nodes’ values that belong to the first half, and advance each pointer to the next node.</li>
+</ul>
+<h3>Approach 2</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>Find the middle node of the linked list and then <strong>split the linked list from the middle</strong> with the help of a <strong>fast</strong> and a <strong>slow</strong> pointer, where the <strong>slow</strong> will move one node at a time and the <strong>fast</strong> one will move 2 nodes at a time, so that when <strong>fast</strong> will be at the end of the list <strong>slow</strong> will be at the <strong>middle</strong>.</li>
+<li>Now, <strong>reverse the second half of the list</strong> obtained in the above step.</li>
+<li>Initialize two pointers named <strong>front</strong> and <strong>back</strong> with the starting of each list, respectively.</li>
+<li>Iterate over both the lists simultaneously and update the values of the first half nodes as directed in the problem statement.</li>
+<li>Then again, reverse the second half of the list.</li>
+<li>Then join the two parts (first half and second half) of the list as they were originally given to us.</li>
+</ul>
+<h3>Algorithm 2</h3>
+<ul>
+<li>At first, we will find the middle node of our linked list and then break the list from there.</li>
+<li>Then, we will have two different linked lists.</li>
+<li>Then, we will reverse the second linked list.</li>
+<li>Initialize two pointers, <strong>front and back</strong>, where the <strong>front</strong> will point to the first node of the first list and the <strong>back</strong> will point to the first node of the second list.</li>
+<li>While the end of the second list is not reached i.e., <strong>back</strong> is not equal to NULL pointer, we need to iterate the list and do the following:
+a) Change front’s data to the difference of back’s and front’s data <strong>(front-&gt;data = back-&gt;data - front-&gt;data)</strong>.
+b) Advance front pointer by one node <strong>(front = front-&gt;next)</strong>.
+c) Advance back pointer by one node <strong>(front = front-&gt;next)</strong>.</li>
+<li>After the while loop ends, reverse the second list again.</li>
+<li>Now, attach the second list to the end of the first list.</li>
+<li>Return the head of the newly created list.</li>
+<li>The first half nodes of the returned list will be modified according to the problem statement.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Modify-contents-of-Linked-List-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Modify-contents-of-Linked-List-2.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Modify-contents-of-Linked-List-3.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4643]</p>
+<h4>Output</h4>
+<p>19 6 4 5 18 22</p>
+<p><strong>Time complexity:</strong> O(n), Where n is the number of nodes in the list.
+[forminator_quiz id="4649"]</p>
+<p>So, in this blog, we have tried to explain how you can modify the contents of a linked list in the most optimal way. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
