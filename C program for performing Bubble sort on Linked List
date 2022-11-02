@@ -1,0 +1,63 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644996600272-121.C%20program%20for%20performing%20Bubble%20sort%20on%20Linked%20List-04.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given a singly linked list. We have to sort the given list using bubble sort in C. The bubble sort will be applied on nodes instead of values. We have to swap the nodes instead of values.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with the help of examples.</p>
+<p>Suppose the given list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-5.png" alt="" /></p>
+<ul>
+<li>
+<p>According to the problem statement, we have to sort the given list using bubble sort. What do we usually do?  We usually <a href="https://www.prepbytes.com/blog/linked-list/recursive-selection-sort-for-singly-linked-list-swapping-node-links/" title="swap">swap</a> the node data. But here, we have to swap the nodes and not their data. </p>
+</li>
+<li>
+<p>In the first step, suppose we have to swap 5 and 1. So, we will swap the nodes and not their data. So, the linked list after first step will be 1 → 5 → 4 → 2 → 8. In this way, swapping will happen and our final sorted linked list will be:</p>
+</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output-1-1.png" alt="" /></p>
+<p>If the given linked list is 6 → 3 → 1 → 9 → 12 → 15 → 5.</p>
+<ul>
+<li>Then after applying bubble sort on the linked list, the sorted list will be 1 → 3 → 5 → 6 → 9 → 12 → 15. </li>
+</ul>
+<p>This question is not a very complex one. We just have to apply a normal bubble sort on the list. The only difference is that instead of swapping the data of adjacent nodes, we will swap the nodes. </p>
+<p>Let us have a glance at the approach by referring online coding classes.</p>
+<h3>Approach and Algorithm</h3>
+<h4>Swap()</h4>
+<ul>
+<li>In the swap() function, we will swap two adjacent nodes. </li>
+<li>Let the two adjacent nodes be p1 and p2. Now we will create 2 pointer ptr1 and ptr2,  and will make ptr1 point to p1 and ptr2 point to p2.</li>
+<li>Now, we will create a pointer temp, and will make it point to the next of ptr2. </li>
+<li>We will make next of ptr2 point to ptr1 and next of ptr1 point to temp.</li>
+<li>In this way, following the above steps, the two adjacent nodes p1 and p2 will get swapped.</li>
+</ul>
+<h4>Dry Run - Swap()</h4>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Bubble-Sort-for-Linked-List-by-Swapping-Nodes-1.png" alt="" /></p>
+<h4>BubbleSort()</h4>
+<ul>
+<li>In this method, we will perform Bubble Sort on the Nodes. </li>
+<li>First, we need the count of the number of nodes in the list. The count can be found with a single list traversal. </li>
+<li>Now, the first loop is going to run from 0 to count - 1. </li>
+<li>Inside the first loop, we will create a node pointer h that will point to the head and a variable swapped, which we will initialize with 0. </li>
+<li>The nested loop will run from 0 to count -  i - 1. </li>
+<li>Inside the nested loop, we will check if the adjacent nodes are following ascending order or not. 
+<ul>
+<li>If not, we will swap the nodes and the value of swapped will become 1. </li>
+</ul></li>
+<li>After the if condition, we will increment the h.</li>
+<li>Now, after the inner loop, if the value of the swapped remains 0, it means that the list is sorted, and we will break the loop. Otherwise, we will continue the loop.</li>
+</ul>
+<h4>Dry Run - BubbleSort()</h4>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Bubble-Sort-for-Linked-List-by-Swapping-Nodes-2.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Bubble-Sort-for-Linked-List-by-Swapping-Nodes-3.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Bubble-Sort-for-Linked-List-by-Swapping-Nodes-4.png" alt="" /></p>
+<h3>Code implementation</h3>
+<p>[TABS_R id=4730]</p>
+<h4>Output</h4>
+<p>Linked list before sorting
+8 -&gt; 2 -&gt; 4 -&gt; 1 -&gt; 5
+Linked list after sorting
+1 -&gt; 2 -&gt; 4 -&gt; 5 -&gt; 8</p>
+<p><strong>Time Complexity:</strong> O(n<sup>2</sup>), where n is the total number of nodes in the Singly Linked List.</p>
+<p>[forminator_quiz id="4731"]</p>
+<p>So, in this blog, we have tried to explain how to perform bubble sort on a linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
