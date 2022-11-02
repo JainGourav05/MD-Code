@@ -1,0 +1,87 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645001154674-Article_145.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we have to implement a stack, with the help of a singly linked list.</p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-10.png" alt="" /></p>
+<p><strong>Output:</strong>
+If the input is 4 3 2 1, then our singly linked list, which will have all functionalities of a stack, will be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output-8.png" alt="" /></p>
+<p>where the head of the linked list is pointing to the 1.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s see how a stack works.</p>
+<ul>
+<li>It follows the LIFO(last in first out) principle, i.e., the element inserted last in the stack will be the first one accessible to us if we access elements from the stack.</li>
+<li>Suppose we inserted elements in the stack in order 4,3,2,1, and now if we want to access elements from the stack, the order in which the elements will be accessible to us will be 1,2,3,4.</li>
+</ul>
+<p>Now, let recall what a Singly Linked List is. </p>
+<ul>
+<li>A Singly Linked List is a linear data structure containing nodes, and each node have a data part and a next pointer that points to the next node in the linked list. </li>
+<li>If we can amend the inserting new node operation in a singly linked list in such a way that the current inserted element is always at the head of the linked list and is the first element accessible to us if we want to access an element from the linked list, then we can see that our linked list is mimicking the behavior of stack. </li>
+<li>Similarly, we will try to think of other stack operations and how we can implement these operations using a singly linked list. </li>
+</ul>
+<p>Let us have a glance at the algorithm.</p>
+<h3>Approach and Algorithm</h3>
+<p>There are mainly 5 functions of a stack. We will learn each function’s approach and algorithm one by one.</p>
+<h4>push()</h4>
+<ul>
+<li>In the push function, we push the element into the stack and make it the top. </li>
+<li>So, to do the same with a singly linked list, we will check if the list is Null or not. 
+<ul>
+<li>If it is Null, then make the new node the head. </li>
+<li>If the list is not empty, then make the next of the new node point to the head of the list. In the end, make the new node the head of the list. In this way, we are first adding the element at the head, and then making it our head.</li>
+</ul></li>
+</ul>
+<h3>pop()</h3>
+<ul>
+<li>In the pop function, we pop the topmost element of the stack. </li>
+<li>So, to do the same with a singly linked list, first, we will check if the list is Null or not. 
+<ul>
+<li>If it is Null, then return NULL. </li>
+<li>If there is only one node in the list, then remove the head, and return NULL. </li>
+<li>If both the above base cases fail:</li>
+<li>We will create a new node temp and make it point to the head. </li>
+<li>Now, we will do <strong>head = head → next</strong> to make the 2<sup>nd</sup> node our new head. </li>
+<li>After this, we will do <strong>temp → next = NULL</strong>, and free (temp). </li>
+<li>In this way, we are making deleting the 1<sup>st</sup> node of the list and making the 2<sup>nd</sup> node our new head.</li>
+<li><strong>Remember</strong> - We are using 1 based indexing in the above approach.</li>
+</ul></li>
+</ul>
+<h3>peek()</h3>
+<ul>
+<li>In the peek function, we have to return the top element of the stack without deleting it. </li>
+<li>So, to do the same with a singly linked list, first, we will check if the list is empty or not. 
+<ul>
+<li>If the list is empty, we will simply exit as there is no data in the list. </li>
+<li>If the list is not empty, we will just return the <strong>head → data</strong>, as it is the top element of the stack.</li>
+</ul></li>
+</ul>
+<h3>isEmpty()</h3>
+<ul>
+<li>In the isEmpty function, we have to check whether the stack is empty or not. </li>
+<li>So, to do the same with a singly linked list, we will just check if the head is NULL or not. 
+<ul>
+<li>If the head is NULL, it means that the list is empty, so we will return true.</li>
+<li>If the head is not NULL, it means that the list is not empty, so we will return false.</li>
+</ul></li>
+</ul>
+<h3>display()</h3>
+<ul>
+<li>In the display function, we have to print the stack. </li>
+<li>So, to do the same with a singly linked list, we will do a list traversal and print the elements of list one by one.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-4.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-4.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4993]</p>
+<h3>Output</h3>
+<p>1-&gt;2-&gt;3-&gt;4-&gt;
+Top element is 1
+Stack after popping 2 times
+3-&gt;4-&gt;
+Top element is 3</p>
+<p><strong>Time Complexity:</strong> All methods other than display() take O(1) time. The display() method takes O(N) time as we have to traverse the list to print the elements.</p>
+<p>[forminator_quiz id="4994"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to implement a stack using a singly linked list. This is an important concept when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
