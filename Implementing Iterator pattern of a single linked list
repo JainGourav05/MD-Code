@@ -1,0 +1,45 @@
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we will be implementing the Iterator pattern of a singly linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Using the STL( Standard Template Library) in C++ makes our life a lot easier. We don't have to spend time writing and implementing long codes, which are already available. This increases the reusability of the code. But, we should not always depend on library functions. Although it increases our efficiency, we should know its functionalities and way of processing.</p>
+<p><strong>Input:</strong> 1 3 5</p>
+<p><strong>Output:</strong> 1 3 5</p>
+<p><strong>Explanation:</strong> We are traversing through the linked list and printing numbers one by one.</p>
+<h3>Approach (STL)</h3>
+<p>Here, we will create a list using STL. To add elements, we will use the keyword <strong>push_back</strong> and, lastly, iterate through the list using iterators.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Create a list using the STL.</li>
+<li>Add elements to the list using <strong>push_back</strong>.</li>
+<li>Use iterators to iterate through the list.</li>
+<li>Print the list items.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/27_1-01.png" alt="" /></p>
+<h4>Code Implementation (STL and Collections)</h4>
+<p>[TABS_R id=3611]</p>
+<p>Although STL is very efficient when it comes to problem-solving, let's look at what is going on when we use the iterators.</p>
+<h3>Approach (Manual)</h3>
+<p>Firstly, we will input the list items. Here, we will see how <strong>push_back</strong> works and how the iterator traverses through the linked list. We can sequentially access the nodes of the linked list using the iterator class.</p>
+<p>We will define various methods such as <strong>begin()</strong>, <strong>end()</strong>, and <strong>push_back()</strong>. These are some commonly used STL methods. Let us look at the algorithm to get a clearer look.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Create a custom class to handle linked list operations like <strong>push_back()</strong>, <strong>push_front()</strong>, <strong>pop_back()</strong>.</li>
+<li>We wrap the start of the linked list in the <strong>begin()</strong> method, and the end of the linked list in the <strong>end()</strong> method.</li>
+<li>We also create a <strong>push_back()</strong> method to add data to the linked list</li>
+<li>We create methods for operators too. The <strong>=</strong> operator, prefix operator and the postfix operator.</li>
+<li>Then, we create add functions to create a node and return the new node to the caller method.</li>
+<li>Finally, with the help of all the above-used methods, we implement the <strong>push_back()</strong> and then print the elements of the linked list.</li>
+</ul>
+<h4>Code Implementation (Manual)</h4>
+<p>[TABS_R id=3612]</p>
+<p><strong>Output</strong>
+Traversing through method
+1 3 5</p>
+<p>Traversing through iterators
+1 3 5</p>
+<p><strong>Time Complexity:</strong> O(n), as no nested traversal is required.</p>
+<p>[forminator_quiz id="3613"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to implement the iterator pattern of a single linked list. This question gives us insights into the iterator usage in a linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
