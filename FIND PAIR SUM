@@ -1,0 +1,88 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645100022907-Article_317.png)
+### Concepts Used
+> Linked lists,hash table
+
+### Difficulty Level
+> Hard.
+
+### Problem Statement :
+&gt;Given a sorted singly linked list and a value K, the task is to find pair whose sum is equal to K. We are not allowed to use any extra space and expected time complexity is O`(`n`)`.
+Print the number of pairs whose sum equals to `K`. 
+
+<a href="https://mycode.prepbytes.com/problems/linked-list/FINDPAIR" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+#### Example:
+```
+5 5
+1 2 3 4 5
+
+Output:2
+Since the pairs (2,3) and (1,4) add to give 5.
+```
+
+### EXPLANATION:
+#### Approach 1 (Brute force):
+> Iterate over each node and check if any corresponding node with data sum-node-&gt;data is present.
+> This costs O(n*n) time.
+
+[TABS_R id=1818]
+
+#### Approach 2 (Hashing):
+
+> Use hashtable(preferably map or set in C++) and initialize counter as 0.Insert the node data as you iterate over the list.If the corresponding node with data sum-node-&gt;data is found ,counter increases by one.
+
+**TIME COMPLEXITY**:O(n)
+```
+ int count_pair(Node* head, int sum) 
+    { 
+     set<int> s; 
+
+     Node* p = head; 
+     while (p != NULL) { 
+        int curr = p->data; 
+        if (s.find(sum - curr) != s.end()) 
+        count++;
+        s.insert(p->data); 
+        p = p->next; 
+     } 
+    return count; 
+    } 
+```
+
+#### Without using extra space!!!
+> Have you heard of `MEMORY EFFICIENT DOUBLY LINKED LISTS`???
+&gt;
+&gt;`XOR Linked list` : In singly linked list, we can traverse list only in forward direction. We use XOR concept to convert a singly linked list to doubly linked list.
+&gt;
+
+**ALGO**:
+
+```
+        First we need to convert our singly linked list into doubly linked list. 
+		
+		Here we are given singly linked list structure node which have only next pointer not prev pointer,
+		
+		so to convert our singly linked list into doubly linked list we use memory efficient doubly linked list ( XOR linked list ).
+
+        In XOR linked list each next pointer of singly linked list contains XOR of next and prev pointer.
+
+        After converting singly linked list into doubly linked list 
+		we initialize two pointers variables to find the candidate elements in the sorted doubly linked list. Initialize first with start of doubly linked list i.e;
+		first = head and initialize second with last node of doubly linked list i.e; second = last_node.
+
+        Here we don’t have random access, so to initialize pointer, we traverse the list till last node and assign last node to second.
+
+        If current sum of first and second is less than x, then we move first in forward direction. 
+		If current sum of first and second element is greater than x, then we move second in backward direction.
+
+        Loop termination conditions are also different from arrays. 
+		The loop terminates when either of two pointers become NULL, or they cross each other (first=next_node),
+		or they become same (first == second).
+
+```
+
+[TABS_R id=1883]
+
+[forminator_quiz id="1832"]
+
+This article tried to discuss **Linked lists, hash table**. Hope this blog helps you understand and solve the problem. To practice more problems on Linked lists,hash table you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.
