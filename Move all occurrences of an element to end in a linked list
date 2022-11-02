@@ -1,0 +1,92 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644916488102-82move-all-occureces_Artboard%201.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a linked list and a key in it. Our task is to move all the occurrences of the given key to the end of the linked list, while maintaining the order of all other elements the same.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with help of examples.</p>
+<p>Let’s say, we are given a linked list:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-11.png" alt="" /></p>
+<p>and the key B.</p>
+<p>Then according to the problem statement, we have to move all the occurrences of the key to the end of the linked list, and also we have to maintain the order of all other elements except the key same as their order in the original given linked list. So after moving all the occurrences of the key to the end, our final resultant linked list would look something like this:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-1-1.png" alt="" /></p>
+<p>While forming the resultant linked list, first all the other elements except B will come in the same order as they were in the original linked list forming A→C→C and then all the occurrences of the B will be appended at the end of A→C→C forming A→C→C→B→B→B.</p>
+<p><strong>Explanation:</strong> In our final resultant linked list, we can see that all the occurrence of the key B have been moved to the end of the linked list, preserving the order of the rest of the elements of the list. </p>
+<h4>Some other examples</h4>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-2-9.png" alt="" /></p>
+<p><strong>Output:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-2-2.png" alt="" /></p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-3-2.png" alt="" /></p>
+<p><strong>Output:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-3-1.png" alt="" /></p>
+<p>Now I think from the above examples it is clear what the problem is demanding. So next we have to think how we can approach this problem towards a solution?</p>
+<p>Let’s have a glance at approach.</p>
+<h3>Approach 1</h3>
+<p>A simple approach is the brute force approach. </p>
+<p>In this approach, we will be finding every occurrence of the given key element in the list. </p>
+<ul>
+<li>For each occurrence of the given key element in the list, we move it to the end of the linked list.</li>
+</ul>
+<p>This way, all occurrences of the given key element will be moved to the end of the linked list, and we will be successful in achieving our objective of moving all the occurrences of the given key to the end of the linked list.</p>
+<p><strong>Time Complexity:</strong> The worst case complexity of this brute force approach is O(N*N), where N is the total number of nodes in the linked list, as for each occurrence of the key element in the list, we take approx O(N) time for the traversal to the end of the linked list and then appending the key at the end.</p>
+<p><strong>Space Complexity:</strong> O(1), as no additional space is used.</p>
+<p>Although we were able to achieve our objective but still the time complexity was of order N<sup>2</sup>. So now we will try to think how can we reduce this complexity? Is a lesser time complexity solution possible? If possible, what we have to use to convert our above O(N<sup>2</sup>) solution into an efficient lesser time complexity solution?</p>
+<p>Now in the next approach we will see how using pointers we can reduce the complexity.</p>
+<h3>Approach 2</h3>
+<p>The time complexity of the previous approach can be optimized if we make use of 2 pointers. </p>
+<p>Let’s say the 2 pointers are p1 and p2. </p>
+<ul>
+<li>p1 is the pointer to traverse the whole list one by one.</li>
+<li>p2 is the pointer to an occurrence of the key if a key is found, else it will be the same as p1.</li>
+</ul>
+<p>The algorithm to move all occurrences of the key element to the end is explained below.</p>
+<h3>Algorithm:</h3>
+<ul>
+<li>We will start both the pointers from the head of the linked list.</li>
+<li>We move p2 only when p2 is not pointing to a key. Furthermore, we always move p1 until <strong>p1!=NULL</strong>.</li>
+<li>So, when p1 and p2 are not the same, we must have found a key that lies before p1. Therefore, we swap p1 and p2, and move p2 to the next location.</li>
+<li>The loop invariant is, after swapping data, all node values from p2 to p1 are equal to key.</li>
+<li>Finally, when <strong>p1==NULL</strong> we will have our result, our linked list will have all the occurrences of the key at the end of the linked list.</li>
+</ul>
+<p><strong>Note:</strong> For a better understanding go through the dry run step by step using the algorithm and code, hopefully you will get to know better what we are doing in the algorithm.</p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Move-all-occurrences-of-an-element-to-end-in-a-linked-list-3.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Move-all-occurrences-of-an-element-to-end-in-a-linked-list-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4233]</p>
+<h3>Output</h3>
+<p>Before moveToEnd(), the Linked list is
+5 2 2 7 2 2 2
+After moveToEnd(), the Linked list is</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-4-1.png" alt="" /></p>
+<p><strong>Time Complexity:</strong> O(N), as we are traversing the list only once.
+<strong>Space Complexity:</strong> O(1), as no additional space is used.</p>
+<h3>Approach 3</h3>
+<p>Although the previous approach is an efficient one, now we will discuss one more efficient approach. </p>
+<p>In this approach, we will make use of a pointer at the tail of the linked list. While traversing the list: </p>
+<ul>
+<li>If we find a node whose value is equal to the key, we will move that node to the last using that pointer tail.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>First we will create a new pointer last, then we will traverse the linked list to the end and will make this pointer last point to the tail of the linked list (i.e. last node of the linked list).</li>
+<li>Now again while iterating over the list starting from the head using a pointer current, we will check for every node:
+1) If current → data = key, then we will move the node to the end of the linked list.
+2) Else we move to the next location.</li>
+<li>Finally after the iteration is over, all the occurances of the key will be at the end of the linked list.</li>
+</ul>
+<p><strong>Note:</strong> For a better understanding go through the dry run step by step using the algorithm and code, hopefully you will get to know better what we are doing in the algorithm.</p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Move-all-occurrences-of-an-element-to-end-in-a-linked-list-3.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Move-all-occurrences-of-an-element-to-end-in-a-linked-list-4.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Move-all-occurrences-of-an-element-to-end-in-a-linked-list-5.png" alt="" /></p>
+<h3>Code Implementation:</h3>
+<p>[TABS_R id=4235]</p>
+<h4>Output</h4>
+<p>Linked List before operations :
+5 2 2 7 2 2 2
+Linked List after operations :
+5 7 2 2 2 2 2</p>
+<p><strong>Time Complexity:</strong> O(N), as we are traversing the list twice.
+[forminator_quiz id="4234"]</p>
+<p>So, in this article, you have learnt how to move all occurrences of an element to end in a linked list. This is an important coding interview question. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
