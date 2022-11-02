@@ -1,0 +1,74 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645097945256-Article_301.png)
+### Concepts Used
+> Basics of linked list.
+
+### Difficulty Level
+> Easy
+
+### Problem Statement :
+> You are given a singly-linked list, delete the k<sup>th</sup> node from the end of the list and then print Linked list after deletion of the k<sup>th</sup>node.
+
+> Note:  Given k will be always valid.
+
+#### EXAMPLE:
+```
+Given: 1->2->3->4->5->6
+K=3
+
+after deletion:
+1->2->3->5->6
+
+4 is the third last node from the end of linked list.
+```
+You are encouraged to try the problem on your own before looking at the solution.
+<a href="https://mycode.prepbytes.com/problems/linked-list/DELKTHNFREND" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+### EXPLANATION:
+![](https://blog.prepbytes.com/wp-content/uploads/2020/06/delete-kth-from-end1.png)
+
+#### Brute force:
+&gt;Start with the first node and count the number of nodes present after that node.If the number of nodes are 
+&gt;If the number of nodes are &gt; K-1 then go to the next node.
+&gt;
+&gt;Continue this until the number of nodes after current node are K-1.
+```
+>Time complexity: O(n*n) ,for scanningthe remaining list (from current node) for each list.
+>Space complexity: O(1).
+```
+&gt;`Can we make this any better?`
+
+#### Approach 2:
+> If L is the length of the linked list,(L−k+1) th node from the beginning is Kth node from the ned of the linked list.
+&gt;
+&gt;Look at the example:
+&gt;
+![](https://blog.prepbytes.com/wp-content/uploads/2020/06/delete-kth-fron-end2-1.png)
+&gt;
+&gt;K=4;
+&gt;
+&gt;You can see that the 4th node from the end is the same node which is 2nd from the beginning (L-K+1=5-4+1).
+&gt;
+> So the problem could be simply reduced to another one : Remove the (L−k+1) th node from the beginning in the list , where L is the list length. This problem becomes easy if we find the length of the list .
+```
+>Time Complexity: O(n).
+>
+>Space complexity: O(1).
+```
+**Note**: This algorithm needs two traversals(one to find L). The below algorithm is one pass algorithm.
+
+
+#### Approach 3:
+> Use two pointers lKthNode and lTemp.Initially, both points to head node of the list.lKthNode starts moving only after lTemp made K moves.
+&gt;
+&gt;From there both moves forward until lTemp reaches the end of the list. As a result lKthTemp points to the kth node from the end of the linked list.
+```
+>Time Complexity: O(n).
+>
+>Space complexity: O(1).
+```
+
+### SOLUTIONS:
+[TABS_R id=1497]
+[forminator_quiz id="1499"]
+
+This article tried to discuss **linked list**. Hope this blog helps you understand and solve the problem. To practice more problems on linked list you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.
