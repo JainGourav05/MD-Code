@@ -1,0 +1,40 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645185859766-linked%20list%20even%20or%20odd.png)
+<h3>Problem Statement</h3>
+<p>In this problem we are given a linked list and we have to find the length of the linked list i.e. count the number of nodes in the linked list, and tell whether the linked list is Even or Odd.</p>
+<ul>
+<li>'Even' means that the linked list contain even number of nodes (<strong>count%2==0</strong>).</li>
+<li>'Odd' means that the count of the number of nodes in linked list is odd (<strong>count%2==1</strong>).</li>
+</ul>
+<h3>Problem Statement Understanding</h3>
+<p>We will be given a linked list as input and we need to count the total nodes in it and say whether the count is even or odd.</p>
+<p>Let the input be the list given below:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Untitled-9-01.png" alt="" /></p>
+<p>Output of above input will be:-  Odd (since count of the total number of nodes are 5 and 5%2 is equal to 1).</p>
+<p>We just need to count the total number of nodes in the list and say whether the count is odd or even. For example, in the above test case, the total number of nodes in the list are 5 and 5 is an odd number so the output will be 'Odd'. Had the count of nodes been an even number, the output would have been 'Even'.</p>
+<h3>Approach 1</h3>
+<p>In this approach, we simply count the total number of nodes present in the linked list by iterating the given list and depending on whether the count comes odd or even, we print the output.</p>
+<p><strong>Time Complexity</strong> - O(n) [ where n is the number of nodes present in the list].</p>
+<p><strong>Space Complexity</strong> - O(1).</p>
+<p>The above approach is pretty trivial but we need to travel the whole list to say whether the count is odd or even. </p>
+<p>Can we do better than this?
+Well, we can optimise it a bit more. </p>
+<h3>Helpful Observations</h3>
+<p>If we keep a pointer that will move two nodes at a time then it is obvious that when we will reach the end of the list if the length is odd, it would be pointing to the last node of the list and if the length is even, it would be pointing to a NULL pointer because it would skip the last node since it is advancing by skipping the nodes in pairs.</p>
+<h3>Approach 2</h3>
+<p>In this approach, we keep a temporary pointer pointing to the head of the linked list and move it by skipping two nodes at a time.</p>
+<p>When the pointer comes to the end of the linked list, there are two possibilities:</p>
+<ul>
+<li>Either it will point to NULL.</li>
+<li>Or it will point to the last node of our list. </li>
+</ul>
+<p>Since we moved our pointer skipping 2 nodes at a time if it is pointing to NULL, it is guaranteed that the length of the input is even, otherwise, it is odd.</p>
+<p><strong>Time complexity</strong> - O(n), asymptotically, time complexity will remain linear but in this approach, we are travelling only half the total number of nodes i.e. n/2.</p>
+<p><strong>Space Complexity</strong> - O(1)</p>
+<h3>Dry run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Untitled-10-01.png" alt="" /></p>
+<p>Since our head is pointing to the last node of our list, the length of the list is odd. So our output will be 'Odd'. </p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3809]</p>
+<h4>Output</h4>
+<p>Odd</p>
+<p>So, in this blog, we have tried to explain how you can find whether the length of a given linked list is odd or even in the most optimal way. If you want to practice more questions on linked lists, feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
