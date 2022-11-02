@@ -1,0 +1,87 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645009130055-Article_178.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a singly linked list, which may contain a loop. We have to detect the loop, and if there is a loop, we need to remove it from the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>The linked list contains a loop means, the last node in the list will not be pointing to the NULL instead, it will be pointing to some other node in the list.
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-33.png" alt="" /></p>
+<p>Removing the loop means that the we need to make the last node of the list point to NULL instead of pointing to some other node in the list.
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-32.png" alt="" /></p>
+<p>Let's understand this problem with the help of some examples.</p>
+<p>If the linked list given to us is:
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-18.png" alt="" /></p>
+<ul>
+<li>According to the problem statement, we need to find the loop in the linked list and remove it. </li>
+<li>From the linked list, we can see that there is a loop in the linked list starting at the node with value 0 and containing 4 nodes 0, 3, 0, and 1. The last node of the loop points back to the first node of the loop.</li>
+<li>Now, as we found out that there is a loop in the given linked list, so now we have to remove the loop from the linked list.</li>
+<li>So, the final linked list after removing the loop loop will be 1 - &gt; 0 - &gt; 3 - &gt; 0 - &gt; 1 -&gt; NULL</li>
+</ul>
+<p>Now I think from the above examples, the problem is clear. So let’s see how we can approach it.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem. What is the first thing that comes to your mind?</p>
+<ul>
+<li>
+<p>The very first thing that comes to mind is loop detection. Correct, but we can also use hashing to solve this problem. </p>
+</li>
+<li>
+<p>The hashing solution will require O(n) space for the creation of the hash table, so we are first going to look at hashing approach, and then jump to the efficient loop detection approach using Floyd’s Cycle Detection Algorithm. </p>
+</li>
+</ul>
+<p>Try to think about how you can use hashing to solve this problem?</p>
+<p>Let us have a glance at the approach to get a clear look.</p>
+<h3>Approach 1 (Hashing)</h3>
+<p>This approach is going to be pretty simple. </p>
+<ul>
+<li>We are going to use an <strong>unordered_map</strong> and we will keep inserting nodes into it while traversing the linked list. </li>
+<li>Now, Once we encounter a node that is already present in the map, it will mean that we have reached the starting point of the loop.
+<ul>
+<li>Also, while iterating, we were maintaining two pointers at each step <strong>head</strong> and <strong>last</strong>, <strong>head</strong> pointing to the current node and <strong>last</strong> to the previous node of the current node.</li>
+<li>As now our <strong>head</strong> is pointing to the start node of the loop and as <strong>last</strong> was pointing to the previous node of the node to which <strong>head</strong> was pointing, i.e., it is pointing to the last node of the loop.</li>
+<li>So, now we will break the loop by making <strong>last-&gt;next == NULL</strong>.</li>
+</ul></li>
+<li>In this way, the last loop node starts pointing to NULL instead of pointing to the starting node of the loop.</li>
+</ul>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5326]</p>
+<h4>Output</h4>
+<p>Linked List after removing loop
+1 0 3 0 1 </p>
+<p><strong>Time Complexity</strong> -  O(n), as list traversal is needed.
+<strong>Space Complexity</strong> - O(n), the space required by the map.</p>
+<p>This approach will work fine, but it requires extra O(n) space. So, now the main question is can we optimize this space?</p>
+<ul>
+<li>The answer is yes, and we will see how we can optimize this space in the next approach.</li>
+</ul>
+<p>Our next approach uses Floyd’s Cycle Detection algorithm. </p>
+<h3>Approach and Algorithm (Floyd’s Cycle Detection)</h3>
+<p>In this approach, we are going to use <strong>Floyd's Cycle Detection algorithm</strong>. </p>
+<p>1) Firstly, we have to detect the loop in the given linked list. </p>
+<ul>
+<li>We know the most efficient algorithm for detecting a loop in any linked list is the <strong>Floyd Cycle detection Algorithm</strong>.</li>
+</ul>
+<p>2) In Floyd's cycle detection algorithm, we initialize 2 pointers, <strong>slow</strong> and <strong>fast</strong>. </p>
+<ul>
+<li>Both initially point to the head of the list. </li>
+<li>The <strong>slow</strong> pointer jumps one place and the <strong>fast</strong> pointer jumps 2 places. </li>
+<li>If, at any point, <strong>slow</strong> and <strong>fast</strong> meet, it means that there exists a loop in the list. The point where <strong>slow</strong> and <strong>fast</strong> meet is somewhere inside the loop.</li>
+</ul>
+<p>3) Now, after detecting the loop, we will make <strong>slow</strong> point to the <strong>head</strong> and <strong>fast</strong> will be at its position only (Inside the loop).</p>
+<ul>
+<li>If still <strong>slow == fast</strong>, it means that the slow and fast met at the head node of the linked list.
+<ul>
+<li>So, in this case, we will run a while loop until <strong>fast-&gt;next != slow</strong> (inside loop move fast by one node at a time) and when <strong>fast-&gt;next == slow</strong>, we will remove the loop by making <strong>fast-&gt;next == NULL</strong>.</li>
+</ul></li>
+<li>Now, if <strong>slow != fast</strong>, in this case, we will run a while loop until <strong>slow -&gt; next</strong> is not equal to <strong>fast -&gt; next</strong> (inside while loop move both <strong>slow</strong> and <strong>fast</strong> forward by 1 node), and when <strong>slow-&gt;next == fast-&gt;next</strong>, it means that <strong>fast</strong> is pointing to the last node of the loop, so we will remove the loop by making <strong>fast-&gt;next == NULL</strong>.
+4) In this way, if there is any loop in the linked list, it will get removed.</li>
+</ul>
+<h3>Dry run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_5-6.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_6-7.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5327]</p>
+<p><strong>Output</strong>:
+Linked List after removing loop :
+1 0 3 0 1</p>
+<p><strong>Time Complexity</strong>: O(n), as list traversal is needed.
+[forminator_quiz id="5328"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to detect and remove the loop in a linked list. If you want to practice more questions on linked lists feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked Lists)</a>.</p>
