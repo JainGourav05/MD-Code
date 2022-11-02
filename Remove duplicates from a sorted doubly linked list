@@ -1,0 +1,55 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644996679137-123.Remove%20Duplicates%20from%20a%20sorted%20doubly%20linked%20list_Artboard%206.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>Given a sorted <a href="https://www.prepbytes.com/blog/linked-list/convert-a-given-binary-tree-to-doubly-linked-list/" title="doubly linked list">doubly linked list</a> that contains duplicates elements. Our task is to remove the duplicates from the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>In this problem, we will be given a sorted doubly linked list containing some element occurring multiple times. We have to remove these duplicate occurrences of the elements.</p>
+<p>Let’s try to understand the problem statement with the help of examples by referring the best online coding classes.</p>
+<p>Let’s say the given linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-2.png" alt="" /></p>
+<ul>
+<li>According to the problem statement, we have to remove all the duplicate occurrences from the list.</li>
+<li>In the given linked list, we can see that  5 and 9 are present multiple times. So, we have to remove duplicates of 5 and 9 present in the linked list.</li>
+<li>After removing duplicates of 5 and 9 from the list, the final linked list which we will have is:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output-2.png" alt="" /></p>
+<p>Let’s see if the given linked list is: head → 1 ←→ 3 ←→ 3 ←→ 3 ←→ 4 ←→ 5 ←→ 5 </p>
+<ul>
+<li>In this given linked list,  3 and 5 are present multiple times. So, we will remove duplicates of 3 and 5 present in the linked list. Our final linked list after removal of duplicates of 3 and 5 will be: head → 1 ←→ 3 ←→ 4 ←→ 5.</li>
+</ul>
+<p>Now, I think from the above examples, it is clear what we have to do in the problem. So let’s see how we can approach it.</p>
+<p>Before jumping directly into the approach section, first try to think how you can approach it. If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</p>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>We start traversing through the list and will check if the <strong>current→data</strong> is equal to the <strong>current→next→data</strong> or not: 
+<ul>
+<li>If <strong>current→data</strong> is not equal to the <strong>current→next→data</strong> then we will move forward because it is possible only when there is a single node of the <strong>current→data</strong> in the linked list. </li>
+<li>But if the <strong>current→data</strong> is equal to the <strong>current→next→data</strong>, we will delete all node's starting from the <strong>current→next</strong> up to the node having data same as <strong>current→data</strong>. </li>
+</ul></li>
+<li>In the end, our linked list will be free from duplicate elements.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Initialize a pointer named <strong>current</strong> with head.</li>
+<li>Start traversing through the linked list using <strong>current</strong> and do these steps until you reach NULL.
+<ul>
+<li>If the current node’s data is equal to the <strong>current→ next→ data</strong>, there are duplicates in the linked list, so we have to delete all the duplicates of <strong>current→ data</strong>.</li>
+<li>If the current node’s data is not equal to the <strong>current→ next→ data</strong>, then move forward by assigning <strong>current = current→ next</strong>.</li>
+</ul></li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Remove-duplicates-from-a-sorted-doubly-linked-list-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Remove-duplicates-from-a-sorted-doubly-linked-list-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4702]</p>
+<h4>Output</h4>
+<p>Original Linked List:
+1 5 5 6 9 9 9
+Linked List after removing duplicates from a sorted doubly:
+1 5 6 9</p>
+<p><strong>Time complexity:</strong> O(N), Since we have traversed through the list only once.
+[forminator_quiz id="4699"]</p>
+<p>So, In this blog, we have learned How to remove duplicates from the sorted doubly linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
