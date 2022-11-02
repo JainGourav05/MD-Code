@@ -1,0 +1,59 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000301954-Article_128.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of a linked list can be a huge plus point in coding interviews.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given a linked list in which each node will have an alphabet character as data, and we need to rearrange the nodes of the linked list so that all nodes having vowel data appear before the consonant ones. </p>
+<p><strong>Note:</strong> We are not allowed to disturb the relative order of vowels and consonants.</p>
+<p>Let the given input be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Arrange-consonants-and-vowels-nodes-in-a-linked-list-1.png" alt="" /></p>
+<p>The output should be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Arrange-consonants-and-vowels-nodes-in-a-linked-list-2.png" alt="" /></p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s first understand the problem statement with the help of examples.</p>
+<p>If the given linked list is c→a→l→e→p→o→w:</p>
+<ul>
+<li>Then, according to the problem statement, we need to rearrange the node of the linked list such that all the vowel nodes come before the consonant nodes. Also, we need to make sure that the order of occurrence of nodes within vowel nodes and consonant nodes after rearrangement should be the same as their order of occurrence in the original list.</li>
+<li>The output linked list after rearrangement of nodes will be a→e→o→c→l→p→w.</li>
+<li>In the output linked list, we can see that all the vowel nodes a, e, o are before the consonant nodes c, l, p and w. Also, if we notice carefully, we can observe that within vowel nodes and consonant nodes the order of occurrences of nodes is the same as their order of occurrence in the input list. 
+<ul>
+<li>The order of occurrence of vowel nodes in the input list is a, e, o and similarly in our output list, the order of occurrence of vowel nodes is the same a, e, o.</li>
+<li>The order of occurrence of consonant nodes in the input list is c, l, p, w and similarly in our output list the order of occurrence of consonant nodes is the same c, l, p, w.</li>
+</ul></li>
+</ul>
+<p>Let’s take another example, say if the input list is: a→b→c→d→e→o→i→u</p>
+<ul>
+<li>In this case, our output singly linked list after rearrangement will be: a→e→o→i→u→b→c→d</li>
+</ul>
+<p>Now, I think the problem statement is clear, so let's see how we can approach it. Any ideas? </p>
+<ul>
+<li>The naive approach would be to create 2 vectors that would be storing the address of nodes. While traversing the list, insert vowel nodes in the first vector and consonant ones in the second one. Finally, create a new linked list, keeping all vowel nodes before consonant nodes.</li>
+</ul>
+<p>The above approach will have a linear space and time complexity. But can we do better than this? Yes, we can improve the space complexity of our code to constant space.</p>
+<ul>
+<li>So, our idea will be to traverse the list and find the first vowel node. This will be the new head of our modified list. Now, we would bring this node at the beginning of the list and make this head of our modified list. We would store the previous vowel node’s address, and when we encounter another vowel node in the future, we would remove it from there and place it after this node. We will repeat this process till we traverse the whole list completely.</li>
+</ul>
+<p>Let’s move to the next section to see this process in more depth.</p>
+<h3>Approach and Algorithm</h3>
+<p>1) Find the first vowel node and make it head of the list, i.e., bring it before the old head of the list.
+2) Now store the position of the previous vowel node.
+3) Traverse the list, and when we encounter a vowel node,
+a) We would remove it from its place.
+b) Insert it after the previous vowel node.
+c) Update the previous vowel variable to this node.
+d) Connect it with the remaining list.
+4) At last, the consonants would automatically come after vowels and the order of occurrence of each vowel and consonant would be preserved.</p>
+<h3>Dry Run</h3>
+<p><strong>For better understanding follow dry run along with code</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Arrange-consonants-and-vowels-nodes-in-a-linked-list-3.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Arrange-consonants-and-vowels-nodes-in-a-linked-list-4.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Arrange-consonants-and-vowels-nodes-in-a-linked-list-5.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4873]</p>
+<h4>Output</h4>
+<p>Input list:
+c, a, l, e, p, o, w,
+Output list:
+a, e, o, c, l, p, w,</p>
+<p><strong>Time Complexity:</strong> O(n)
+[forminator_quiz id="4874"]</p>
+<p>So, in this blog, we have tried to explain how you can arrange consonants and vowels nodes in a linked list in the most optimal way. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
