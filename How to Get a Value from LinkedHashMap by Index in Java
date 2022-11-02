@@ -1,0 +1,50 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000706445-Article_136.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<p>LinkedHashMap is a Java predefined class that is similar to HashMap, which contains keys and their respective values. The order of insertion in LinkedHashMap is preserved. </p>
+<p>Our objective here is to get a value from the LinkedHashMap by index. We can use many approaches to solve this problem. Let us have a look at the different approaches.</p>
+<h3>Approach and Algorithm 1</h3>
+<p>In this approach, we will convert all the LinkedHashMap keys to a set with the help of keySet() function and then will convert this newly created set to an array with the help of the toArray() function. </p>
+<p>As of now, we have an array; we can get a value by index.</p>
+<p><strong>Syntax:</strong> Object [ ] toArray ( ) </p>
+<p><strong>Parameters:</strong> This function does not take any parameters.</p>
+<p><strong>Return Value:</strong> The function returns a new array that contains the elements of the set.</p>
+<h5>Input</h5>
+<p>[ [1,2] , [3,4] , [5,6] ], Index of the element to be fetched - 2</p>
+<h5>Output</h5>
+<p>Value at index 2 is 4</p>
+<p><strong>Explanation:</strong> As we can see, at the 2<sup>nd</sup> index, the key-value pair is [ 3, 4 ], so our output will be 4, the value at the 2<sup>nd</sup> index.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4997]</p>
+<h5>Output</h5>
+<p>Value at index 2 is: 4</p>
+<p><strong>Time Complexity:</strong> The time complexity is O(N), as we are walking over the keyset to convert it to the array.</p>
+<p><strong>Space Complexity:</strong> The space complexity is O(N), as we are creating an array of N size.</p>
+<h3>Approach and Algorithm 2</h3>
+<p>In this approach, we will first convert the keys of the LinkedHashMap to a set using the LinkedHashMap.keySet() method and then will convert this newly created set to ArrayList using new ArrayList(keySet). </p>
+<p>This method converts all the keys to a list-like structure - ArrayList or LinkedList.</p>
+<h5>Input</h5>
+<p>[ [1,2] , [3,4] , [5,6] ], Index of the element to be fetched - 2</p>
+<h5>Output</h5>
+<p>Value at index 2 is 4</p>
+<p><strong>Explanation:</strong> As we can see, at the 2<sup>nd</sup> index, the key-value pair is [ 3, 4 ], so our output will be 4, the value at the 2<sup>nd</sup> index.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4998]</p>
+<h4>Output</h4>
+<p>Value at index 2 is: 4</p>
+<p><strong>Time Complexity:</strong> The time complexity is O(N), as we are walking over the KeySet to convert it to a list.</p>
+<p><strong>Space Complexity:</strong> The space complexity is O(N), as we are creating a list-like structure that consists of N keys.</p>
+<h3>Approach and Algorithm 3</h3>
+<p>In this approach, we will use Iterators. With the help of entrySet(), we can get all the entries of the LinkedHashMap. After this, we will iterate till the specified index and print the value at that index.</p>
+<h5>Input</h5>
+<p>[ [1,2] , [3,4] , [5,6] ], Index of the element to be fetched - 2</p>
+<h5>Output</h5>
+<p>Value at index 2 is 4</p>
+<p><strong>Explanation:</strong> As we can see, at the 2<sup>nd</sup> index, the key-value pair is [ 3, 4 ], so our output will be 4, the value at the 2<sup>nd</sup> index.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4999]</p>
+<h4>Output</h4>
+<p>Value at index 2 is: 4</p>
+<p><strong>Time Complexity:</strong> The time complexity is O(N), as we are traversing till the specified index.</p>
+<p>[forminator_quiz id="5000"]</p>
+<p>So, in this article, we have seen how to get a value from LinkedHashMap by Index in Java. Java Collection Framework is very important when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
