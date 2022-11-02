@@ -1,0 +1,74 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1664151033108-Topic.jpeg)
+
+Before moving to the conversion, firstly we will discuss the queue and doubly linked list in C.
+
+### What is a Queue?
+
+A queue is a linear data structure that follows the principle of [FIFO (First in First out)](https://www.prepbytes.com/blog/queues/different-types-of-queues-and-its-applications/ "FIFO (First in First out)") i.e. element which is inserted first will be removed first. The operation for the insertion of elements is known as enqueue operation and the operation for the deletion of elements is known as dequeue operation.
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1663931573416-1-01.png)
+
+Next, we’ll discuss the doubly linked list.
+
+### What is a Doubly Linked List?
+
+A doubly Linked List is a type of linked list that contains three components:
+- *prev - It is a pointer having the address of the previous node of the linked list.
+- data - It is used to store the data of the node.
+- *next - It is a pointer having the address of the next node of the linked list.
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1663789836593-37_Artboard%203.png)
+
+Here is the representation of the DLL node:
+[TABS_R id=9909]
+
+Now, let’s discuss our main topic, how to implement queue functions using a doubly linked list in c.
+
+### How to implement Queue Using Doubly Linked List In C:
+
+We will implement the following functions of queue using a doubly linked list in C:
+1. **Enqueue**: This function is used to add an element in the queue in the rear end. There is a ref pointer of the doubly linked list which has a rear, front, and size pointer. In the case of enqueueing, we will add data in the new node and will pass it to the next pointer of the rear node. Also, we will increment the size pointer by 1 in case of insertion.
+Let’s add some nodes to the queue.
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1663931610122-1-02.png)
+
+[TABS_R id=9910]
+
+2. **Dequeue**: This function is used to delete an element from the queue from the front end. From the ref, the front pointer will move to the front->next and will decrease the size pointer by 1. Also, return the data which is stored in the deleted node.
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1663931654539-1-03.png)
+
+[TABS_R id=9911]
+
+3. **isSize**: This function will return the size of the queue built using a doubly linked list in c.
+
+[TABS_R id=9912]
+
+4. **peek**: This function will return the element's data stored in the front position of the queue.
+[TABS_R id=9913]
+
+
+5. **isEmpty**: This function will return true if the element queue is empty else it will return false.
+
+[TABS_R id=9914]
+
+6. **printQdata**: This function will print all the node’s data of the queue.
+
+[TABS_R id=9915]
+
+**Here is the Code Implementation of Queue Using Doubly Linked List In C: **
+
+[TABS_R id=9916]
+
+### FAQ Related to Queue Using Doubly Linked List In C:
+
+**1. Can a queue be implemented using a linked list?**
+Queue supports operations like enqueue and dequeue. It can be implemented using arrays and linked lists.
+
+**2. Which companies asked Doubly linked list and Queue in their interview?**
+Companies like Samsung, Josh Technologies, PrepBytes, Zscaler, Gemini Solution, and Infosys had recently asked for a Doubly Linked List in their interview round.
+ 
+**3. Why is a doubly linked list used?**
+The most common reason to use a doubly linked list is that it is easier to implement than a singly linked list. While the code for the doubly linked implementation is a little longer than for the singly linked version, it tends to be a bit more “obvious” in its intention, and so easier to implement and debug.
+
+We tried to discuss the code implementation of Queue Using Doubly Linked List in C in this article. We hope this article gives you a better understanding of the queue and doubly linked list. [Prepbytes](https://www.prepbytes.com/ "Prepbytes") also provides a good collection of [Foundation Courses](https://www.prepbytes.com/prepbytes-courses "Foundation Courses") that can help you enhance your coding skills. Want to make sure you ace the interview in one go? Join our [Placement Program](https://www.prepbytes.com/placement-preparation-program "Placement Program") that will help you get prepared and land your dream job at MNCs. Mentors of Prepbytes are highly experienced and can provide you with basic, in-depth subject knowledge for better understanding.
