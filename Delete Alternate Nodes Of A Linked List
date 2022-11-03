@@ -1,0 +1,69 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645186675257-delete%20alternate%20nodes_Artboard%202_Artboard%202.png)
+<h3>Problem Statement</h3>
+<p>Given a singly linked list. Remove its alternate nodes.</p>
+<p><strong>Example</strong>
+Sample Input: 3-&gt;5-&gt;2-&gt;6-&gt;8
+Sample Output: 3-&gt;2-&gt;8</p>
+<p>Here 5 and 6 were the nodes at alternate positions. So, we have removed them.</p>
+<p>Sample Input: 3-&gt;5-&gt;2-&gt;6-&gt;8-&gt;7
+Sample Output: 3-&gt;2-&gt;8</p>
+<p>Here 5, 6, and 7 were nodes at alternate positions. So, we have removed them.</p>
+<h3>Problem Statement Understanding</h3>
+<p>In this problem, we have to delete alternate nodes of the given linked list. Deleting alternate nodes means deleting nodes at alternate positions in the linked list.</p>
+<p>Let’s understand this:
+Consider a linked list 3-&gt;5-&gt;2-&gt;6-&gt;8-&gt;7 and lets mark the positions of the node (Using 1 based indexing).</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/indexes-01.png" alt="" /></p>
+<p>If we start from position 1, the alternate nodes are at positions 2, 4, and 6.</p>
+<p>Can you observe something about the alternate positions?
+Now, hopefully i think it is clear what we have to do in this problem.</p>
+<h3>Approach (Iterative)</h3>
+<p>I hope you have understood the problem and have got a basic idea of what we are going to do.</p>
+<p>We can observe from the above example that the alternate positions are the positions that are even. So, deleting alternate nodes becomes deleting nodes at even positions in the linked list. To do so, the idea is simple, while iterating through the linked list we need to keep a track of the node’s position and a pointer to the previous node. After reaching an even position, we just need to remove that node from the linked list and move ahead.</p>
+<p>Since it is clear what we need to do, take some time and think about how we are going to do it. Below is the algorithm explaining the steps we need to take to implement our idea.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Declare three variables: ‘curr’, ‘position’ and ‘prev’.</li>
+<li>Initialize position as 1 and prev as ‘NULL’ and ‘curr’ to head.</li>
+<li>Iterate through the linked list using curr and update positions and prev.</li>
+<li>If we reach an even position, delete the node at that position from the linked list by connecting the previous node to the next node of curr and deleting the current node, and move ahead.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Delete-Alternate-Nodes-Of-A-Linked-List-1-01.png" alt="" /></p>
+<h3>Code Implementation:</h3>
+<p>[TABS_R id=3837]</p>
+<h4>Output</h4>
+<p>Original list:
+3 5 2 6 8</p>
+<p>After deleting alternate nodes:
+3 2 8</p>
+<p><strong>Time complexity:</strong> O(n), where n is the number of nodes in the linked list.</p>
+<p><strong>Space complexity:</strong> O(1), since we don’t use any extra space.</p>
+<p>I hope you have understood the iterative approach. Now, let’s see another way to approach the problem.</p>
+<h3>Approach (Recursive)</h3>
+<p>We already know what deleting alternate nodes of a linked list means. </p>
+<p>If we start from the first node we delete the second node and fourth node and so on. Given a linked list with at least 2 nodes and a given pointer to the first node we can easily delete the second node by making the ‘next’ of the first node as next of the first. Deleting the fourth node would be the same if we consider the linked list starting from the third node. Then the node to delete would be the 2nd node in that linked list.</p>
+<p>Here we broke the given problem into a smaller problem. We delete the second node from the given linked list and call the same function for the linked list starting from the third node.</p>
+<p>Now, what will be the base case?
+If the linked list is empty or has only one node, we don’t have a second node to delete. So, we simply return the passed linked list.</p>
+<p>Now that you have understood the approach, try to implement this idea yourself.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>If the linked list is empty or has only one node, return the linked list. (Base case)</li>
+<li>Store the pointer to the second node in a variable ‘second’ as: second = head-&gt;next.</li>
+<li>Recursively call the same function for the linked list after the 2nd node and store the linked list returned as ‘rem’.</li>
+<li>Attach this linked list pointed by ‘rem’ to the first node as: head-&gt;next = rem</li>
+<li>Now the second node is disconnected from the linked list, so delete it using the delete command.</li>
+<li>Return the resulting linked list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Delete-Alternate-Nodes-Of-A-Linked-List-dry-run-2-01-1.png" alt="" /></p>
+<h3>Code Implementation:</h3>
+<p>[TABS_R id=3842]</p>
+<h4>Output</h4>
+<p>Original list:
+3 5 2 6 8</p>
+<p>After deleting alternate nodes:
+3 2 8</p>
+<p>[forminator_quiz id="3841"]</p>
+<p><strong>Space Complexity:</strong> O(n), due to function call stack, where n is the number of nodes in the linked list.</p>
+<p>Through this article, we learned how to delete alternate nodes of a linked list. Problems like these are good for strengthening your concepts in LinkedList. I would highly recommend you to practice more such problems from <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
