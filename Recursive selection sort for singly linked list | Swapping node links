@@ -1,0 +1,65 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922725454-101.Recursive%20selection%20sort%20for_Artboard%202.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem statement</h3>
+<p>In this problem, we will be given an unsorted linked list, and we need to sort it with the help of the selection sort algorithm recursively by referring the best website to learn c language.</p>
+<h3>Problem Statement Understanding</h3>
+<p>The problem statement is relatively straightforward, we will get a linked list as input, and we will have to sort it in ascending order using <a href="https://www.prepbytes.com/blog/linked-list/search-an-element-in-a-linked-list-iterative-and-recursive/" title="recursive">recursive</a> selection sort.</p>
+<p>Let's try to understand it more clearly using an example.</p>
+<ul>
+<li>Let the input list given to us be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-20.png" alt="" /></p>
+<ul>
+<li>Now, we need to perform sorting on the above list and rearrange the list's nodes accordingly to get a sorted list as output.</li>
+<li>So, after sorting, the newly formed list will be :</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-10.png" alt="" /></p>
+<p><strong>Note:</strong> There are various sorting algorithms to do this task, but here in the problem statement, it is explicitly mentioned that we need to perform recursive selection sort. So, we will be performing that to get desired output.</p>
+<p>Now the main question is what is Selection sort and how does it work?</p>
+<p>Let's find our answers in the next section.</p>
+<h4>Selection Sort</h4>
+<p>Let us first understand how selection sort works on an array:</p>
+<ul>
+<li>We start from the first element of the array and find the minimum element in the array to the right of this element (including the current element).</li>
+<li>Once we found the minimum element, we swap that minimum element with our current position element.</li>
+<li>Then repeat the above steps for all elements of array except last element because it would be automatically placed at its correct position after execution of above steps for elements till second last position.</li>
+</ul>
+<p>Let's formulate the above steps in an algorithm:</p>
+<ul>
+<li>We will write a for loop that will iterate from first to second last element of the array. Inside the for loop, we will perform the below three steps (step 1 to 3) for every array element.
+1) Create a <strong>min</strong> variable and initialize it with the <strong>current element</strong>.
+2) Then iterate on the array starting from the next position of the <strong>current element</strong> and update the <strong>min</strong> variable if an element less than <strong>min</strong> is found.
+3) After the loop ends, swap <strong>current element</strong> with the minimum element <strong>min</strong>.</li>
+</ul>
+<p>After all the above steps have been executed, we will have our array sorted.</p>
+<p><strong>Note:</strong> Remember inside the for loop when you are at certain position <strong>i</strong>, the subarray left to <strong>i</strong>, starting from first position to the (i-1)<sup>th</sup> position will be sorted while the subarray right to <strong>i</strong> starting from <strong>i</strong> to the last index of the arry will be unsorted. </p>
+<h4>Dry Run(Selection Sort)</h4>
+<img src="p_3.gif" width="" height="">
+<p>Now I think from the above explanation, you got a pretty good idea of how the selection sort works.</p>
+<p>Let’s see under the approach section how we will use <strong>Recursive Selection Sort</strong> to sort a singly linked list.</p>
+<h3>Approach</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>We need to perform recursive sorting (N-1) times, where N is the number of nodes present in the list. The reason we are performing it (N-1) times is that because after recursively sorting the list (N-1) times, (N-1) nodes of the list will be at their correct position as per the sorted linked list (As N-1 nodes are at their correct position so will be the N<sup>th</sup> node and hence the final list will be sorted).</li>
+<li>Each time, we need to find the minimum node on the right of the current node and then swap the current node with it.</li>
+<li>Also remember to store the address of the node just before the minimum valued node because it will help while interchanging links between nodes while swapping.</li>
+</ul>
+<p>Now, let’s formulate an algorithm based on the approach discussed above and handle the edge cases that might be present while implementing the code.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Base case: When the <strong>current node</strong> is the last node of the list, return the node.</li>
+<li>Initialize a pointer <strong>min</strong> with the current node and pointer <strong>beforemin</strong> with NULL. Pointer <strong>min</strong> will store the address of the node with the minimum value on the right side of the current node, and <strong>beforemin</strong> will store the address of the previous node of <strong>min</strong>.</li>
+<li>Once we get the <strong>min node</strong>, check if it is not the same with the node with which it was initialized. If not, then swap the current node with the min valued node.</li>
+<li>Call the same recursive function for the next node and return the <strong>current node</strong> once the recursive call is completed.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Recursive-selection-sort-for-singly-linked-list-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Recursive-selection-sort-for-singly-linked-list-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4483]</p>
+<h3>Output</h3>
+<p>0,1,2,3,10</p>
+<p><strong>Time Complexity:</strong> O(n<sup>2</sup>), where n is the number of nodes in the list.
+[forminator_quiz id="4484"]</p>
+<p>So, in this blog, we have tried to explain how you can sort a linked list using recursive selection sort. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
