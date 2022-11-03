@@ -1,0 +1,37 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644925959520-106.Remove%20the%20last%20node%20of%20a%20linked%20list_Artboard%201.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a singly linked list. We have to remove the last node of the given list. </p>
+<h3>Problem Statement Understanding</h3>
+<p>Suppose, the given linked list is 1 -&gt; 5 -&gt; 9 -&gt; 11 -&gt; 20. Now, we are asked to delete the last node of the given list.</p>
+<p>Here, the last node is 20. So, after deleting the last node, the final linked list is 1 -&gt; 5 -&gt; 9 -&gt; 11.</p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Remove-the-last-node-of-a-linked-list-input-01.png" alt="" /></p>
+<p><strong>Output:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Remove-the-last-node-of-a-linked-list-output-01.png" alt="" /></p>
+<p><strong>Explanation:</strong> As the last node is 20, it is getting removed from the given list.</p>
+<p>As we know, insertion and deletion in a singly linked list are very efficient, but list traversal takes O(n) time. We are going to use the list traversal, but with a few tweaks. Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>The approach is going to be pretty simple. To remove the last node, what we can do is, reach the second last node, and make it point to NULL. By doing this, we are deleting the last node and making the second last node our new last node. </p>
+<h3>Algorithm</h3>
+<ul>
+<li>Base Case 1 - If the head is NULL, return NULL</li>
+<li>Base Case 2 - if head -&gt; next is NULL, delete the head and return NULL.</li>
+<li>This means that there was only a single node in the linked list.</li>
+<li>Create a new node, say SecondLast and make it point to the head of the list.</li>
+<li>Now, traverse through the list by incrementing SecondLast, till the second last node of the linked list is reached.</li>
+<li>When we reach the second last node of the linked list, simply delete the next of the second last node i.e delete the last node.</li>
+<li>delete(SecondLast -&gt; next).</li>
+<li>Make the second last node point to NULL. This will make our second last node new tail of the list.</li>
+<li>Return head.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Remove-the-last-node-of-a-linked-list-dry-run-01.png" alt="" /></p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=3670]</p>
+<h4>Output</h4>
+<p>1 5 9 11</p>
+<p>[forminator_quiz id="3679"]</p>
+<p><strong>Space Complexity:</strong> O(1), as only temporary variables are bring created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to remove the last node of a linked list. This problem tests our basic concepts of linked lists, and that is what makes this problem an important one for coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
