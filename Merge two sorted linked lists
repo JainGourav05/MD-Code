@@ -1,0 +1,115 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645007491098-Article_160.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given two sorted linked lists. We need to merge both lists such that the newly created list is also in sorted order.</p>
+<h3>Problem Statement Understanding</h3>
+<p>The problem statement is quite straightforward, we will get two linked lists that are sorted in nature, and then we need to form a linked list using all the nodes of both linked lists such that the newly formed list is sorted in order. </p>
+<p><strong>Note:</strong> Remember that we cannot use any extra space, as we need to do this in place.</p>
+<p>Let's try to understand it more clearly using examples.</p>
+<p>Let the two sorted lists given to us be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/inplace2-01.png" alt="" /></p>
+<ul>
+<li>Now, the list that we need to return must contain all the nodes of both lists in sorted order.</li>
+<li>So, the newly formed list should be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output-22.png" alt="" /></p>
+<p>Let’s take another example:
+Let the two sorted lists given to us be 2→8→9→10→NULL and 11→13→17→NULL</p>
+<ul>
+<li>For the above two sorted lists, the final linked list after merging will be 2→8→9→10→11→13→17→NULL</li>
+</ul>
+<h5>Some more examples</h5>
+<p>Sample Input 1: </p>
+<ul>
+<li>list 1: 1→2→5→10→NULL</li>
+<li>list 2: 3→7→9→11→NULL</li>
+</ul>
+<p>Sample Output 1: 1→2→3→5→7→9→10→11→NULL</p>
+<p>Sample Input 2:</p>
+<ul>
+<li>list 1: 2→3→9→10→NULL</li>
+<li>list 2: 4→5→7→8→12→NULL</li>
+</ul>
+<p>Sample Output 2: 2→3→4→5→7→8→9→10→12→NULL</p>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<ul>
+<li>Before moving to the approach section, try to think about how you can approach this problem.</li>
+</ul>
+<p>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</p>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>We will make a recursive function that will create a sorted list out of two given sorted lists.</li>
+<li>If both the heads of the linked lists are NULL, return NULL and if only one head is NULL, then return the other head.</li>
+<li>We will compare the head of both the lists and the one with a smaller head will be appearing at the current position and all other nodes will appear after that.</li>
+<li>Now call the recursive function again with parameters as the next node of the list having a smaller head value and the head of the other list.</li>
+<li>Our recursive call will be returning the next smaller element of the linked lists attached with the rest of the sorted list. Make next of current node point to the list returned by the recursive function <strong>(curr_node-&gt;next = recursiveFunction())</strong>.</li>
+</ul>
+<p>Following all the above steps, we will have our merged sorted list containing nodes of all the given linked list in sorted order.</p>
+<h3>Algorithm 1</h3>
+<p>1) The recursive function will have two parameters, i.e., <strong>head1</strong> and <strong>head2</strong>, denoting the current head node of the <strong>first</strong> and <strong>second list</strong>, respectively.
+2) Base case: </p>
+<ul>
+<li>If both of the head nodes are NULL, return NULL from there.</li>
+<li>If one of the head nodes is NULL, but the other one is not NULL, return the other head.
+3) If <strong>head1’s data</strong> is less than <strong>head2’s data</strong>, assign <strong>head1’s next</strong> to the result returned by the recursive function having parameters <strong>head1→next</strong> and <strong>head2</strong> and then return <strong>head1</strong>.
+4) Else, assign <strong>head2’s next</strong> to the result returned by the recursive function having parameters <strong>head1</strong> and <strong>head2→next</strong> and then return <strong>head2</strong>.</li>
+</ul>
+<p><strong>Time Complexity:</strong> O(n), n is the number of nodes in both the list combined.
+<strong>Space Complexity:</strong> O(n), n is the size of the recursive stack</p>
+<p>The above approach works fine, but can we make our code more efficient in memory. </p>
+<ul>
+<li>The answer is yes, and to know it, have a look at the helpful observations and also read the below approach which uses constant memory.</li>
+</ul>
+<h4>Helpful Observations</h4>
+<ul>
+<li>If we observe, we can see that we need two pointers at the beginning of both the list, since the smallest value will be present at the beginning of both the lists.</li>
+<li>The list has a smaller first node that will be considered as the first list and the other one would be considered the second list.</li>
+<li>We then have to just insert the second pointer node between the first and its next node if its value lies between the first and its next node.</li>
+<li>If that is not the case, then we just need to move forward in iteration.</li>
+</ul>
+<p>Applying the above observations, we can easily create the new sorted linked list.</p>
+<h3>Approach 2</h3>
+<p>Taking help from the observation explained above, let us understand the approach with the help of an example.</p>
+<ul>
+<li>Let the input lists be 1→4→7→10→NULL and 2→3→22→NULL</li>
+<li>We would keep two pointers - one at the starting of each linked list.</li>
+<li>Now, the first pointer will point to ‘1’ because the first list has a smaller first node, and the second one will point to ‘2’ because it has a greater first node.</li>
+<li>Since the second pointer’s data lies between ‘1’ and ‘4’ (first pointer’s data and next of first pointer’s data), so we insert it between ‘1’ and ‘4’.</li>
+<li>After inserting the second node, we update the head of the second list to its next node.</li>
+<li>Now let’s suppose the value of the second pointer was greater than ‘4’ so, we would not do anything in this case and just move our first pointer forward by one node.</li>
+</ul>
+<p>Now, let’s formulate an algorithm based on the approach discussed above and handle the edge cases that might be present while implementing the code.</p>
+<h3>Algorithm 2</h3>
+<ul>
+<li>Find which list has a smaller first node and consider it as the first list and the other one as the second list (<strong>flist</strong> stands for <strong>first list</strong> and <strong>slist</strong> stands for <strong>second list</strong>).</li>
+<li>Now, initialize four pointers:
+<ul>
+<li>First will point to the head of the first list ( say <strong>flist_curr</strong> ).</li>
+<li>The second will point to the second node of the first list ( say <strong>flist_next</strong> ).</li>
+<li>The third will point to the head of the second list ( say <strong>slist_curr</strong> ).</li>
+<li>The Fourth will point to the second node of the second list ( say <strong>slist_next</strong> ).</li>
+</ul></li>
+<li>While iterating through the lists, we need to check if <strong>slist_curr’s value</strong> lies between <strong>flist_curr’s value</strong> and <strong>flist_next’s value</strong>.
+a) If its value lies in between, then we need to insert the <strong>slist_curr</strong> node in between <strong>flist_curr</strong> and <strong>flist_next</strong> and update <strong>flist_curr</strong> to <strong>slist_curr</strong> and <strong>slist_curr</strong> to <strong>slist_next</strong>.
+b) Else, we will check if there are more nodes in the first list.
+<ul>
+<li>If there are more nodes in the first list, then just move <strong>flist_curr</strong> and <strong>flist_next</strong> to their respective next nodes.</li>
+<li>If that is not the case, then the last node of the first node should point to the remaining nodes of the second list, and then finally, we will return the head of the first list.</li>
+</ul></li>
+<li>After performing the above steps, we would get our new list that is sorted.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-24.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-24.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-14.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5226]</p>
+<h4>Output</h4>
+<p>Merged Linked list
+1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 7 -&gt; 10 -&gt; 22</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the number of nodes in the list.
+[forminator_quiz id="5162"]</p>
+<p>So, in this blog, we have tried to explain how you can merge two sorted linked lists (in-place)  in the most optimal way. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
