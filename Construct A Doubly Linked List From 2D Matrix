@@ -1,0 +1,69 @@
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>We are provided with a 2D Matrix, and we need to construct a doubly linked list with 4 pointers, namely:</p>
+<ul>
+<li>up</li>
+<li>down</li>
+<li>left</li>
+<li>right</li>
+</ul>
+<p>Each node should be connected to its adjacent nodes using <a href="https://www.prepbytes.com/blog/linked-list/iteratively-reverse-a-linked-list-using-only-2-pointers/" title="these 4 pointers">these 4 pointers</a>.</p>
+<p>Learn programming languages online and consider Example:</p>
+<h4>Input 2D Matrix:</h4>
+<p><strong>12 11 10
+1 2 3
+6 8 9</strong></p>
+<h4>Output Doubly Linked List:</h4>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Construct-A-Doubly-Linked-List-From-2D-Matrix.png" alt="" /></p>
+<h3>Problem Statement Understanding</h3>
+<p>We are given a 2D Matrix with N rows and M columns. Every element at index i, j (i.e., matrix[i][j]) needs to be changed into a node, and it should be linked to all its adjacent cells using 4 pointers given to us.</p>
+<ul>
+<li>up</li>
+<li>left</li>
+<li>right</li>
+<li>down</li>
+</ul>
+<p>For example, We are given a Matrix with 3 rows and 3 columns:
+<strong>12 11 10
+1 2 3
+6 8 9</strong></p>
+<ul>
+<li>
+<p>Lets take an example with element matrix[0][0] , i.e 12.</p>
+<ul>
+<li>It only has 2 adjacent members, matrix[0][1] and matrix[1][0], i.e., 11 and 1 respectively.</li>
+<li>We need to mark Node 12's right as 11. Since 11 is right adjacent to 12.</li>
+<li>We need to mark Node 12's down as 1. Since 1 is lower adjacent to 12.</li>
+</ul>
+</li>
+<li>
+<p>Let's take another example of the middle element matrix[1][1], i.e. 2</p>
+<ul>
+<li>It has 4 adjacent, matrix[1][2], matrix[0][1], matrix[2][1], matrix[1][0], which are right, up, down, and left adjacent of element 2.</li>
+<li>We need to mark Node 2's right as 3. Since 3 is right adjacent to 2.</li>
+<li>We need to mark Node 2's up as 11. Since 11 is the up adjacent to 2.</li>
+<li>We need to mark Node 2's down as 8. Since 8 is the lower adjacent to 2.</li>
+<li>We need to mark Node 2's left as 1. Since 1 is the left adjacent to 2.</li>
+</ul>
+</li>
+</ul>
+<p>The Structure of Node will be:
+[TABS_R id=4678]</p>
+<p>Let's dive into the Approach and Algorithm now.</p>
+<h3>Approach and Algorithm</h3>
+<p>The Approach for the given problem statement is straightforward.</p>
+<ul>
+<li>We create a new Node every time we visit an unvisited cell, starting from <strong>(0,0)</strong>.</li>
+<li>We change the left pointer <strong>(curr-&gt;left)</strong> and up pointer <strong>(curr-&gt;up)</strong> of our current node.</li>
+<li>Recur for right pointer <strong>(curr-&gt;right)</strong> and down pointer <strong>(curr-&gt;down)</strong> of our current Node.</li>
+</ul>
+<h3>Implementation</h3>
+<p>[TABS_R id=4679]</p>
+<h4>Output</h4>
+<p><strong>12 11 10
+1 2 3
+6 8 9</strong></p>
+<p><strong>Time Complexity:</strong> O(n*m), where <strong>n</strong> is the number of rows and <strong>m</strong> is the number of columns in the given Matrix.
+<strong>Space Complexity:</strong> O(1), constant space complexity, as no extra space is used.</p>
+<p>This blog tried to discuss the problem when we are given a 2D matrix, and we need to construct a doubly linked list out of it. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
