@@ -1,0 +1,35 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1656066416464-Article%20%281%29.jpg)
+
+### What is a Queue?
+
+A queue is a linear data structure that works on the principle of FIFO(First in First out) i.e. the element which is inserted first will be removed first. In the queue, the insertion operation is known as enqueue in which an element is inserted into the rear(back) end of the queue, and the deletion operation is known as dequeue in which an element is removed from the front end of the queue.
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1656499646049-Image-02%20%281%29.png)
+
+### What is a Doubly Linked List?
+
+A doubly linked list is a type of linked list that contains both the pointers pointing toward the next node and towards the previous node. The node in the doubly linked list has three parts:
+1. Node data.
+2. Pointer to the next node of the sequence in the linked list.
+3. Pointer to the previous node of the sequence in the linked list.
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1656499686480-Image-01%20%281%29.png)
+
+### Queue Operations
+
+**enqueue():** Add an element to the rear-end of the queue. In enqueue operation, if the queue is empty then create one node with value given by the user and point both head and last on it. But if the elements are in the queue, then create one node with value given by the user, store it in the next of last pointer, also make the prev pointer of the next of last node pointing towards the last node. And Finally update the last node pointer to the next of last node pointer.
+
+**dequeue():** Remove and return the first front-end element of the queue. In enqueue operation, if the queue is empty then create one node with value given by the user and point both head and last on it. But if the elements are in the queue, then create one node with value given by the user, store it in the next of last pointer, also make the prev pointer of the next of last node pointing towards the last node. And Finally update the last node pointer to the next of last node pointer.
+
+**first():** Return the first element from the queue without removing it. It will return the value of the head node.
+**size():** Return the number of elements present in the queue. In this operation, firstly one variable count will be initialized with 0 value  and store the head in the temp variable. Then, a while loop will be used for the iteration with the condition that  if temp is None then iteration will be stopped. On each iteration, update the count variable by 1 and temp variable to next of temp.
+
+**isEmpty():** Return True if no element is present in the queue. If the head is having None value i.e. queue is empty, then it will return True else it will return False.
+
+**printqueue():** Print all the elements that are present in the queue. In this operation, we will store the head pointer to the temp variable, then the loop will be used to traverse the whole queue with the condition that if temp is None then the loop will stop iterating. On each traversal, we will print the data of that node and update the temp to the next of temp.
+
+
+#### Code Implementation
+[TABS_R id=8862]
+
+<p>This article tried to discuss <strong>Python Queue using Doubly Linked List</strong>. Hope this blog helps you understand the concept. To practice problems feel free to check <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.</p>
