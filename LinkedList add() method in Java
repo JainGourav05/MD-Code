@@ -1,0 +1,30 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644913838062-LinkedList%20add%28%29%20method%20in%20Java_Artboard%206.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<p>In this article, we are going to learn how to use the LinkedList add() method in Java.</p>
+<p>The add() method adds an element to the list. There are two variations of the LinkedList add() method. Let us have a glance at the approaches of both of them.</p>
+<h3>Approach and Algorithm</h3>
+<h4>add(Object X) method</h4>
+<p>In this method, we pass an object X as a parameter to this function. As a result, this function appends the object element passed to the end of the list.</p>
+<p><strong>Syntax:</strong> <strong>boolean add(Object X)</strong></p>
+<p><strong>Note:</strong> It returns true only if the action of append is performed.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4168]</p>
+<h4>Output</h4>
+<p>The list is:[Coding, is, Fun, 10, 20]
+The new List is:[Coding, is, Fun, 10, 20, Computer]</p>
+<p><strong>Time Complexity:</strong> O(1), as the new object is being added to the end of the list, which takes constant time.
+<strong>Space Complexity:</strong> O(n), the number of object elements that have to be added.</p>
+<h3>Approach and Algorithm</h3>
+<h4>add(int index,Collection X) method</h4>
+<p>In this method, we pass a Object X  and an index as parameters to this function. As a result, this function appends the element passed to the specified index that is passed as a parameter.</p>
+<p><strong>Syntax:</strong> <strong>void add(int index,Object X)</strong></p>
+<p><strong>Note:</strong> No value is returned by this method.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4169]</p>
+<h3>Output</h3>
+<p>The list is:[Coding, is, Fun, 10, 20]
+The new List is:[Coding, is, Super, Fun, 10, 20]</p>
+<p><strong>Time Complexity:</strong> O(n), as we have to traverse the given index to add the element.
+<strong>Space Complexity:</strong> O(n), where n is the number of elements to be added.</p>
+<p>So, in this article, we have tried to explain how to use LinkedList add() method in Java. Java Collections is an important topic when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
