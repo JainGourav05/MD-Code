@@ -1,0 +1,36 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644916573928-83move-last-element_Artboard%202.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a linked list, and we have to move the last node of the linked list to the very first and make it head or root.</p>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/53_input-01.png" alt="" /></p>
+<p><strong>Output (After moving the last element to the front of the linked list):</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-01.png" alt="" /></p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem by taking an example.
+<strong>Initial Linked list</strong> = 7 → 5 → 3 → 1</p>
+<ul>
+<li>We will start with traversing the linked list from the head until we have reached the last node of the linked list.  </li>
+<li>Once we have reached the last node of the linked list, we will make the previous node of the last node point to NULL and the next of the last node will point to the head node. </li>
+<li>Finally, we will make the node which we inserted at the front of the linked list the new head of the linked list.</li>
+</ul>
+<p>After moving the last node to the front of the linked list, our linked list will look like:
+<strong>Updated Linked list</strong> = 1 → 7 → 5 → 3.</p>
+<p>Well, this is a very basic problem, and furthermore we will continue with the approach to solve the problem.</p>
+<h3>Approach and Algorithm</h3>
+<p>The most naive idea is to traverse the list till the last node or end of the LinkedList. Use two node pointers last and secLast - last used to store the address of the last node and the secLast is used to store the address of the second last node. After the end of the loop, do the following operations.</p>
+<ul>
+<li>We have to make the second last as last (<em>secLast-&gt;next = NULL</em>).</li>
+<li>Next step is to change next of last as head (_last-&gt;next = *head<em>ref</em>).</li>
+<li>The final step is to make last as the head (_*head<em>ref = last</em>).</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/final-3-01.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3784]</p>
+<h4>Output</h4>
+<p>1 7 5 3</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the number of nodes in the given LinkedList.</p>
+<p><strong>Space complexity:</strong> O(1), constant space complexity, as no extra space is used.</p>
+<p>This blog tried to discuss how you can move the last element of the linked list to the front of the list by changing the links and not just by copying the data. If you want to practice more questions on linked lists, feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
