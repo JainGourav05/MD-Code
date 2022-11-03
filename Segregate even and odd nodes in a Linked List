@@ -1,0 +1,48 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926258084-112.Segregate%20even%20and%20odd%20nodes%20in%20a%20Linked%20List_Artboard%201.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a LinkedList with even and odd valued nodes and are asked to segregate these nodes. Note that we also have to maintain the order in which the nodes were in the original linked list. </p>
+<p><strong>Input Linked List:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/57_1-01.png" alt="" /></p>
+<p><strong>Output Linked List:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/57_2-01.png" alt="" /></p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's try to understand the problem with help of an example:</p>
+<p>By the way the statement <strong>Segregate even and odd nodes</strong> indicates that we need to rearrange the nodes of the linked list in such a way that all the even valued nodes appears before odd valued nodes in the modified linked list, and we also have to maintain the order in which the nodes were in the original linked list. </p>
+<p>If our linked list is 1→2→3.</p>
+<p>Then, while segregating the even and odd nodes of the linked list:</p>
+<ul>
+<li>The node 2 is even valued, so it will come in front, maintaining its order in the original linked list, forming 2.</li>
+<li>The nodes 1 and 3 are odd valued, so will come after 2, maintaining their order in the original linked list, forming 1→3.</li>
+</ul>
+<p>Finally, our resultant segregated linked list will be 2→1→3.</p>
+<p>If our linked list is 2→1→6→4→8.</p>
+<p>Then, while segregating the even and odd nodes of the linked list:</p>
+<ul>
+<li>The nodes 2, 6, 4 and 8 are even valued, so they will come in front, maintaining their order in the original linked list, forming 2→6→4→8.</li>
+<li>The nodes 1 is odd valued, so it will come after 2, 6, 4 and 8 maintaining its order in the original linked list, forming 1.</li>
+</ul>
+<p>Finally, our resultant segregated linked list will be 2→6→4→8→1.</p>
+<p>Now, I think from the above two examples that it is clear what we have to do in the problems. </p>
+<p>Now the main question is how to approach this problem? Try to come up with some approach, not necessarily the optimized one but any approach (if It's brute force it's okay, no problem we will optimize it together).</p>
+<p>Well, the most naive idea is to create a new LinkedList by storing the values of the original LinkedList and then inserting the nodes with even value first and then the nodes with odd values, but this will take extra space. </p>
+<p>In the above approach we can see that we were able to solve the problem in O(n) time but space complexity is also O(n), so now we need to avoid this extra space.</p>
+<p><strong>Note:</strong>  Generally whenever you get a question on an arrangement in a LinkedList avoid dealing with data rather than try to think of a solution using the manipulation of links. </p>
+<p>Let’s try to think of some better approach.</p>
+<h3>Approach</h3>
+<p>The idea is to split the linked list into two parts containing only even nodes and the other containing only odd nodes. The only task then we will perform is to join these two linked lists together. Let’s see this in algorithm form.</p>
+<h3>Algorithm</h3>
+<p>Traverse the linked list:</p>
+<ul>
+<li>For every odd valued node, remove that node from the original linked list and place it in another linked list.</li>
+<li>Continue this till the end of the linked list, and then we will be left with our original linked list containing only the even nodes and another linked list with odd nodes.</li>
+<li>Join these two linked lists and return the head of this linked list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/57_3-01-1.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3804]</p>
+<h4>Output</h4>
+<p>2 1 3</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the size of the LinkedList.
+<strong>Space Complexity:</strong> O(1), no extra space is used.</p>
+<p>This blog tried to explain how to segregate even and odd nodes in a linked list by changing the links of the nodes and not by manipulating the data. As we know, if the nodes contain large data then manipulating data is very expensive and hence changing links is preferred. If you want to practice more questions on linked lists, feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
