@@ -1,0 +1,84 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000672037-Article_135.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a linked list of length N having two pointers in each node. The first pointer points to the next node of the list, and the second one is a random pointer which can point to any node of the linked list, or NULL. Now we are asked to write a program that clones the given list in O(1) space.</p>
+<p><strong>Note:</strong> The cloned linked list should consist of exactly N new nodes, where the value of each node is the same as the corresponding value in original linked list and the next and random pointers of the new nodes should point to new nodes in the cloned linked list in such a way that the pointers in the original linked list and cloned linked state represent the same list state. Finally, you have to return the head of the cloned linked list.</p>
+<h3>Problem statement understanding</h3>
+<p>First, we need to understand what cloning a linked list means.</p>
+<ul>
+<li>Cloning means copying the linked list without changing the structure and the data inside it. Addresses of the nodes will change as new nodes will be created for the cloned list.</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/understanding.png" alt="" /></p>
+<p><br></p>
+<p>From the above figure, we can see that the addresses of the cloned nodes are different, but the structure and data of the linked list are the same.</p>
+<ul>
+<li>So basically, first, we have to clone a linked list and then return the head of the cloned linked list as output.</li>
+</ul>
+<h5>Example</h5>
+<p><strong>Input linked list</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/example.png" alt="" /></p>
+<p><strong>Output: A new linked list that is a copy of the original list</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/example.png" alt="" /></p>
+<p>Now I think from the above examples, the problem statement is clear. So let's see how we will approach it. Any Ideas?</p>
+<ul>
+<li>If not, it's okay. We will see in the next section thoroughly how we can approach this problem.</li>
+</ul>
+<p>Let’s move to the next section.</p>
+<h3>Approach</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>We will make a copy of the given linked list so that the next pointer of every node will be simply pointing to the copy of the next node.</li>
+<li>But for the random pointer, we will find out which node number it is pointing at in the original linked list.
+<ul>
+<li>For example, in the original linked list the random pointer of 1<sup>st</sup> node is pointing to the 3<sup>rd</sup> node so we can see that in the cloned list also the random pointer of the first node is pointing to the third node.</li>
+<li>For doing this in the O(n) time complexity. We will use a clever technique. What we will do is that we will make a copy of the node and put it between the node and node-&gt;next. In this way we will observe that we can do the assignment of random pointers in O(1) time for every n node.</li>
+</ul></li>
+<li>Finally, after random pointer linking, we will separate the cloned list from the sequence of original and copied nodes and output the cloned linked list.</li>
+</ul>
+<p>Let's move to the algorithm section to see the above approach step by step in detail.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>We will first create a copy of 1<sup>st</sup> node and insert it between 1<sup>st</sup> node and 2<sup>nd</sup> in the original linked list. </li>
+<li>Similarly, we will create a copy of 2<sup>nd</sup> and will insert it between 2<sup>nd</sup> and 3<sup>rd</sup> node. We will continue in this manner and add the copy of node X<sup>th</sup> between X<sup>th</sup> node and (X+1)<sup>th</sup> node. The example given below will help you to understand this step better.
+<ul>
+<li>If A -&gt; B -&gt; C is our original linked list, then the linked list after the above steps of adding a copy of X<sup>th</sup> between X<sup>th</sup> and (X+1)<sup>th</sup> node will be be A -&gt; A’ -&gt; B -&gt; B’ -&gt; C -&gt; C’.</li>
+</ul></li>
+<li>Now we will link the random pointers of the newly created nodes in the following manner:  
+<ul>
+<li><strong>original-&gt;next-&gt;random = original-&gt;random-&gt;next</strong>.</li>
+<li>Why does this work? This works because <strong>original-&gt;next</strong> is simply a copy of the original and <strong>original-&gt;random-&gt;next</strong> is simply a copy of the random.</li>
+</ul></li>
+<li>Now we will restore the original and cloned linked lists in the below manner by using a single loop.
+<ul>
+<li><strong>original-&gt;next = original-&gt;next-&gt;next</strong></li>
+<li><strong>copy-&gt;next = copy-&gt;next-&gt;next</strong></li>
+</ul></li>
+<li>Taking the previous example only, A -&gt; B -&gt; C is the original list and the cloned list will be A’ -&gt; B’ -&gt; C’.</li>
+<li>Make sure that <strong>original-&gt;next</strong> is NULL and finally return the head of the cloned list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-2.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-3.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-4.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-5.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-6.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-7.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Clone-a-linked-list-with-next-and-random-pointer-in-O1-space-8.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4908]</p>
+<h4>Output</h4>
+<p>Original linked list :
+Data = 1, Random  = 5
+Data = 3, Random  = 7
+Data = 5, Random  = 3
+Data = 7, Random  = 1</p>
+<p>Cloned linked list :
+Data = 1, Random  = 5
+Data = 3, Random  = 7
+Data = 5, Random  = 3
+Data = 7, Random  = 1</p>
+<p><strong>Time Complexity:</strong> O(N), since we are only traversing over the length of the linked list.</p>
+<p>[forminator_quiz id="4907"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to rearrange a given linked list in place. This is an important problem when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes visit <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
