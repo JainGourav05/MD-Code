@@ -1,0 +1,28 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645098042855-Article_302.png)
+### Concepts Used
+> Linked lists,reverse a linked list
+
+### Difficulty Level
+> Medium.
+
+### Problem Statement :
+&gt;Given a linked list containing N nodes, if the `(`i+1`)`th node is greater than the ith node than delete the ith node `(0&lt;=i&lt;=N−1)`, this repeats till there is no smaller element in the left side of any element.
+
+### Example:
+```
+The list 11->16->10->8->5->6->2->3->NULL should be changed to 11->10->8->5->2->NULL. 
+Note that 16, 6, and 3 have been deleted because there is a smaller value on the left side.
+```
+
+**You are encouraged to try the problem on your own before looking at the solution.**
+<a href="https://mycode.prepbytes.com/problems/linked-list/DELNOGRERIT" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+### Explanation:
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1646634706787-delete-nodes-from-linked-list-01%20%281%29.png)
+
+### Solutions:
+[TABS_R id=1801]
+[forminator_quiz id="1803"]
+
+
+This article tried to discuss the concepts of **Linked lists**. Hope this blog helps you understand and solve the problem. To practice more problems on  Linked lists you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>
