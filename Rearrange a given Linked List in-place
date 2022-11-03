@@ -1,0 +1,58 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922681553-100.Rearrange%20a%20given_Artboard%201.png)
+
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a singly linked list. We have to rearrange it in place, in which there are alternating first and last nodes. Let us have a look at the input and output to get a clearer understanding of the problem.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with help of examples.</p>
+<p>Suppose the linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/linked-list-1.png" alt="" /></p>
+<p>As we can see, It is of the form:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/abcd-form.png" alt="" /></p>
+<p>Now, we have to rearrange the list, so that it becomes of the form:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/adbc-form.png" alt="" /></p>
+<p>i.e. Alternating first and last elements.
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Lst-linked-list.png" alt="" /></p>
+<p>will transform to </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Lst-linked-list-2.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/1st-2nd-element-linked-list.png" alt="" /></p>
+<p>So, the final linked list after rearrangement will be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/linked-list-1.png" alt="" /></p>
+<p>If the given linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/linked-list-2.png" alt="" /></p>
+<p>Then, after rearrangement, the linked list will transform to:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/final-of-linked-list-2.png" alt="" /></p>
+<p>Now, I think it is clear from the examples what we have to do in this problem. This is an interesting question. We have to make use of list traversal to obtain the desired output. The traversal is not going to be a simple one. We are going to tweak it a bit. </p>
+<p>Try to think how we can approach this problem, if you are not able to get an optimized approach no problem think of brute force, and then we will try to optimize it together.</p>
+<p>Now, we will see brute force approach, as well as an efficient approach. </p>
+<h3>Approach and Algorithm (Brute Force)</h3>
+<p>This approach is going to be pretty simple. We are going to create a node current and point it to the head. Then, while the current node is not NULL, we will find the last node, delete it from the end, and insert it just after the current node. After this step, we will increment the current node by 2 places, as we have now successfully inserted the last node after the first node. This process will continue till we reach the end of the list.</p>
+<p><strong>Time Complexity</strong> - O(n<sup>2</sup>), as we have to do a nested traversal of the given list
+<strong>Space Complexity</strong> - O(1), as only temporary variables are being created.</p>
+<h3>Approach and Algorithm (Vector rearranging method)</h3>
+<p>In this approach, we will copy all the elements of the list to a vector. Now, we will traverse through the vector up to its middle (l/2, where l is the length of the vector), and insert the ith node and the (n-i-1)<sup>th</sup> node in the list (where this i starts from 0). By doing this, we are creating the alternating list that we require.</p>
+<p><strong>Time Complexity</strong> - O(N), as a single list traversal is required.
+<strong>Space Complexity</strong> - O(N), the space required to create a vector of size N.</p>
+<h3>Approach and Algorithm (Linked List Splitting)</h3>
+<p>This is the most efficient solution. We are first going to divide the list into two halves. After the division, we will reverse the second half and then do an alternate merge of the first and second halves. </p>
+<p>Let us have a glance at the algorithm.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Find the middle of the list using the slow and fast pointer technique. We are using the slow and fast pointer technique because it is the most efficient technique to find the middle of a linked list. Both pointers will point to the head of the list initially. Now, the fast pointer makes two jumps, and the slow pointer will make one jump. When the fast pointer will reach the end, the slow pointer will be at the middle of the list.</li>
+<li>After finding the middle, split the list into two halves. Create two nodes, say, head1 and head2, head1 will point to head, and head2 will point to slow → next. Now, make slow → next will point to NULL. By doing this, the division of the list is successful.</li>
+<li>Reverse the second half of the linked list using the list reversal technique.</li>
+<li>Now, alternatively add elements from the first list and second list as long as either of them exists.</li>
+<li>In the end, assign the head of the new list to the head pointer.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rearrange-a-given-Linked-List-in-place-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rearrange-a-given-Linked-List-in-place-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3892]</p>
+<h3>Output</h3>
+<p>1 → 3 → 8 → 13
+1 → 13 → 3 → 8</p>
+<p><strong>Time Complexity:</strong> O(n), as a list traversal is needed.</p>
+<p>[forminator_quiz id="3893"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to rearrange a given linked list in place. This is an important problem when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes visit <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
