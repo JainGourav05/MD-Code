@@ -1,0 +1,25 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000747418-Article_137.png)
+<h4>Problem Statement</h4>
+<p>Explain different ways in which the head pointer of a linked list can be modified inside a C function.</p>
+<h4>Problem Overview</h4>
+<p>In this article, we are going to look at different ways in which the head of a linked list can be modified. Now, why would we need to modify the head of a linked list?</p>
+<p>In a lot of operations, such as insertion and deletion at the beginning, we need to somehow modify the head. Now, the <em>head</em> is of type <em>pointer to node</em>. A pointer passed into a function by value can’t be modified to point to something else, only the data inside it can be changed. So, let’s look at different ways in which we can solve this issue. </p>
+<p>Let us take an operation Insertion at the beginning of a linked list, where we need to modify the head of a linked list.</p>
+<h4>Approach 1</h4>
+<p>Declaring head as a global variable.</p>
+<p>If we declare head as a global variable, it will be accessible inside every function. So, we will be able to modify it as per our needs.</p>
+<p><strong>Code Implementation</strong></p>
+<p>[TABS_R id=3551]</p>
+<h4>Approach 2</h4>
+<p>By returning the head node from the function.</p>
+<p>If the head pointer is passed to a function by value, then we can’t change it inside that function. If we return the copy of the head pointer from the function after modifying it and update the original head in the caller function, the head pointer will be modified. </p>
+<p><strong>Code Implementation</strong></p>
+<p>[TABS_R id=3552]</p>
+<p>The head pointer will be updated in the caller function.</p>
+<h4>Approach 3</h4>
+<p>By passing the head pointer as a double pointer to the function.</p>
+<p>Another way to change the head pointer inside the called function itself is by passing as a double-pointer. In that case, we need to pass the address of the head as an argument to the called function.</p>
+<p><strong>Code Implementation</strong></p>
+<p>[TABS_R id=3553]</p>
+<p>All the above approaches can be used depending on the usage to modify the head pointer.</p>
+<p>In the above article, we went through a basic but very important concept regarding the pointers in C++. Concepts like these are very necessary to understand pointers well. I would highly recommend you to practice some problems on the linked list from <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
