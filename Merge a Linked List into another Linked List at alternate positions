@@ -1,0 +1,71 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644916333674-78merge%20a%20linked%20into_Artboard%203.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview. </p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given two linked lists, A and B. We should merge the second list into the first one at alternate positions. The second linked list should become empty. </p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's try to understand this problem with help of examples.</p>
+<p>Suppose the given linked lists are:
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A1.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-B-1.png" alt="" /></p>
+<p>We have add the elements of the second list to the first list, at alternate positions.</p>
+<ul>
+<li>
+<p>First, we will add the first element of B after the first element of A -
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A2.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-B2.png" alt="" /></p>
+</li>
+<li>
+<p>Now, add the second element of B after the second element of old A -
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A3.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-B3.png" alt="" /></p>
+</li>
+<li>
+<p>Now, add the third element of B after the third element of old A
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A4.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-B4.png" alt="" /></p>
+</li>
+<li>
+<p>Now, add the fourth element of B after the fourth element of old A</p>
+</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A5.png" alt="" /></p>
+<p>B: Empty list</p>
+<p>After adding the elements of the second list to the first list at alternate positions, the final list will be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A5.png" alt="" /></p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A5.png" alt="" /></p>
+<p><strong>Output:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-A5.png" alt="" /></p>
+<p><strong>Explanation:</strong> The nodes of the second linked list are merged with the first linked list at alternate positions.</p>
+<p>I think from the above example the problem statement is clear, so we should now think how we can approach this problem. Try to come up with a approach, it may be bruteforce but before jumping to approach section try to think how will you approach it.</p>
+<p><strong>Note:</strong> We should keep in mind that we cannot create a new linked list. We have to alter the first list.</p>
+<h3>Approach</h3>
+<p>The main idea is to iterate using a loop while there are available positions in the first list and insert nodes of the linked list by changing pointers. We should also note that the head of the first link will never change, but the head of the second list may change, so we have to use one pointer for the first list and two pointers for the second list. We can get a better idea by looking at the algorithm.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Traverse in FirstList until there are available positions in it.</li>
+<li>Loop in SecondList and insert nodes of SecondList to FirstList.</li>
+<li>Do insertion by changing pointers. </li>
+<li>Store next pointers of both A and B in nextA and nextB and current pointers of both A and B in currA and currB.</li>
+<li>Make B as the next of pointer A and next of pointer B is next of pointer A. By doing this we insert a node of SecondList in FirstList:
+<strong>currB - &gt; next = nextA</strong>
+<strong>currA - &gt; next = currB</strong>
+<strong>currA=nextA</strong>
+<strong>currB=nextB</strong></li>
+<li>Move pointers of FirstList and SecondList and again perform the above steps of insertion of list B nodes in list A at alternate position.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Merge-a-Linked-List-into-another-Linked-List-at-alternate-positions.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Merge-a-Linked-List-into-another-Linked-List-at-alternate-positions-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4066]</p>
+<h3>Output</h3>
+<p>Linked List A: 5 -&gt;7 -&gt;17 -&gt;13
+Linked List B: 12 -&gt;10 -&gt;2 -&gt;4
+Merging List B into List A at alternate positions in A
+Output Linked List A: 5 -&gt;12 -&gt;7 -&gt;10 -&gt;17 -&gt;2 -&gt;13 -&gt;4
+Output Linked List B: Empty linked list</p>
+<p>[forminator_quiz id="4067"]
+<strong>Space Complexity:</strong> O(1), as only temporary variables are being created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to merge a linked list into another linked list at alternate positions. This approach requires no extra space, and that is what makes this question an important one for coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
