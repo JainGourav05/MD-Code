@@ -1,0 +1,82 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645007467606-Article_159.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts to know while preparing for interviews. Having a good grasp of a linked list can be a huge plus point in coding interviews.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given two sorted doubly circular linked lists containing n and m number of nodes, respectively. Our task is to merge the two lists such that the resultant doubly circular linked list is also in sorted order.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand this problem with the help of examples.</p>
+<p>If the given sorted doubly circular linked lists are:
+<strong>list 1:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-12.png" alt="" /></p>
+<p><strong>list 2:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-13.png" alt="" /></p>
+<ul>
+<li>According to the problem statement, we need to merge <strong>list 1</strong> and <strong>list 2</strong> in such a way that the final merged list is in the sorted order.</li>
+<li>After merging <strong>list 1</strong> and <strong>list 2</strong>, our final merged sorted doubly circular linked list will be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-7.png" alt="" /></p>
+<p>Taking another example, if the linked lists are:</p>
+<p><strong>list 1:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_4-3.png" alt="" /></p>
+<p><strong>list 2:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_5.png" alt="" /></p>
+<ul>
+<li>In this case, our final sorted doubly circular linked list after merging <strong>list 1</strong>, and <strong>list 2</strong> will be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_6.png" alt="" /></p>
+<p>Now, I think from the above examples, the problem statement is clear. Let’s see how we can approach it.</p>
+<p>Before moving to the approach section, try to think how you can approach this problem.
+If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</p>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<p>Our approach will be straightforward:</p>
+<ul>
+<li>Basically, first, we will find the node, which will be the last node of our final merged doubly circular linked list.
+<ul>
+<li>As we know that our two given doubly circular linked list are sorted, so one thing is clear, that the last node of our final merged doubly circular linked list will be one which is having greater value among the last nodes of the two doubly circular linked list.</li>
+<li>We will keep track of this node using a pointer, say <strong>last_node</strong>.</li>
+</ul></li>
+<li>Now we will make the last nodes of the given doubly circular linked lists point to NULL.</li>
+<li>Then after that we will merge the two doubly circular linked list in the same way we merge two sorted doubly linked list.
+<ul>
+<li><strong> If you are not aware of how to merge two sorted doubly circular linked list, checkout our article [Merge two sorted doubly linked list](). </strong></li>
+</ul></li>
+<li>After merging the two sorted doubly linked list, we will make the merged list circular using the <strong>last_node</strong>. </li>
+<li>And finally, we will have our sorted merged doubly circular linked list.</li>
+</ul>
+<p>Let’s see the algorithm.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Let <strong>h1</strong> be a pointer pointing to the head node of the first doubly circular linked list, and <strong>h2</strong> be the pointer pointing to the head node of the second list.</li>
+<li>If <strong>h2</strong> is NULL, return <strong>h1</strong>.</li>
+<li>If <strong>h1</strong> is NULL, return <strong>h2</strong>.</li>
+<li>Suppose <strong>lst1</strong> and <strong>lst2</strong> are the last nodes of the two doubly circular linked lists, respectively.
+<ul>
+<li><strong>lst1</strong> and <strong>lst2</strong> can be obtained by the previous links of the first nodes of the respective lists.</li>
+</ul></li>
+<li>Get a pointer to the node, which will be the last node of the final resultant linked list result. 
+<ul>
+<li>If <strong>lst1→data</strong> is less than <strong>lst2→data</strong>, then <strong>last_node = lst2</strong>.</li>
+<li>Else, <strong>last_node = lst1</strong>.</li>
+</ul></li>
+<li>Now update <strong>lst1→next = lst2→next = NULL</strong>.</li>
+<li>We will now merge the two lists as two sorted doubly linked lists are being merged.</li>
+<li>Let the first node of the final sorted doubly circular linked list be <strong>ResHead</strong>. </li>
+<li>Finally, update the *<strong>prev</strong> of <strong>ResHead</strong> to <strong>last_node</strong> and <strong>next</strong> of <strong>last_node</strong> to <strong>ResHead</strong>.</li>
+<li>At the end, return <strong>ResHead</strong>.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_7.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_8.png" alt="" /></p>
+<h3>Code Implementation:</h3>
+<p>[TABS_R id=5094]</p>
+<h4>Output</h4>
+<p>Original linked list 1:
+1 3 5 7
+Original linked list 2:
+2 4 6 8
+Final Sorted List:
+1 2 3 4 5 6 7 8 </p>
+<p><strong>Time Complexity:</strong> O(n+m), as each list is traversed completely.
+[forminator_quiz id="5095"]</p>
+<p>So, in this article, you have learned how to merge two sorted doubly circular linked lists into a single sorted doubly circular linked list. This is a basic problem and is good for strengthening your concepts in LinkedList and if you want to practice more such problems, you can checkout <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked List)</a>.</p>
