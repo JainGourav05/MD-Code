@@ -1,0 +1,74 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645185797309-Compare%20two%20strings-02.png
+)
+<h3>Introduction</h3>
+<p>The linked list is the most crucial concept and data structure to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>We have been given two strings, represented as linked lists (every character of the string is a node in a linked list). Write a function to compare two strings, i.e., The function will return 0 if both strings are the same, 1 if the first linked list is lexicographically greater, and return -1 if the second string is lexicographically greater.</p>
+<ul>
+<li><strong>Lexicographical order</strong> means alphabetical order. Character c comes after character a in alphabetical order, which means c is lexicographically greater than a.</li>
+</ul>
+<h3>Problem Statement Understanding</h3>
+<p>According to the problem statement, we have to return 0 if both the linked list is the same, 1 if the first linked list is lexicographically greater, and -1 if the second linked list is lexicographically greater.</p>
+<p>So that means we will have to compare both the strings represented as a linked list, character by character, to check whether they are the same or not. If they are not the same, we will have to figure out which one is lexicographically greater. So below are the possible cases.</p>
+<ul>
+<li>If both strings are the same, then return 0, i.e., If every character of both [strings matches](https://blog.prepbytes.com/blog/recursion-interview-programming/longest-palindromic-substring-2/ "strings matches").</li>
+<li>There can be cases when both the strings are not the same, so we have to compare the first non-matching character of both the strings. If the first string’s character comes before the second string’s character in alphabetical order, then return -1; otherwise, return 1.</li>
+</ul>
+<p>Let’s take some examples to understand this problem well by referring some websites to learn coding.</p>
+<p>Suppose the given linked lists are:
+L1 =  a→b→c→e
+L2 = a→b→e→f</p>
+<ul>
+<li>Now we can see that the first two nodes of both the linked list are the same and the third node of linked list L2 is greater than the third node of linked list L1. So it means that our linked list L1 is lexicographically smaller than the linked list L2, so we will output -1.</li>
+</ul>
+<p><strong>Output:</strong> -1</p>
+<p>If the given linked list is:
+L1 = a→b→c→d
+L2 = a→b→b→d</p>
+<ul>
+<li>Now we can see that the first two nodes of both L1 and L2 are the same, but the third node of L1 is lexicographically greater than the third node of L2, so we will output 1.</li>
+</ul>
+<p><strong>Output:</strong> 1</p>
+<h5>Some more examples</h5>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-12.png)
+
+<p>Output: -1</p>
+<p>Input: L1 = x→e→a→k→c, L2 = x→e→a→k→a
+Output: 1</p>
+<p>Input: L1 = p→r→e→p, L2 = p→r→e→p
+Output: 0</p>
+<p>I hope from the above examples the problem is clear, and now the main question is how we should approach this problem?</p>
+<p>Before jumping to the approach section, try to think about how you will approach it.</p>
+<p>Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>The idea is to start traversing through both the lists simultaneously and comparing each node of the linked lists. </p>
+<ul>
+<li>If the node’s data of both lists matches, then move forward in the lists because at this moment, we can’t decide whether the linked lists are the same or not.</li>
+<li>If at any point the data in the nodes of the lists do not match, then check which list has a lexicographical greater current node, if it is the first list then return 1 else, return -1.</li>
+<li>If both lists come to an end simultaneously, it shows that both the linked list are the same, so we will return 0. </li>
+<li>Otherwise, check If the first list reached the end, but the second didn’t, then return -1 because this is possible only when the second list is larger in size than the first list.</li>
+<li>And return 1 when the second list reached the end, but the first didn’t. </li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Start traversing through both lists simultaneously.</li>
+<li>Compare every node’s data of both the strings, if both match then, moves forward in both the lists.</li>
+<li>If the node’s data is not the same, there is no need to move forward because we can decide here which string is lexicographically greater and return 1 or -1 by comparing the node’s data.</li>
+<li>Stop when both or either of the lists has reached the end.</li>
+<li>If both reach the end at the same time, return 0.</li>
+<li>If the first string reached the end, but the second string did not, then return -1 else, return 1.</li>
+</ul>
+<h3>Dry Run</h3>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Compare-two-strings-represented-as-linked-lists-1.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/Compare-two-strings-represented-as-linked-lists-2.png)
+
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4449]</p>
+<h4>Output</h4>
+<p>-1</p>
+<p>[forminator_quiz id="4448"]
+<strong>Space complexity:</strong> O(1), No extra space used. </p>
+<p>So, In this blog, we have learned How to Compare two strings represented as linked lists. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
