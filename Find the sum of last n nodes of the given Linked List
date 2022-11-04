@@ -1,0 +1,37 @@
+We will be given a linked list and a number n as input and we need to find sum of the last n nodes of the linked list.
+
+Let the input be the list given below and n = 3.
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/07/17_1.png)
+
+The output of the above input will be:- 58 [sum of last 3 nodes data i.e. 4,23,31]
+
+### Approach #1 :
+In this approach,
+- we first calculate the length of the linked list and let it be L.
+- Then, we move a pointer (initially at head )  to (L - n) nodes forward from its initial position.
+- Then, traverse the remaining nodes while adding their values in a variable and return the sum variable.
+
+**Time Complexity** - O(n)
+
+The above approach seems good but we could do even better because we are traversing the list twice in the above approach and we could reduce it to traversing the list just once. Let’s learn to do this in second approach below.
+
+### Approach #2 :
+In this approach,
+- Create 2 pointers initially pointing to the head of the linked list.
+- Move one pointer n nodes away from the head and accumulate sum while moving it in a variable (say sum).
+- Now move both pointers by one node simultaneously till the pointer moved in step 2 becomes NULL and accumulate the sum of nodes for both the pointers in separate variables.
+- Now the pointer that is ahead, has sum of all nodes of the list and the pointer that is behind, has sum of (L-n) nodes of the list (where L is the length of the linked list). So, we need to subtract both variables in order to get our result.
+
+**Code Implementation:**
+[TABS_R id=3430]
+
+**Output**
+58
+
+**Time Complexity** - O(n)
+[forminator_quiz id="3431"]
+
+Note that although the complexity of this approach is the same as previous one, we are traversing the list only once in this approach rather than traversing twice.
+
+So, in this blog, we have tried to explain how you can find the sum of the last n nodes of a given linked list in the most optimal way. If you want to practice more questions on the linked list, feel free to do so at Prepbytes [Linked List](https://mycode.prepbytes.com/interview-coding/practice/linked-list).
