@@ -1,0 +1,68 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926104382-109.Rotate%20Doubly%20linked%20list%20by%20N%20nodes-04.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we have been given a doubly linked list. Our task is to rotate the linked list counter-clockwise by N nodes. Here, N is a given positive integer which is smaller than the total number of nodes in the doubly linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with help of examples.</p>
+<p>For example, if the doubly linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-Doubly-linked-list-by-N-nodes-3.png" alt="" /></p>
+<p>and let's assume N to be equal to 2. </p>
+<p>So according to the problem statement now we have to rotate the doubly linked list counter-clockwise by 2 nodes. To do, so the nodes with value A and B will be removed from their original positions and will be inserted at the end of the linked list, which will yield us our final resultant linked list as:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-Doubly-linked-list-by-N-nodes-4.png" alt="" /></p>
+<p>Given list:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-Doubly-linked-list-by-N-nodes-3.png" alt="" /></p>
+<p>Rotated list:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-Doubly-linked-list-by-N-nodes-4.png" alt="" /></p>
+<p>Similarly, if we are given a linked list as:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-input-1.png" alt="" /></p>
+<p>It means that we will have to rotate the above doubly linked list counter-clockwise by 4 nodes. To do, so we will move the first 4 nodes from the beginning to the end of the list such that our final linked list will be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-output-1.png" alt="" /></p>
+<h4>Some more Examples</h4>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-input-2.png" alt="" /></p>
+<p><strong>Output:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-output-2.png" alt="" /></p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-input-3.png" alt="" /></p>
+<p><strong>Output:</strong>  </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-output-3.png" alt="" /></p>
+<p>Now I think from the above examples it is clear what the problem is demanding. So next we have to think how we can approach this problem towards a solution?</p>
+<p>Let’s have a glance at approach.</p>
+<h3>Approach and Algorithm</h3>
+<p>The approach is going to be pretty simple.</p>
+<p>So let’s first think about what we actually need to perform the task of rotating a doubly linked list by N nodes.</p>
+<ul>
+<li>To rotate the doubly linked list by N nodes
+1)  We need to change the next pointer of N<sup>th</sup> node to NULL.
+2)  Next pointer of last node (i.e. Last node of the doubly linked list) to head node.
+3)  prev of head node to last node.
+4)  And finally change head to (N+1)<sup>th</sup> node and prev of new head node to NULL (Since we know that in a doubly linked list, prev of head node is NULL).</li>
+<li>So we basically need to get hold of these three nodes: N<sup>th</sup> node, (N+1)<sup>th</sup> node and last node.</li>
+</ul>
+<h4>To achieve the above objective of rotation:</h4>
+<ul>
+<li>Start traversing the list from the beginning and stop at the N<sup>th</sup> node. </li>
+<li>Store the pointer to N<sup>th</sup> node so that we can get (N+1)<sup>th</sup> node using NthNode-&gt;next. </li>
+<li>We will keep traversing the list till the end of the list and store the pointer to the last node as well. </li>
+<li>Finally, we will change the pointers as stated below.
+1) Change the next pointer of Nth node to NULL.
+2) Make next pointer of last node point to the head node
+3) Make prev of head node point to the to last node.
+4) Finally, make (N+1)<sup>th</sup> node the new head and point the prev of new head node to NULL.</li>
+<li>Finally, following the above steps, our list will get rotated counter-clockwise by N nodes.</li>
+</ul>
+<p>At last, print the rotated list using the PrintList function. </p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-Doubly-linked-list-by-N-nodes-1.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-Doubly-linked-list-by-N-nodes-2.png" alt="" /></p>
+<h3>Code Implementation:</h3>
+<p>[TABS_R id=4246]</p>
+<h4>Output</h4>
+<p>Given linked list
+1 2 3 4 5
+Rotated Linked list
+3 4 5 1 2</p>
+<p><strong>Time Complexity:</strong> O(L), where L is the length of the linked list, as only one traversal of the linked list is required.
+[forminator_quiz id="4247"]</p>
+<p>So, in this article, you have learnt how to rotate a doubly linked list by N nodes. This is an important coding interview question. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
