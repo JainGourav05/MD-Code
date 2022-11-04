@@ -1,0 +1,102 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000780126-Article_138.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>Given a sorted doubly linked-list of distinct nodes (No two nodes have the same data) and a value X. Count triplets in the list that sum to a given value X.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with the help of some examples.</p>
+<p>According to the problem statement, we are given a sorted doubly linked list and a value X. We have to count all the triplets from this doubly linked list which have a sum equal to X.</p>
+<p>If the doubly linked list is: head → 2 ←→ 3 ←→ 5 ←→ 7 ←→ 10 ←→ 13 and X = 15.</p>
+<ul>
+<li>From the linked list, we can see that there are only two possible triplets (2, 3, 10) and (3, 5, 7), which have the sum equal to 15.  Rest all the possible triplets have sum not equal to X.</li>
+<li>So our count of triplets will be 2.</li>
+</ul>
+<p>If the doubly linked list is: head → 1 ←→ 2 ←→ 3 ←→ 4 ←→ 5 and X = 9.</p>
+<ul>
+<li>In this case, out of all the possible triplets, the triplets with the sum equal to 9 will be (1, 3, 5), (2, 3, 4).</li>
+<li>So our count of triplets will be 2.</li>
+</ul>
+<p><strong>Some more examples</strong>
+Sample Input 1 : head → 1 ←→ 2 ←→ 3 ←→ 4,  X = 5
+Sample Output 1: 0
+There do not exist any triplet with sum equal to 5.</p>
+<p>Sample Input 2: head → 1 ←→ 3 ←→ 5 ←→ 7 ←→ 9 ←→ 11, X = 15
+Sample Output 2: 3
+The triplets are (1, 3, 11), (3, 5, 7), (1, 5, 9).</p>
+<p>Now I think from the above examples, the problem statement is clear. So let's see how we will approach it. Any Ideas?</p>
+<ul>
+<li>If not, it's okay. We will see in the next section thoroughly how we can approach this problem.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<p>Our naive approach will be to traverse the linked list using three nested loops, and while traversing, for every triplet, we will check whether the triplet sums up to X  or not:</p>
+<ul>
+<li>If it does sum up to X, then count this triplet combination.</li>
+<li>Else continue with the loops.</li>
+</ul>
+<p><strong>Time complexity:</strong> O(N<sup>3</sup>), Since we are using three nested loops to count triplet combinations.
+<strong>Space complexity:</strong> O(1), As no extra space is used. </p>
+<p>Next, we will see how we can reduce this complexity. Any ideas?</p>
+<ul>
+<li>If not, it's okay. We will see in the next section how we can reduce the time complexity.</li>
+</ul>
+<p>Let’s move to a comparatively better approach than approach 1.</p>
+<h3>Approach 2</h3>
+<p>The idea is to create a hashmap with (key, value) pair to store the node’s data as the key and a pointer to that node as the value.</p>
+<ul>
+<li>Now, generate each possible pair of nodes from the linked list. For each pair of nodes, calculate the <strong>pair_sum</strong>(sum of data in the two nodes) and check whether <strong>(X-pair_sum)</strong> exists in the hash table or not. 
+<ul>
+<li>If it exists, then also verify that the two nodes in the pair are not the same as the node associated with <strong>(X-pair_sum)</strong> in the hash table and finally increment the count. </li>
+</ul></li>
+<li>Finally, we will be returning <strong>(count / 3)</strong> as our output as each of our triplet having sum equal to x has been counted 3 times during the above process.</li>
+</ul>
+<h3>Algorithm 2</h3>
+<ul>
+<li>Initialize the <strong>count</strong> to zero.</li>
+<li>Now traverse through the linked list and store the node’s data as a key and a pointer to that node as the value in a map. </li>
+<li>Further, iterate over the linked list using two nested loops in which the first loop iterates from head to NULL using ptr1, and the second nested loop iterates from the next node of pointer of first loop <strong>(ptr1-&gt;next)</strong> to NULL.
+<ul>
+<li>Now in the variable <strong>pair_sum</strong>, stores the sum of data of two pointers, i.e., <strong>ptr1-&gt;data + ptr2-&gt;data</strong>.</li>
+<li>Now check if the map contains <strong>(X - pair_sum)</strong> and also check if the two nodes in the pair are not the same as the node associated with a value <strong>(X-pair_sum)</strong> in the map.</li>
+<li>Now, if the condition satisfies, increment the <strong>count</strong>.</li>
+</ul></li>
+<li>Finally, we have to return <strong>(count / 3)</strong> as our output because each triplet has been counted 3 times during the above process.</li>
+</ul>
+<p><strong>Time Complexity:</strong> O(N<sup>2</sup>), Since we have traversed through the linked list twice for every        Element.
+<strong>Space Complexity:</strong> O(N), No extra space used.</p>
+<p>Now we can see that this approach is far better than the previous approach, but we are also using extra space here. So next, we will try to see if we can somehow reduce the space complexity. Any Ideas?</p>
+<ul>
+<li>If not, it's okay. We will see in the next approach how we can do this in less space complexity.</li>
+</ul>
+<p>Let's move to next approach.</p>
+<h3>Approach 3</h3>
+<p>This approach is an efficient one. Here the idea is to traverse the linked list from left to right, and for each node, count number of pairs in the list that sum up to the value <strong>(X - Current Node’s Data)</strong>.</p>
+<p>Let's see the algorithm.</p>
+<h3>Algorithm 3</h3>
+<ul>
+<li>
+<p>Create a <strong>count</strong> named variable and initialize it to 0. This <strong>count</strong> variable will keep track of the total number of possible triplets in the linked list having sum X.</p>
+</li>
+<li>
+<p>Start traversing the linked list from the head node using a pointer variable <strong>curr</strong>. </p>
+</li>
+<li>
+<p>During traversal for each node, initialize two pointers <strong>begin</strong> and <strong>end</strong> to next of current node <strong>(curr-&gt;next)</strong> and end node of linked list respectively.</p>
+</li>
+<li>
+<p>Count the number of pairs in list from <strong>begin</strong> to <strong>end</strong> having sum equal to <strong>(X - curr→data)</strong>. Add the count of pairs to the variable <strong>count</strong>. Please visit the following article to see how we can find the pairs in a doubly linked list having a certain sum <a href="https://www.prepbytes.com/blog/linked-list/find-pairs-with-given-sum-in-sorted-doubly-linked-list/">Check out this article</a>.</p>
+</li>
+<li>
+<p>Finally, after the traversal is over, the <strong>count</strong> variable will have the count of all possible triplets having sum equal to X.</p>
+</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4904]</p>
+<h4>Output</h4>
+<p>Count of triplets having sum equal to 9 is 2</p>
+<p><strong>Time Complexity:</strong> O(N<sup>2</sup>), Since we have traversed through the linked list twice for every        element.</p>
+<p>[forminator_quiz id="4903"]</p>
+<p>So, In this blog, we have learned How to count triplets in a sorted doubly linked list whose sum is equal to a given value x. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
