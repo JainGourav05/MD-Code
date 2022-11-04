@@ -1,0 +1,35 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922173103-89.Practice-problems_Artboard%202.png)
+<h3>Introduction</h3>
+<p>Assume the node of the linked list has the following structure:</p>
+<p>[TABS_R id=3541]</p>
+<h4>Below are some recursive functions, try to explain their functionality:</h4>
+<p>[TABS_R id=3537]</p>
+<p><strong>Answer:</strong> The above function will print the given linked list.</p>
+<p><strong>Explanation:</strong>
+When the head of a linked list is passed to the given function as an argument, it will print the value in the head node and call the same function for the next node. This will continue till we reach NULL.</p>
+<p>So this will print the whole linked list from beginning to end.</p>
+<p>[TABS_R id=3538]</p>
+<p><strong>Answer:</strong> It will print the linked list in reverse order.</p>
+<p><strong>Explanation:</strong>
+When the head of a linked list is passed to the given function as an argument, it will call the same function for the next node and after doing so it will print the value in the head node. This will continue till we reach NULL.</p>
+<p>So this will print the whole linked list after the current node before printing the current node. Hence the list will be printed in reverse order.</p>
+<p>[TABS_R id=3539]</p>
+<p><strong>Answer:</strong> Adds one to the last node of the linked list.</p>
+<p><strong>Explanation:</strong>
+This function checks if the current node is the last node and if it is then adds 1 to it otherwise call the same function recursively for the next node.</p>
+<p>[TABS_R id=3540]</p>
+<p><strong>Answer:</strong> Returns the length of the linked list.</p>
+<p><strong>Explanation:</strong>
+It adds 1 for each node that is not null and returns 0 for the empty linked list. In the end, we would have the sum of all 1's contributed by non-empty nodes and hence the length of the linked list.</p>
+<p>[TABS_R id=3542]</p>
+<p><strong>Answer:</strong> Checks if there is a node with the value x in the given linked list.</p>
+<p><strong>Explanation:</strong>
+The given function recursively iterates through the linked list and matches the values of nodes with x and returns true if they are equal else when the traversal ends returns false.</p>
+<p>[TABS_R id=3543]</p>
+<p><strong>Answer:</strong> Deletes the first occurrence of a node with the value x in the linked list.</p>
+<p><strong>Explanation:</strong>
+The given function iterates recursively through the linked list and matches the value in the nodes with x. If they match, then it returns the whole linked list following the first matching node. In every function call, the next of the current node is updated. And in case of a match, the next pointer of the node just before the first matching node will be updated with the remaining linked list. Hence the first matching node will be removed.</p>
+<p>[TABS_R id=3544]</p>
+<p><strong>Answer:</strong> Deletes all the occurrences of nodes with the value x in the linked list.</p>
+<p><strong>Explanation:</strong> Similar to the previous question in this problem, the first node matching x is deleted but along with that, the function is recursively called for the next node as well. This would again remove the first node matching the value x in the remaining linked list. And hence all the occurrences of x will be removed from the linked list.</p>
+<p>In this article, we went through a few example problems where we saw how recursive functions can be used to operate on linked lists. Problems like these are good for understanding how recursive functions can work on a linked list. I would highly recommend you to practice problems on <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
