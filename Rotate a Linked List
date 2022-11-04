@@ -1,0 +1,51 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926056999-108.Rotate%20a%20Linked%20List_Artboard%203.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a singly linked list and an integer X. We have to rotate the list counter-clockwise by X nodes.</p>
+<p>Note: X is smaller than the count of nodes in the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with help of example.</p>
+<p>Suppose the given linked list 1 → 2 → 5 → 10 - 12 → 13, and the value of X is 4. Now, we have to rotate the given list counter-clockwise by X. </p>
+<p>Here, rotating counter-clockwise a linked list by X means that the first X nodes of the linked list will be removed from the start and get appended to the end of the list.</p>
+<p>In the given list, the first 4 nodes are 1 → 2 → 5 → 10. Now, these 4 elements will get appended to the end of the list. So, the final list will be:
+12 → 13 → 1 → 2 → 5 → 10.</p>
+<p>In this way, we are rotating the given first X nodes counter-clockwise. </p>
+<p><strong>Input :</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-7.png" alt="" /></p>
+<p><strong>Output :</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-2.png" alt="" /></p>
+<p><strong>Explanation :</strong> As the value of X is 4, so the first 4 nodes have been removed from the beginning of the linked list and appended at the end of the linked list.</p>
+<p>Now, I think from the above example, it is clear what we have to do in this problem. So let’s move to approach.</p>
+<p>Before directly jumping to approach in the next section, just try to think how will approach this problem?</p>
+<p>It’s okay if your solution is not the best optimized solution, we will try to optimize it together.</p>
+<p>This question is not a very complex one. We are going to make use of linked list traversal in this question. Let us have a glance at the approach.</p>
+<h3>Approach and Algorithm</h3>
+<p>The approach is going to be pretty simple. </p>
+<p>Let us first think about what we need to perform the required task of rotating the list counter-clockwise by X nodes.</p>
+<ul>
+<li>For linked list rotation, we have to change the next of X<sup>th</sup> node to NULL, next of the last node to the head node, and finally, make the head point to the (X+1)<sup>th</sup> node.</li>
+<li>So, we need X<sup>th</sup> node, (X+1)<sup>th</sup> node and the last node.</li>
+</ul>
+<p>To acheive the above objective of rotation: </p>
+<ul>
+<li>We will traverse through the list and stop at the X<sup>th</sup> node. </li>
+<li>We will store the pointer to the X<sup>th</sup> node.</li>
+<li>The (X+1)<sup>th</sup> node can be reached using the next of X<sup>th</sup> node. Now, we will keep traversing the list till the last node, and change the pointers as stated below:
+1) Change the next of X<sup>th</sup> node to NULL
+2) Next of the last node to the head node.
+3) And finally, make the head point to the (X+1)<sup>th</sup> node.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-a-Linked-List-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Rotate-a-Linked-List-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4093]</p>
+<h4>Output</h4>
+<p>Given linked list
+1 2 5 10 12 13
+Rotated Linked list
+12 13 1 2 5 10 </p>
+<p><strong>Time Complexity:</strong> O(n), as list traversal is needed.
+[forminator_quiz id="4094"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to rotate a linked list. Linked List rotation is an important concept when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
