@@ -1,0 +1,38 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644910873972-given%20a%20list%20which%20is%20sorted_Artboard%202.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a singly linked list. We are also given an element that is to be inserted into the list. But, the given list is sorted. So, the insertion should be done in such a way that the sorted order of the linked list is not disturbed.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Suppose the given linked list is 1 -&gt; 5 -&gt; 9 -&gt; 11 -&gt; 20, and the element to be inserted is 15.</p>
+<p>So, according to the problem, 15 should be inserted between 11 and 20, as we also have to maintain the sorted order of the list.
+So, the final list is 1 -&gt; 5 -&gt; 9 -&gt; 11 -&gt; 15 -&gt; 20.</p>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Given-a-Linked-List-which-is-sorted-how-will-you-insert-in-a-sorted-way-input-01.png" alt="" /></p>
+<p>Element to be inserted - 15.</p>
+<p><strong>Output:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Given-a-Linked-List-which-is-sorted-how-will-you-insert-in-a-sorted-way-output-01.png" alt="" /></p>
+<p><strong>Explanation:</strong> As the given list is sorted in ascending order, we have inserted 15 in an appropriate position, which maintains the sorted order of the list.</p>
+<p>As we know, insertion and deletion in a singly linked list are very efficient, but list traversal takes O(n) time. We are going to use the list traversal, but with a few tweaks. Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>The approach is going to be pretty simple. We know the given linked list is already sorted. So, to insert a new element in a sorted way, we have to find an appropriate position for the new element, such that the order is not disturbed.</p>
+<p>We are going to traverse through the list and look for the appropriate position to insert the element. To find the position, we are going to run the loop till will find a node, say, temp, whose value is greater than the new node. The node just before temp is the appropriate node. </p>
+<p>In the end, we are going to insert the new node just after the appropriate node.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Base Case 1 - If the list is empty, then make the new node as head.</li>
+<li>Base Case 2 - If the new node value is lesser than the head node, then insert it at the start, make it the head.</li>
+<li>Traverse through the list until the data of the next of current is less than the data of the new node. By doing this, we are looking for an appropriate position to insert the new node.</li>
+<li>When the loop breaks, insert the new node just after the current node:
+1) New_node - &gt; next = current - &gt; next
+2) current - &gt; next = New_node</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Given-a-Linked-List-which-is-sorted-how-will-you-insert-in-a-sorted-way-dry-run-01.png" alt="" /></p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=3669]</p>
+<h4>Output</h4>
+<p><strong>Created Linked List:</strong>  1 5 9 11 15 20</p>
+<p>[forminator_quiz id="3682"]</p>
+<p><strong>Space Complexity:</strong> O(1), as only temporary variables are being created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to insert an element in a sorted way, in a sorted linked list. This is an important question when it comes to coding interviews, as there are many applications of sorted insertion in linked list problems.If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
