@@ -1,0 +1,63 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645007401524-Article_156.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts to know while preparing for interviews. Having a good grasp of a linked list can be a huge plus point in coding interviews.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given K sorted linked lists. We need to merge all the lists such that the newly created list is also in sorted order.</p>
+<h3>Problem Statement Understanding</h3>
+<p>The problem statement is quite straightforward, we will be given K sorted linked lists, and then we need to form a linked list using the nodes of all the given linked lists such that the newly formed list is sorted in order. </p>
+<p>Let's try to understand the problem with the help of examples:
+If the sorted lists given to us are:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-18.png" alt="" /></p>
+<ul>
+<li>According to the problem statement, we need to merge all these given linked lists into a single linked list in such a way that after merging, the final linked list is sorted in nature.</li>
+<li>The list that we need to return must contain all the nodes of all three given lists in sorted order.</li>
+<li>So, after merging the newly formed sorted list will be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output-17.png" alt="" /></p>
+<p>Let’s take another example:
+If the sorted lists given to us be 2→8→9→10→NULL, 11→13→17→NULL.</p>
+<ul>
+<li>In this case, after merging, the final resultant sorted linked list will be 2→8→9→10→11→13→17→NULL.</li>
+</ul>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<p>In this approach, we will be using min heap.</p>
+<ul>
+<li>First, we need to create a min-heap.</li>
+<li>Since the smallest elements are present at the beginning of each list as each of them is sorted, so, we need to insert each list’s first element in our heap.</li>
+<li>Now, while our heap is not empty, we need to take out its top element and attach it at the end of our result list.</li>
+<li>The node which we attached to the end of the result list will be from one of the <strong>K</strong> given linked list, so if the next node of the node which we attached at the end of the result list exists, we need to push it into the min heap. </li>
+<li>Finally, when our <strong>min heap</strong> is empty, at that time the result list will contain all the nodes of the <strong>K</strong> given linked list in sorted order.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Write a comparator function for the priority queue to store minimum elements at the top.</li>
+<li>Push starting node of all the lists in the min-heap.</li>
+<li>Now, create a node <strong>head</strong> with zero value that will act as a dummy node for our newly created list.</li>
+<li>Initialize a <strong>temp</strong> variable with the address of the above-created node.</li>
+<li>Run a while loop till the priority queue size is greater than 0.</li>
+<li>Store the topmost element of the queue into a variable, say <strong>p</strong>.</li>
+<li>Now remove the top element from the priority queue.</li>
+<li>Attach the node <strong>p</strong> at the end of our new list by doing <strong>temp-&gt;next  = p</strong>.</li>
+<li>Now advance the temp variable by one node i.e, <strong>temp = temp-&gt;next</strong>.</li>
+<li>If the node after <strong>p</strong> is not NULL, push the node after <strong>p</strong> into the priority queue.</li>
+<li>After the completion of the while loop, return <strong>head-&gt;next</strong>, as it will be the first node of our newly created linked list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-15.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-16.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-9.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_4-5.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5124]</p>
+<h4>Output</h4>
+<p>Final resultant merged linked list
+1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7 -&gt; 8 -&gt; 9 -&gt; NULL</p>
+<p><strong>Time Complexity:</strong> O(NKlog(K)), <strong>N</strong> is the number of nodes in the list, and <strong>K</strong> is the total number of lists.
+[forminator_quiz id="5123"]</p>
+<p>So, in this blog, we have tried to explain how you can merge K sorted linked lists using a min-heap. If you want to practice more questions on linked lists, feel free to solve them at  Prepbytes <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
