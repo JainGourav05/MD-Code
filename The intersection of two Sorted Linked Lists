@@ -1,0 +1,66 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926625068-118.The%20intersection%20of%20two%20Sorted%20Linked%20Lists_Artboard%201.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement:</h3>
+<p>In this problem, we are given two sorted linked lists and are asked to print a single linked list that contains the common intersection from the two lists. </p>
+<p>Let me make this more clear with an example test case:
+<strong>Linked list 1</strong>:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/54_1-01.png" alt="" /></p>
+<p><strong>Linked list 2</strong>:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/54_input-2-01.png" alt="" /></p>
+<p>The resultant Linked List after the intersection of the above lists 1 and 2 will be:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/54_-output-01.png" alt="" /></p>
+<h3>Problem Statement Understanding:</h3>
+<p>Let's first understand the problem statement with the help of an example:</p>
+<p>If <strong>Linked list 1</strong> = 0→3→4→8 and <strong>Linked list 2</strong> = 4→8→9.
+Now to find the intersection of the two linked lists, we will have to find the elements which are common in both the linked list 1 and 2 i.e. element which appear in both the lists.</p>
+<ul>
+<li>As we can see that 4 and 8 appear in both the list 1 and list 2, so they will be included in the final intersection list.</li>
+<li>0, 3, 9 appears in only one of the two lists, so we will not include them in the final intersection list.</li>
+</ul>
+<p>So, our final intersection list will be 4 → 8.</p>
+<p>If <strong>Linked list 1</strong> = 6→2→3→9 and <strong>Linked list 2</strong> = 2→3→9.</p>
+<ul>
+<li>As we can see that 2, 3 and 9 appear in both the list 1 and list 2, so they will be included in the final intersection list.</li>
+<li>6 appears in only one of the two lists, so we will not include them in the final intersection list.</li>
+</ul>
+<p>So, our final intersection list will be 2 → 3 → 9.</p>
+<p>Now, I think from the above examples, it is clear what we are trying to find in this problem. So next we will try to think how we can approach this problem.</p>
+<p>Before jumping to the next section of the blog, try to think how you can approach this problem?</p>
+<h3>Approach 1</h3>
+<p>Suppose our initial linked lists are ‘a’ and ‘b’, the basic idea is to take two pointers, each pointing to the head of one of the two linked list 'a' and 'b'. Now start traversing the linked lists until one of them is completely traversed and while traversing check:</p>
+<ul>
+<li>If both the elements of the lists are equal, then we need to remove both the nodes from the lists and insert the element to the tail of the dummy LinkedList.</li>
+<li>Otherwise, we remove the smaller element among both the linked lists.</li>
+</ul>
+<p>The dummy linked list which we are referring to above, it's main idea is to take the help of a dummy node variable that will store our final resultant list (dummy LinkedList). The pointer tail will point to the last node in the resultant list, so that the new nodes can be added easily to the resultant list. This dummy node is used as a temporary node.</p>
+<p>When we have traversed either of the two given lists completely, then the result is in the dummy list. The values are allocated from the next node of the dummy, i.e. our resultant intersection list starts from the next of the dummy node (dummy.next).</p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3775]</p>
+<h4>Output</h4>
+<p>4→8</p>
+<p><strong>Time Complexity:</strong> O(m+n), where m and n are the numbers of nodes in the first and second linked lists, respectively.</p>
+<p><strong>Space Complexity:</strong> O(min(m, n)), as the output list can store at most min(m, n) nodes.</p>
+<p>Can we solve the above problem recursively, try to think?</p>
+<h3>Approach 2</h3>
+<p>I can think of another approach using recursion. It will work the same way, but with a recursive function that takes two nodes and returns the intersected node list. </p>
+<p>The most efficient idea is to compare the first elements of both the lists:</p>
+<ul>
+<li>If they are similar, then we call the recursive function with the next node of both the lists and create a node with the common node data and return it. </li>
+<li>Else, if they are not similar, then we remove the smaller node of both the lists and again call the recursive function.</li>
+</ul>
+<h3>Algorithm</h3>
+<p>Start comparing the first elements of the two linked lists:</p>
+<ul>
+<li>If two elements are similar, then create a new node with the common element and return that node and call the recursive function with the next nodes of the two lists.</li>
+<li>If they are different, then remove the smaller node and call the recursive function again.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/54_dry-run-01.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3780]</p>
+<h4>Output</h4>
+<p>4→8</p>
+<p><strong>Time Complexity:</strong> O(m+n) where m and n are the numbers of nodes in the first linked list and second linked list respectively.</p>
+<p><strong>Space Complexity:</strong> O(max(m, n)), as the output list can store at most min(m,n) nodes .</p>
+<p>This blog tried to discuss the problem when we are given two linked lists and we have to return the intersection list of the two. If you want to practice more questions on linked lists, feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
