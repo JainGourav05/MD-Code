@@ -1,0 +1,63 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645012191122-Article_203.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given a linked list, and we need to rearrange the nodes such that the nodes present at odd positions and the nodes present at even positions are together.</p>
+<h3>Problem Statement Understanding</h3>
+<p>To understand this problem statement, let us take examples.</p>
+<p>If the given linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/input.jpg" alt="" /></p>
+<p>then according to the problem statement:</p>
+<ul>
+<li>Starting the counting from 1, the nodes at odd positions are 3,18, and 5.</li>
+<li>Nodes at even positions are 1 and 12.</li>
+<li>So, after rearrangement, the resultant list will be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/output.jpg" alt="" /></p>
+<p>Let us take another example:
+If the linked list is 4→1→10→42→5→NULL.</p>
+<ul>
+<li>Starting the counting from 1, the nodes at odd positions are 4,10, and 5.</li>
+<li>Nodes at even positions are 1 and 42.</li>
+<li>So, after rearrangement, the resultant list will be 4→10→5→1→42→NULL.</li>
+</ul>
+<p>Now, I think the problem statement is clear, so let's see how we can approach it. Any ideas? </p>
+<ul>
+<li>If not, it's okay; we will see in the next section how we can approach it.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<ul>
+<li>We will use two pointers, where at first, we will initialize these pointers with the address of the first and the second node of the linked list.</li>
+<li>Now, we will iterate the list from the first node to the last node.
+<ul>
+<li>While iterating, we will connect the node pointed by each pointer to the node next to the adjacent node in its right.</li>
+<li>This will ensure that all odd and even positioned nodes are with each other, respectively.</li>
+</ul></li>
+<li>At last, we need to connect the tail of the odd list with the head of the even list.</li>
+<li>Finally, after all the above steps, we will have our rearranged linked list with all the even and the odd positioned nodes together.</li>
+</ul>
+<p>The approach is discussed in more depth in the algorithm section.</p>
+<h3>Algorithm</h3>
+<p>1) We will return NULL if the head is NULL, i.e., the input list is empty.
+2) Initialize two pointers <strong>odd</strong> and <strong>even</strong> with the first and the second node of the list, respectively.
+3) Initialize a pointer <strong>evenHead</strong> with the second node.
+4) Run an infinite while loop and inside it:</p>
+<ul>
+<li>If any one of <strong>odd</strong>, <strong>even</strong>, or <strong>even→next</strong> is NULL (i.e., we have reached the end of the list, so we will connect the last node of odd list to the first node of the even list), then attach the tail of <strong>odd</strong> to the head of <strong>even</strong> and break from the loop.</li>
+<li>Connect <strong>odd</strong> to the node next to <strong>even</strong> and update <strong>odd</strong> with this node.</li>
+<li>If the node next to <strong>odd</strong> is NULL (i.e., no node after the current odd node), then update the next of <strong>even</strong> as NULL and attach the tail of <strong>odd</strong> to the head of <strong>even</strong> and break from the loop.</li>
+<li>Connect <strong>even</strong> to the node next to <strong>odd</strong> and update <strong>even</strong> with this node.
+5) Return <strong>head</strong> at last from the function.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-3.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2-3.jpg" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5827]</p>
+<h4>Output</h4>
+<p>Original linked list without rearrangement:
+3,1,18,12,5
+Linked list after rearrangement:
+3,18,5,1,12</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the total number of nodes in the list
+[forminator_quiz id="5828"]</p>
+<p>So, in this blog, we have tried to explain how we can rearrange a linked list such that all even and odd positioned nodes are together most optimally. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
