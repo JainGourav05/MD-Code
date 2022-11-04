@@ -1,0 +1,35 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645086067151-Article_247.png)
+### Concepts Used
+> Linked list reversal
+
+### Difficulty Level
+> Medium.
+
+### Problem Statement :
+&gt;You are given a linked list representing a number such that each individual node acts as a digit of the number. 
+
+#### Example:
+```
+The list 
+HEAD->1->2->3->NULL corresponds to the number 123. You to add 1 to this number to get 124 i.e. 1->2->4.
+```
+<a href="https://mycode.prepbytes.com/problems/linked-list/ADDONE" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+
+### EXPLANATION:
+
+#### Approach 1(Reverse the linked list):
+> Reverse given linked list. For example, 1-&gt; 9-&gt; 9 -&gt; 9 is converted to 9-&gt; 9 -&gt; 9 -&gt;1.For this changed linked list now traverse the list, in the left-most node add one. if this node’s value is equal to 9 then propagate a carry to the next Node. Do the same procedure until the carry is there.
+Reverse the string back as in original form and then returned the head to get the string printed.
+
+[TABS_R id=1395]
+
+#### Approach 2(Recursive):
+
+> Recursively reach the last node and forward carry to previous nodes. Recursive solution doesn’t require reversing of linked list. 
+
+[TABS_R id=1396]
+[forminator_quiz id="1489"]
+
+<p>This article tried to discuss Linked list reversal. Hope this blog helps you understand and solve the problem. To practice more problems on Linked list you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.</p>
+
