@@ -1,0 +1,47 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645182004679-Article_473.png)
+### Concepts Used
+> Linked List.
+
+### Difficulty Level
+> Hard.
+
+### Problem Statement :
+&gt;Given a singly linked list `L:L0→L1→…→Ln−1→Ln`,
+reorder it to `:L0→Ln→L1→Ln−1→L2→Ln−2→…`
+You must do this in-place without altering the nodes’ values.
+Expected Time Complexity O`(`n`)`.
+
+<a href="https://mycode.prepbytes.com/problems/linked-list/REORDERLIST" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+#### Example:
+```
+ Given 1->2->3->4,
+  reorder it to 1->4->2->3.
+```
+
+### EXPLANATION:
+#### Approach 1(Brute force):
+> Initialize the current node as head.
+> 
+> While next of current node is not null,find the last node, remove it from the end and insert it as next of the current node.
+> 
+> Move current to next of current.
+> 
+> TIME COMPLEXITY: O`(`n*n`)`
+
+#### Approach 2(Efficient solution):
+> This approach uses two pointers(tortoise and hare method) to find the middle of linked list.Reverse the second half and alternately merge the first and second halves.
+&gt;
+
+#### Approach 3(Deque):
+> 1) Create an empty deque.
+&gt;
+> 2) Insert all element from the linked list to the deque.
+&gt;
+&gt;3) Insert the element back to the linked list from deque in alternate fashion i.e first then last and so on.
+
+### SOLUTIONS:
+[TABS_R id=1826]
+[forminator_quiz id="1827"]
+
+<p>This article tried to discuss reordering the given Linked List. Hope this blog helps you understand and solve the problem. To practice more problems on Linked List you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.</p>
