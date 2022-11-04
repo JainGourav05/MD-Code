@@ -1,0 +1,49 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644911089428-Identical%20Linked%20List_Artboard%201.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we are given two LinkedList and are asked to find if the linked lists are identical or not i.e. we have to find whether the two linked lists have the same arrangement of the values of the nodes in them or not.</p>
+<p><strong>Linked list 1:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/55_1-01.png" alt="" /></p>
+<p><strong>Linked List 2:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/55_1-01.png" alt="" /></p>
+<p><strong>Output:</strong> Identical
+These two LinkedList are identical.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's first understand the problem statement with the help of an example:</p>
+<p>If <strong>Linked list 1</strong> = 3→5→7 and <strong>Linked list 2</strong> = 3→5→7.
+The term 'arrangement of the values of the nodes in a linked list' which we have referred to in the problem statement means that if our linked list is 5→6→7→8→9, then the arrangement of the values of the nodes in the linked list is 5,6,7,8,9.</p>
+<ul>
+<li>From the Linked list 1 we can see that its arrangement of the values of the nodes is 3,5,7.</li>
+<li>From the Linked list 2 we can see that its arrangement of the values of the nodes is 3,5,7.</li>
+</ul>
+<p>Since both the linked list have the same arrangement of the values of the nodes, so the above linked list 1 and 2 are <strong>Identical</strong>.</p>
+<p>If <strong>Linked list 1</strong> = 3→5→6 and <strong>Linked list 2</strong> = 3→6→5.</p>
+<ul>
+<li>From the Linked list 1 we can see that its arrangement of the values of the nodes is 3,5,6.</li>
+<li>From the Linked list 2 we can see that its arrangement of the values of the nodes is 3,6,5.</li>
+</ul>
+<p>Since both the linked list have a different arrangement of the values of the nodes, so the above linked list 1 and 2 are <strong>Not Identical</strong>.</p>
+<p>Now, I think from the above examples, it is clear what we are trying to find in this problem. So next we will try to think about how we can approach this problem.</p>
+<p>Before jumping to the next section of the blog, try to think about how you can solve this problem?</p>
+<h3>Approach</h3>
+<p>The basic approach which comes to mind is to traverse both the linked list simultaneously and check if at any iteration:</p>
+<ul>
+<li>The values of the lists are different then we return false.</li>
+</ul>
+<p>Else if we reach the end of both the lists at the same time while traversing then only we return true. </p>
+<p><strong>Note:</strong> If we reach the end in only one list that means their size is different and hence also not identical.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Start traversing the linked lists x and y.</li>
+<li>If at any point while traversing, the data is different in the two lists (<strong>x-&gt;data != y-&gt;data</strong>), then we return false.</li>
+<li>If we reach the end of both the linked list at the same time, then we return true.</li>
+<li>If we reach the end of any one of the lists then they are not identical and return false.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/55_3-01.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3797]</p>
+<h4>Output</h4>
+<p>Identical</p>
+<p><strong>Time Complexity:</strong> O(min(m,n)), where m,n are the size of the linked lists.</p>
+<p><strong>Space Complexity:</strong> O(1), no extra space is used.</p>
+<p>This blog tried to discuss if the two linked lists are identical or not using simple traversal. This is a basic question and if you want to practice more such questions on linked lists, feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
