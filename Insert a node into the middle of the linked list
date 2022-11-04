@@ -1,0 +1,98 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644911211669-Insert%20a%20node%20into%20the%20middle-04.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a singly linked list and a value x. We have to insert a node with the value x into the middle of the list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s learn programming online and try to understand the problem statement with the help of examples.</p>
+<p>Suppose the given linked list is: </p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/input-15.png)
+
+<ul>
+<li>So now, according to the problem statement, we have to insert a node with value x = 4 into the middle of the list such that our resultant [linked list](https://www.prepbytes.com/blog/linked-list/find-the-fractional-or-n-k-th-node-in-linked-list/ "linked list") will look like:</li>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/output-7.png)
+
+</ul>
+<p><strong>Explanation:</strong> Here, the current middle of the list is the node with the value 2, so 4 will be inserted just after 2.</p>
+<p>If the given linked list is 1 → 3 → 5 → 7 → 9 → 11 and x = 6.</p>
+<ul>
+<li>For the above linked list, the node with the value 5 is the middle of the linked list so the node with value x = 6 will be inserted just after the node with value 5 and our resultant linked list will look like: 1 → 3 → 5 → 6 → 7 → 9 → 11</li>
+</ul>
+<p><strong>Explanation:</strong> Here, the current middle of the list is the node with value 5, so 6 will be inserted just after 5.</p>
+<p>I hope from the above examples the problem is clear, and now the main question is how we should approach this problem? What is the first thing that comes to mind? </p>
+<ul>
+<li>
+<p>Finding out the length of the list and then adding the new node just after the (length/2)<sup>th</sup> node if the length is even, else just after the ((length+1)/2)<sup>th</sup> node if the length is odd.</p>
+</li>
+<li>
+<p>Well, this will be our approach. Then afterward, we will see whether we can optimize it or not.</p>
+</li>
+</ul>
+<p>Let us have a glance at the approaches and see where we can optimize the first approach.</p>
+<h3>Approach (Using the length)</h3>
+<p>In this approach:</p>
+<ul>
+<li>We will first find the length of the linked list i.e., number of nodes in the linked list. </li>
+<li>As we know if the length is even, then the middle node is (length/2)<sup>th</sup> node, else the middle is ((length+1)/2)<sup>th</sup> node. </li>
+<li>So, if the length is even, we will add the new node after (length/2)<sup>th</sup> node of the linked list, else we will add the new node after ((length+1)/2)<sup>th</sup> node of the linked list.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>With the help of list traversal, find the length of the linked list. Let the length be <strong>len</strong>.</li>
+<li>Now, create a variable <strong>k</strong>. <strong>k</strong> will <strong>(len/2)</strong> if <strong>len</strong> is even, else it will <strong>(len+1)/2</strong>.</li>
+<li>Here, <strong>k</strong> denotes the middle point of the list.</li>
+<li>Traverse <strong>k</strong> nodes and add the new node just after the <strong>k</strong><sup>th</sup> node.</li>
+<li>In this way, the new node gets added into the middle of the list.</li>
+</ul>
+<p>This approach is okay, but can we further optimize it? </p>
+<ul>
+<li>If we think carefully, the answer is yes. We can optimize it, as in this technique, we are doing two traversals of the given list.</li>
+</ul>
+<p>What if we start by taking two pointers, say slow and fast, and make both point to the head initially.</p>
+<ul>
+<li>What will happen if we make the slow jump one place and the fast jump two places. </li>
+<li>If we notice carefully, by doing the above step, when the fast will reach the end of the list, the slow will be pointing to the middle of the list. </li>
+<li>With the help of this technique, we can reach the middle node of a linked list in a single pass.</li>
+</ul>
+<p><strong>Note:</strong> The reason why slow will be pointing to the middle of the linked list when fast reaches the end is that, as our slow pointer is travelling with half of the speed of the fast pointer, so when fast pointer will reach the end of the linked list, till that time slow pointer will have travelled only half the distance as travelled by fast pointer and hence it will be at the middle of the linked list.</p>
+<p>Do you know what the above-explained method is called? </p>
+<ul>
+<li>This method is called the tortoise and hare method or the slow and fast pointer method. </li>
+</ul>
+<p>The slow and fast pointer method has been explained in detail in the approach section and the dry run.</p>
+<h3>Approach (Slow and Fast Pointer)</h3>
+<p>Let us see what the <strong>slow</strong> and <strong>fast</strong> pointer technique is: </p>
+<ul>
+<li>Initially, both the pointers, <strong>slow</strong> and <strong>fast</strong>, will point to the head of the linked list. </li>
+<li>Then, we will start moving both of the pointers. The <strong>fast</strong> pointer will jump two places, whereas the <strong>slow</strong> pointer will jump only one place. </li>
+<li>When the <strong>fast</strong> pointer reaches the end of the linked list, the <strong>slow</strong> pointer will be pointing to the middle of the linked list.</li>
+<li>Now, as we have the <strong>slow</strong> pointer pointing to the middle of the list, we will add the new node just after the <strong>slow</strong> pointer.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Create two-pointer <strong>slow</strong> and <strong>fast</strong>. Both <strong>slow</strong> and <strong>fast</strong> will be pointing to the head of the list.</li>
+<li>Now, the <strong>slow</strong> will jump one place and the <strong>fast</strong> will jump two places.</li>
+<li>When the <strong>fast</strong> pointer reaches the end of the list, the <strong>slow</strong> will be pointing to the middle of the list.</li>
+<li>Add the new node <strong>newNode</strong> just after the slow pointer following the below steps.
+<ul>
+<li>newNode - &gt; next = slow - &gt; next</li>
+<li>slow - &gt; next = newNode</li>
+</ul></li>
+<li>Finally, our <strong>newNode</strong> will be inserted into the middle of the linked list and our objective will be achieved.</li>
+</ul>
+<h3>DRY RUN</h3>
+
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Insert-a-node-into-the-middle-of-the-linked-list-1.png">
+
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Insert-a-node-into-the-middle-of-the-linked-list-2.png">
+
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4453]</p>
+<h4>Output</h4>
+<p>Linked list before insertion: 1 5 2 7 10
+Linked list after insertion: 1 5 2 4 7 10 </p>
+<p>[forminator_quiz id="4452"]
+<strong>Space Complexity:</strong> O(1), as only temporary variables are being created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to insert a node into the middle of the linked list. This is an important question when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
