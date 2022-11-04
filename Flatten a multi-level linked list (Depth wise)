@@ -1,0 +1,85 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645011700027-Article_189.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<h3>Problem Statement</h3>
+<p>The linked list that we have studied typically has only one pointer, i.e., a <strong>next</strong> pointer, which points to the <strong>next</strong> node in the linked list. </p>
+<p>But, here in this problem, we have a linked list with 2 pointers named <strong>next</strong> and <strong>down</strong>. </p>
+<ul>
+<li>The <strong>next</strong> pointer points normally to the <strong>next</strong> node.</li>
+<li>But the <strong>down</strong> pointer points to a node that we assume is present in a <strong>node’s downward direction</strong>. </li>
+</ul>
+<p>Our task is to flatten a linked list containing <strong>next</strong> and <strong>down</strong> pointers, and also we must make sure that we always process the <strong>down</strong> pointer before <strong>next</strong> at every node.</p>
+<h3>Problem Statement Understanding</h3>
+<p>According to the problem statement, we have a linked list with 2 pointers named <strong>next</strong> and <strong>down</strong>, and we need to convert it to the normal linked list that we have studied earlier, i.e., we need to move nodes that are being pointed by the down pointer to next making all down pointers NULL, but also we need to keep in mind that we process down pointer before processing next pointer.</p>
+<p>An alternate way to understand it even more is to imagine it as a binary tree (as shown in the image below). </p>
+<ul>
+<li>And now, all we need to do is to visit each node such that when we are at a <strong>current node</strong> then we need to first explore the nodes pointed by <strong>down pointer</strong> and when the list with current node's down pointer is flattened completely, then we have to move towards node pointed by <strong>next pointer</strong> and perform the same task there also.</li>
+</ul>
+<p>If say our given linked list is:</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_4.png)
+
+<ul>
+<li>In this case, our flattened list will be :</li>
+</ul>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/output.png)
+
+<p>Now, we just need to perform a preorder traversal of the given linked list recursively, where down nodes will be flattened before the next nodes.</p>
+<h3>Approach</h3>
+<p>I hope that you got a basic idea of what we need to do to solve the problem. </p>
+<ul>
+<li>The approach will be recursive; we have to consider the given list as a <strong>binary tree</strong> and traverse it in a <strong>preorder fashion</strong>. </li>
+<li>We have to first flatten the <strong>down nodes</strong> recursively and then the <strong>next nodes</strong>. </li>
+<li>Since we need to flatten the list: 
+<ul>
+<li>So, we need to visit nodes present in the downward direction first.</li>
+<li>We will keep a global pointer <strong>previous</strong> that would store the address of the <strong>current node</strong> to keep track of the last visited node.</li>
+<li>And then, in each recursive call, we would be storing the <strong>next pointer</strong> and then call the recursive function for the <strong>down pointer</strong> first, and then will do the same for the <strong>next pointer</strong> afterwards.</li>
+</ul></li>
+<li>After performing the above steps, our list will get flattened.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>
+<p><strong>Base case:</strong> If the <strong>node</strong> is NULL, we do not need to do anything and we just return from recursion.</p>
+</li>
+<li>
+<p>Otherwise, store the address of the <strong>current node</strong> in a global variable <strong>previous</strong> to keep track of the <strong>last visited node</strong>.</p>
+</li>
+<li>
+<p>Store the <strong>current node’s next</strong> node in a variable <strong>next_node</strong> because at first, we will be processing <strong>down nodes</strong>, and not storing <strong>current node’s next</strong> will lead to loss of the <strong>next node</strong> and all its connected nodes.</p>
+</li>
+<li>
+<p>Then, we need to check whether the <strong>down node</strong> of the current node exists or not. </p>
+<ul>
+<li>If it exists, we recursively call our function for the down node and flatten down nodes first and connect with <strong>current-&gt;next</strong>.</li>
+<li><strong>current-&gt;next = flatten_linked_list(current-&gt;down)</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Then we check if the next node <strong>next_node</strong> (saved in step 3) exists or not. </p>
+<ul>
+<li>If it exists, we again call the recursive function to flatten the linked list and connect it with <strong>previous-&gt;next</strong>.</li>
+<li><strong>previous-&gt;next = flatten_linked_list(next_node)</strong></li>
+</ul>
+</li>
+<li>
+<p>Finally, we return <strong>current</strong>.</p>
+</li>
+</ul>
+<h3>Dry Run</h3>
+
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1.png">
+
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2.png">
+
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_3.png">
+
+<h4>Code Implementation</h4>
+<p>[TABS_R id=5389]</p>
+<h4>Output</h4>
+<p>The linked list after flattening: 1 2 6 35 28 4 0 3 5 </p>
+<p><strong>Time Complexity</strong>: O(n), where n is number of nodes in the list.
+[forminator_quiz id="5386"]</p>
+<p>So, in this blog, we have tried to explain how you can Flatten a multi-level linked list in depthwise order. The intuition of considering it as a binary tree will help to solve this problem easily. If you want to practise more questions on linked list, feel free to solve them at <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
