@@ -1,0 +1,67 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000515294-Article_132.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a sorted Doubly Linked List of distinct integers and we are asked to find the pair of nodes whose sum is equal to the given sum.</p>
+<h3>Problem Statement Understanding</h3>
+<p>In this problem, we need to find the pair of nodes from the Linked list whose sum is equal to the given sum, which means we need to find pairs of such nodes whose addition gives the required sum.</p>
+<p>Let’s first understand the problem statement with the help of examples.</p>
+<p>If the given linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-7.png" alt="" /></p>
+<ul>
+<li>Then, according to the problem statement, out of all the possible pairs from the linked list there are only 2 pairs that have the sum equal to 15 and those pairs are (5,10) and (7,8).</li>
+<li>So we will output the pairs (5,10) and (7,8).</li>
+</ul>
+<p>If the given linked list is: head  1  2  5  6  8  9  10 and X(Given sum) = 7.</p>
+<ul>
+<li>In this case there are also only 2 pairs having sum equal to 7 and those pairs are (1,6) and (2,5).</li>
+<li>So we will output the pairs (1,6) and (2,5).</li>
+</ul>
+<p><strong>Some more examples</strong>
+Sample Input 1: head  1  3  5, X = 8.
+Sample Output 1: (3,5)</p>
+<p>Sample Input 2: head  2  4  6  8  10, X = 10.
+Sample Output 2: (2,8), (4,6)</p>
+<p>Now I think from the above examples, the problem statement is clear. So let's see how we will approach it. Any Ideas?</p>
+<ul>
+<li>If not, it's okay. We will see in the next section thoroughly how we can approach this problem.</li>
+</ul>
+<p>Let’s move to the next section.</p>
+<h3>Approach 1</h3>
+<p>The brute force approach for this problem can be to pick each node one by one and find another element whose sum is equal to the required sum by using two loops.</p>
+<p><strong>Time Complexity</strong>: O(n<sup>2</sup>)
+<strong>Space Complexity</strong>: O(1)</p>
+<p>This approach has time complexity of O(n<sup>2</sup>), which means that for linked list of bigger size greater than or equal to 10<sup>4</sup>, it will not be ideal to use this approach. So what should we do? Should we try to come up with an algorithm that can do our job in lesser time complexity?</p>
+<ul>
+<li>Yes, we should try to find some algorithm that can solve the problem efficiently.</li>
+</ul>
+<p>So let's see how we reduce the time complexity.</p>
+<h3>Approach 2</h3>
+<p>In order to find a pair with a given sum in a sorted Doubly Linked List, we can use the two-pointer algorithm by keeping one pointer(<strong>star</strong>t) at the head and another(<strong>end</strong>) at the end of the list as we can traverse both ways. After keeping the pointers at the desired location, we will compare the sum of pairs with the given sum. There can be three conditions possible :</p>
+<ul>
+<li>The sum of pairs is less than the given sum. In this case we will move the start pointer to its next node as we need a bigger number for the required sum.</li>
+<li>The sum of pairs is less than the given sum. In this case we will move the end pointer to its previous node as we need a smaller number for the required sum.</li>
+<li>The sum of pairs is equal to the given sum. In this case, we will output this pair and move both start and end pointers to their next and previous nodes, respectively.</li>
+</ul>
+<p>Let's see the algorithm for the above approach.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Create a <strong>start</strong> pointer and initialize it to the head node of the linked list.</li>
+<li>Create an <strong>end</strong> pointer and initialize it to the last node of the list.</li>
+<li>Calculate the sum of values in the nodes to which <strong>start</strong> and <strong>end</strong> are pointing <strong>(start.data + end.data)</strong> and compare this sum with the given sum:
+<ul>
+<li>If the sum of pairs is less than the given sum, move the <strong>start</strong> pointer to its next node.</li>
+<li>If the sum of pairs is less than the given sum, move the <strong>end</strong> pointer to its previous node.</li>
+<li>If the sum of pairs is equal to the given sum. In this case we will output this pair and move both <strong>start</strong> and <strong>end</strong> pointers to their next and previous nodes respectively.</li>
+</ul></li>
+<li>Perform the above operations while <strong>(start!=end) or (start != end.next)</strong>.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Find-pairs-with-given-sum-in-Doubly-Linked-List-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Find-pairs-with-given-sum-in-Doubly-Linked-List-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4882]</p>
+<h4>Output</h4>
+<p>(5,10)
+(7,8)</p>
+<p><strong>Time Complexity</strong>: O(n), where n is the number of nodes. We are traversing the list and traversing takes O(n) time.
+[forminator_quiz id="4881"]</p>
+<p>So, in this blog, we have tried to explain how you can find pairs with the given sum in a doubly linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
