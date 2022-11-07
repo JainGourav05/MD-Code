@@ -1,0 +1,52 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644911394739-Introduction%20to%20Unrolled%20Linked%20List_Artboard%201.png)
+<h3>Introduction</h3>
+<p>So till now, we have seen Linked List of type Singly Linked List and Doubly Linked List. In Single Linked List, we have the next pointer, and thus we can only move forward in the linked list. The structure of the node is similar to:</p>
+<p>[TABS_R id=4223]</p>
+<p><br></p>
+<p>Whereas in Doubly Linked List, in addition to the next pointer, we also have the prev pointer, and thus we can have traversal in either direction of a node. The structure of the node is similar to:</p>
+<p>[TABS_R id=4224]
+<br></p>
+<p>Now, another type of Linked List exists, where instead of storing just 1 element at each node, we can store an entire array at each node, which is called Unrolled Linked List.</p>
+<p>Now I think from above; you must have got a little idea about Unrolled Linked List. In the next section, we will see it in depth.</p>
+<h3>What is Unrolled Linked List?</h3>
+<p>An Unrolled Linked List is a type of linked list that can store multiple elements at a single reference location, i.e., at each node, we can store multiple elements together. </p>
+<p>Thus the structure of a typical Unrolled Linked List is like:</p>
+<p>[TABS_R id=4225]</p>
+<p><strong>Example of Unrolled Linked List</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Unrolled-Linked-List-Introduction.png" alt="" /></p>
+<p><br>
+<br></p>
+<p>From this figure, we can observe that for every node of Unrolled Linked List can have any number of elements and the space reserved can be different. </p>
+<p>For example, in the first node, we have space for 5 elements, but we have filled with only 3 elements i.e 1 2 3, and similarly in the next node also we have space for 5 elements, but we have filled with only 2 elements.</p>
+<p>Now, the question must be arising in your mind that why do we need this type of Linked List?</p>
+<h3>Why do We Need Unrolled Linked List?</h3>
+<ul>
+<li>
+<p>We are already aware of the advantages that Linked List gives us over arrays but Unrolled Linked List combine the advantage of the array (small memory overhead) along with the advantage of linked lists like fast insertion and deletion.</p>
+</li>
+<li>
+<p>By storing multiple elements at each node, unrolled linked list offers advantage of linked list across multiple elements.</p>
+<ul>
+<li>For example  : If an unrolled linked list stores an array of 5 elements at each node, it will offer the same advantage (because of pointers) across those 5 elements. Thus it covers advantage of both arrays and linked list.</li>
+</ul>
+</li>
+<li>
+<p>Faster performance when you consider <code>cache management</code>.</p>
+</li>
+</ul>
+<h3>Advantages</h3>
+<ol>
+<li>Faster Linear Search as compared to Original Linked List due to cache friendliness.</li>
+<li>Requires less space for pointer as compared to original linked list.</li>
+<li>Traversal, Insertion and Deletion is much faster as compared to original Linked List.</li>
+</ol>
+<h3>Disadvantage</h3>
+<ol>
+<li>A fairly high overhead per node when compared to the  singly linked list, since for every node it can store an array of elements.</li>
+</ol>
+<h3>Efficient Searching</h3>
+<p>Let us understand how it is providing efficient capability with the help of an example. Take an Example:</p>
+<ul>
+<li>We have total 10 elements spread over 3 nodes and thus distribution can be 3 3 4 elements respectively in each node. Now, if we are required to find 8<sup>th</sup> element, we will traverse only the last block of the node. Thus searching can also be efficient in such a way.</li>
+</ul>
+<p>This blog tried to introduce the audience to yet another type of linked list, which is called Unrolled Linked List. This is an essential concept from an interview point of view. If you want to solve more questions on Linked List, which our expert mentors curate at PrepBytes, you can follow this link</p>
