@@ -1,0 +1,40 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644910951803-how%20to%20get%20a%20sublist-04.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<p>LinkedList is a part of the Collection Framework, which is present in the java.util.package. This class implements the LinkedList data structure, which is a linear data structure in which the items are not stored in contiguous order and each item is a distinct object having a data and address portions.</p>
+<p>Here in this problem, we need to find the items of a sublist of the given range, given a list of entries in a LinkedList.</p>
+<h3>Approach and Algorithm (Simple Sublist of LinkedList)</h3>
+<p><strong>Syntax:</strong> public List subList (int startIndex, int endIndex)</p>
+<p><strong>Parameters:</strong> This method takes in the following parameters:</p>
+<ul>
+<li><em>startIndex</em> - The starting index of the sublist (inclusive).</li>
+<li><em>endIndex</em> - The ending index of the sublist (exclusive).</li>
+</ul>
+<p><strong>Return Value</strong> - This function returns a view of this list's given range.</p>
+<p>This function returns the sublist from the given starting index to the ending index. </p>
+<p><strong>Note:</strong> It does not include the element at the endIndex. We will just call the <em>subList(int startIndex, int endIndex)</em> function.</p>
+<p><strong>Input:</strong> [Coding, is, Fun], startIndex = 0 , endIndex = 2</p>
+<p><strong>Output:</strong> [Coding, is]</p>
+<p><strong>Explanation:</strong> As we can see, the elements from the startIndex(0) till the endIndex(2) (exclusive) were returned.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4613]</p>
+<h5>Output</h5>
+<p>The elements of the  LinkedList are: [Coding, is, Fun]
+The required SubList is: [Coding, is]</p>
+<p><strong>Time Complexity:</strong> O(end), where the <strong>end</strong> is the endIndex that is passed as a parameter. We have to traverse till the end index.</p>
+<p><strong>Space Complexity:</strong> O(k), where <strong>k</strong> is the number of elements in the sublist.</p>
+<h3>Approach and Algorithm (sublist from Linked List of LinkedLists)</h3>
+<p>We can also get a sublist from a Linked List of LinkedLists using the exact same approach that is explained above. The <strong>syntax</strong>, <strong>parameters</strong>, and <strong>return</strong> type will be the same.</p>
+<p>This function returns the sublist from the given starting index to the ending index. </p>
+<p><strong>Note:</strong> It does not include the element at the endIndex. We will just call the <em>subList(int startIndex, int endIndex)</em> function.</p>
+<p><strong>Input:</strong> [ [1,2], [3,4], [5,6] ], startIndex = 0 , endIndex = 2</p>
+<p><strong>Output:</strong> [ [1,2] , [3,4] ]</p>
+<p><strong>Explanation:</strong> As we can see, the sublist from the linked list of LinkedLists from the startIndex(0) till the endIndex(2) (exclusive) are returned.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4614]</p>
+<h5>Output</h5>
+<p>The elements of the  LinkedList are: [ [1, 2], [3, 4], [5, 6] ]
+The required SubList is: [ [1, 2], [3, 4] ]</p>
+<p><strong>Time Complexity:</strong> O(end), where the <strong>end</strong> is the endIndex that is passed as a parameter. We have to traverse till the end index.</p>
+<p><strong>Space Complexity:</strong> O(k), where <strong>k</strong> is the number of elements in the sublist of LinkedLists.</p>
+<p>So, in this article, we have tried to explain the most efficient way to get the Sublist of LinkedList in Java. Java Collection Framework is very important when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
