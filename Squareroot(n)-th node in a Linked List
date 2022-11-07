@@ -1,0 +1,86 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926430629-115.Squareroot%28n%29-th%20node%20in%20a%20Linked%20List-04.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we have been given a linked list. Our task is to write a function that accepts the head node of the linked list as a parameter and returns the value of the node present at <strong>(floor(sqrt(n)))</strong><sup>th</sup> position in the linked list.</p>
+<p>Here n is the count of the number of nodes present in the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem with help of examples by referring online coding classes.</p>
+<p>Suppose we are given a linked list A → B → C → D → E → F and now according to the problem statement we have to find the node at <strong>(floor(sqrt(n)))</strong><sup>th</sup> position in the linked list and return its value as output.</p>
+<p>For the above given linked list n = 6, as there are 6 nodes in the linked list, so</p>
+<ul>
+<li><strong>(floor(sqrt(n))) = floor(sqrt(6)) = 2</strong>, it means that we have to return the value of 2<sup>nd</sup> node of the linked list as output.</li>
+</ul>
+<p><strong>Output:</strong> B
+<strong>Explanation:</strong> We will return B in output as B is the value of (floor(sqrt(n)))th node of the above given linked list.</p>
+<p>If the linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-2-4.png" alt="" /></p>
+<p>For the above linked list n = 9 (as there are 9 nodes in the linked list), then the value of <strong>(floor(sqrt(n)))</strong> is:</p>
+<ul>
+<li><strong>(floor(sqrt(n))) = (floor(sqrt(9))) = 3</strong>, so we will return the value of 3<sup>rd</sup> node of the linked list as output.</li>
+</ul>
+<p><strong>Output:</strong> C</p>
+<p><strong>Note:</strong> Here in this problem we are considering 1 based indexing.</p>
+<h5>Some more Examples:</h5>
+<p>Input : </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-3-2.png" alt="" /></p>
+<p>Output : 3</p>
+<p>Input : </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-4-2.png" alt="" /></p>
+<p>Output : 60</p>
+<p>Input :</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-5-2.png" alt="" /></p>
+<p>Output : 14</p>
+<p>Now I think from the above examples the problem is clear, and now we have to think how can we approach it.</p>
+<h3>Approach 1</h3>
+<p>A simple approach is:</p>
+<ul>
+<li>First, loop through the linked list to find the number of nodes <strong>n</strong> in the linked list.</li>
+<li>Then calculate the value of <strong>floor(sqrt(n))</strong>, where <strong>n</strong> is the total number of nodes in the linked list. </li>
+<li>Now starting from the first node of the list traverse to this position given by <strong>floor(sqrt(n))</strong> and return the data of the node at this position.</li>
+</ul>
+<p><strong>Time Complexity:</strong> O(n), as we are traversing the complete length of the list
+<strong>Space Complexity:</strong> O(1).</p>
+<p>This approach traverses the linked list 2 times. Let's try to think, can we do better than this? Can we find out the <strong>(floor(sqrt(n)))</strong><sup>th</sup> node of the linked list in one single traversal?</p>
+<p>Let’s see the approach 2 to get the answers to the above questions.</p>
+<h3>Approach 2</h3>
+<p>As we know that: </p>
+<ul>
+<li>sqrt(1) = 1</li>
+<li>sqrt(4) = 2</li>
+<li>sqrt(9) = 3</li>
+<li>sqrt(16) = 4 ..........</li>
+</ul>
+<p>One little conclusion which we can make about floor(sqrt(n)) is that:</p>
+<ul>
+<li>Every number in range from 1 to 3 will have floor(sqrt(n)) equal to 1.</li>
+<li>Every number in range from 4 to 8 will have floor(sqrt(n)) equal to 2.</li>
+<li>Similarly, every number in range from 9 to 15 will have floor(sqrt(n)) equal to 3.</li>
+<li>It goes on like this for range of numbers between every consequtive perfect squares.</li>
+</ul>
+<p><strong>Note:</strong> The final conclusion is that every number <strong>num</strong> between two consequtive perfect squares (a,b) (excluding the bigger perfect square b) have <strong>(floor(sqrt(num))) = sqrt(a)</strong>.</p>
+<p>Now we will try to utilize the above conclusion to solve this problem, and it will help us to find the <strong>(floor(sqrt(n)))</strong><sup>th</sup> node of the linked list in single traversal.</p>
+<p>The complete algorithm for this approach is explained below.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Firstly, we will initialize 2 pointers <strong>x</strong> and <strong>y</strong> both to 1 and a pointer <strong>req_node</strong> to NULL to traverse till the required position in the list is reached.</li>
+<li>We will start traversing the list using the head node until the last node is reached.</li>
+<li>While traversing the list, we will check if the value of <strong>y</strong> is equal to <strong>sqrt(x)</strong>. 
+<ul>
+<li>If the value is equal,we will  increment both <strong>x</strong> and <strong>y</strong> by 1 and make <strong>req_node</strong> to <strong>req_node-&gt;next</strong>.</li>
+<li>Otherwise, we will increment only <strong>x</strong>.</li>
+</ul></li>
+<li>Now, when we reach the last node of the list x will contain the value of <strong>n</strong>, <strong>y</strong> will contain the value of <strong>sqrt(x)</strong> and <strong>req_node</strong> will point to the node at yth position.</li>
+<li>Finally, we will return the data contained in the node pointed by pointer <strong>req_node</strong>.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Squarerootn-th-node-in-a-Linked-List-1-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Squarerootn-th-node-in-a-Linked-List-2-1.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4324]</p>
+<h4>Output</h4>
+<p>Given linked list is: 1 2 3 4
+sqrt(n)th node is 2</p>
+<p><strong>Time Complexity:</strong> O(n), as we are traversing the complete length of the list.
+[forminator_quiz id="4325"]</p>
+<p>So, in this article, you have learnt how to get the value of the node present at <strong>(floor(sqrt(n)))</strong><sup>th</sup> position in the Linked List. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
