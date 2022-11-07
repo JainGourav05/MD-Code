@@ -1,0 +1,59 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645012237824-Article_205.png)
+<h3>Problem Statement</h3>
+<p>We will be given three different linked lists and an integer as input. Now, we need to find whether there is a triplet (one from each list) that sums up to the given integer.</p>
+<h3>Problem Statement Understanding</h3>
+<p>To understand the problem statement, let us take examples.</p>
+<p>If the linked lists given to us are 3→8→1→5→NULL, 6→2→8→NULL, and 11→4→2→NULL, and the target = 14. Then, according to the problem statement:</p>
+<ul>
+<li>We need to find three Nodes (one from each list) such that they sum up to 14.</li>
+<li>If we select <strong>8</strong> from the <strong>first list</strong>, <strong>2</strong> from the <strong>second list</strong> and <strong>4</strong> from the <strong>third list</strong>, we will get the sum equal to the <strong>target=14</strong>.</li>
+<li>The required triplet will be <strong>(8,2,4)</strong>.</li>
+</ul>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<p>The naive approach that comes to our mind is to first select a node from the first list. Then for each node of the first list, we select a node from the second list, and for each selected node of the second list, we select a node in the third list, and then we check if the sum of the 3 nodes selected is equal to target or not. If the sum is equal to the target, we have our required triplet.</p>
+<p><strong>Time Complexity:</strong> O(n<sup>3</sup>) , n is the number of nodes in a list.</p>
+<p>The above approach gives the correct result, but its time complexity is high. Can we reduce the time complexity? Let us find out If we can do so in the below approach.</p>
+<h3>Approach 2</h3>
+<ul>
+<li>First, we need to sort the second and third lists (the second list will be sorted in ascending order and the third list in descending order), so that we could be sure whether moving forward or backward in the lists is going to increase or decrease the sum.</li>
+<li>Now, we need to fix a node in the first list and for each node, we need to perform the below steps.</li>
+<li>Calculate the sum of all three-pointers present at different positions on each list.</li>
+<li>If the sum is greater than the target, then we need to decrease the sum, so we need to move forward in the third list (if you visualize carefully, you can see that moving forward in the third list will decrease the sum, because the third list is sorted in descending order).</li>
+<li>Else If the sum is smaller than the target, we need to move forward in the second list to increase our sum (as the second list is sorted in ascending order).</li>
+<li>If the sum is equal, then we can easily print the triplet and show that we have found one triplet in the three given lists.</li>
+</ul>
+<p>To see the above approach in more detail, move to the algorithm section.</p>
+<h3>Algorithm</h3>
+<p>1) First, sort the second list in ascending order and the third list in descending order.
+2) Initialize a pointer <strong>a</strong> with head of <strong>first list</strong>.
+3) Run a while loop till <strong>a</strong> is not NULL and inside the loop:</p>
+<ul>
+<li>Initialize pointer <strong>b</strong> and <strong>c</strong> with <strong>head of second and third list</strong>, respectively.</li>
+<li>Run a while loop till <strong>b</strong> and <strong>c</strong> are not NULL.
+<ul>
+<li>Initialize variable <strong>sum</strong> as the sum of values pointed by pointers <strong>a</strong>,<strong>b</strong>, and <strong>c</strong>.</li>
+<li>If the <strong>sum</strong> is equal to the <strong>target</strong>, print the values pointed by <strong>a</strong>,<strong>b</strong>, and <strong>c</strong> and return from the function.</li>
+<li>If the <strong>sum</strong> is less than the <strong>target</strong>, move forward <strong>b</strong> by one node. Else, move forward <strong>c</strong> by one node.</li>
+</ul></li>
+<li>Move forward <strong>a</strong> by one node.</li>
+</ul>
+<p><strong>Note:</strong> For simplicity, in dry run and code implementation, we took second and third linked lists, which are already sorted in ascending and descending order, respectively. If you want to know how to sort a linked list, please feel free to refer to this <a href="https://www.prepbytes.com/blog/linked-list/c-program-for-merge-sort-for-linked-lists/">article</a> for sorting related concepts of linked list. Also, inside the code implementation, we haven't provided the sorting function (function to sort the linked list); if you want to take unsorted linked lists, please sort them in proper format (the second list will be sorted in ascending order and the third list in descending order) using code from above-mentioned article, before passing them to <strong>isSumSorted()</strong> function in the code.</p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-4.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2-5.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_3-3.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_4-1.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_5.jpg" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5842]</p>
+<h4>Output</h4>
+<p>Triplet Found: 8 2 4</p>
+<p><strong>Time Complexity:</strong> O(n<sup>2</sup>) ,n is the number of nodes in the list.
+[forminator_quiz id="5843"]</p>
+<p>So, in this blog, we have tried to explain how you can Find a triplet from three linked lists with a sum equal to a given number most optimally. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
