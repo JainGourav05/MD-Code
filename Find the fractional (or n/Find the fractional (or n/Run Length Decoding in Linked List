@@ -1,0 +1,60 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644926152813-110.Run%20Length%20Decoding%20in%20Linked%20List-05.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>We will be provided with a Linked List in encoded form (like <strong>a4de4f2</strong>) and we need to decode the given linked list and output the decoded version in the form of string.</p>
+<h5>Example</h5>
+<p><strong>Input Linked List :</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-12.png" alt="" /></p>
+<p><strong>Output String :</strong> aaaadeeeeff</p>
+<h3>Problem Statement Understanding</h3>
+<p>Giving you a brief description about run length encoding.  </p>
+<p>In Run Length Encoding, the input string is encoded by replacing a substring of a repeated character in the string by the character followed by its count. If the character is single and non-repeating, then it's count is not added.</p>
+<p><strong>For example</strong></p>
+<ul>
+<li>If the input string is <strong>aaaa</strong> then its run length encoding will be <strong>a4</strong></li>
+<li>If we add <strong>dd</strong> to the above string <strong>aaaa</strong> then the resultant string will be <strong>aaaadd</strong> and now its run length encoding will become <strong>a4d2</strong>.</li>
+<li>Similarly, if we add <strong>eee</strong> to the string <strong>aaaadd</strong> then the resultant string will be <strong>aaaaddeee</strong> and now its run length encoding will become <strong>a4d2e3</strong>.</li>
+<li>But there is case like if we add a single character to the like <strong>f</strong> to the string <strong>aaaaddeee</strong>, then the resultant string will be <strong>aaaaddeeef</strong> and its run length encoding will be <strong>a4d2e3f</strong>.</li>
+</ul>
+<p>I think from the above pattern you got it how we are encoding the input string.</p>
+<h4>Example of Run Length Encoding</h4>
+<p><strong>Input String</strong> - aaaadeeeeff
+<strong>Output String (Encoded Using Run Length Algorithm)</strong> - a4de4f2</p>
+<p>Now, since you have understood what Run length encoding is, let us move to our problem statement description.</p>
+<p>We will be provided with a Linked List in encoded form (like <strong>a4de4f2</strong>) and we need to decode the given linked list and output the decoded version in the form of a string.</p>
+<h4>Considering same example for run length decoding</h4>
+<p><strong>Input Linked List :</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-12.png" alt="" /></p>
+<p><strong>Output String :</strong> aaaadeeeeff</p>
+<p><strong>Explanation :</strong> Given a linked list a → 4 → d → e → 4 → f → 2, which means that:</p>
+<ul>
+<li><strong>a</strong> occur 4 times. </li>
+<li><strong>d</strong> occur only once because following <strong>d</strong> there is no count i.e. the next node does not contain any digit representing the count of <strong>d</strong>.</li>
+<li><strong>e</strong> occurs 4 times. </li>
+<li><strong>f</strong> occurs 2 times. </li>
+</ul>
+<p>Therefore, in output you need to print a string containing 4 times <strong>a</strong>, 1 time <strong>d</strong> , 4 times <strong>e</strong> and 2 times <strong>f</strong>, i.e., &quot;aaaadeeeeff&quot;, which is our output.</p>
+<h3>Approach and Algorithm</h3>
+<p>We need to traverse the list, and while traversing, if after a character node there is a number, then we need to extract that number and print the respective character the number of times equal to that extracted number.</p>
+<h5>Let's see the algorithm</h5>
+<ul>
+<li>Traverse the list following the below steps.</li>
+<li>Store the character node in any variable and check for the next node.
+1) If the next node is also a character that means the current character occurs only single time,
+2) Else, if the next character is any value, extract that value and store that value in a variable count.</li>
+<li>Print the character count times.</li>
+<li>Now move to the next character node and repeat the above process for it.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Run-Length-Decoding-in-Linked-List-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Run-Length-Decoding-in-Linked-List-2.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Run-Length-Decoding-in-Linked-List-3.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Run-Length-Decoding-in-Linked-List-4.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4250]</p>
+<h4>Output</h4>
+<p>aaaadeeeeff</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the number of nodes in the given LinkedList.
+[forminator_quiz id="4251"]</p>
+<p>This blog tried to discuss the problem when we are given an encoded string in the form of linkedlist and we were required to decode it.  If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
