@@ -1,0 +1,41 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644915250853-linkedlist%20descen%20ingIterator_Artboard%202.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<p>The <strong>descendingIterator()</strong> method returns an iterator over the elements of the LinkedList in reverse order. That means the elements will be returned in order from the last element to the first element, i.e. tail to head.</p>
+<p>We know that in Java, LinkedList is implemented as Doubly LinkedList, so we can start <a href="https://www.prepbytes.com/blog/linked-list/iteratively-reverse-a-linked-list-using-only-2-pointers/" title="from the tail pointer">from the tail pointer</a> and iterate the list reversely. For the purpose of traversal, we use an iterator and, <strong>descendingIterator()</strong> helps us in traversing the list from tail pointer to head pointer.</p>
+<h4>Syntax</h4>
+<ul>
+<li><strong>Iterator java.util.LinkedList.descendingIterator();</strong></li>
+</ul>
+<p><strong>Returns:</strong> It returns an iterator over the elements in reverse sequence.</p>
+<p><strong>The necessary imports that you have to do are:</strong></p>
+<ul>
+<li>import java.util.Iterator; </li>
+</ul>
+<h4>LinkedList descendingIterator() method Examples</h4>
+<p>Following are the steps we have used to demonstrate the working of the descendingIterator() method.</p>
+<ul>
+<li>Created a LinkedList instance using new LinkedList().</li>
+<li>Then, we have added some elements to LinkedList.</li>
+<li>After that, we have used LinkedList descendingIterator() method to get the iterator in reverse order.</li>
+<li>Finally, Traversed the LinkedList and printed elements.</li>
+</ul>
+<h4>Example 1</h4>
+<p>[TABS_R id=4627]</p>
+<h5>Output</h5>
+<p>The cities are:
+Hyderabad Bangalore Kolkata Delhi Mumbai</p>
+<p><strong>Time Complexity:</strong> O(n), where <strong>n</strong> is the no of entries in the list. Here in our example, it is 5.</p>
+<p><strong>Output Explanation:</strong>
+Even though the structure of Linked List is:
+<strong>&quot;Mumbai&quot;-&gt;&quot;Delhi&quot;-&gt;&quot;Kolkata&quot;-&gt;&quot;Bangalore&quot;-&gt;&quot;Hyderabad&quot;</strong>
+We are getting results in reverse sequence with the help of the <strong>descendingIterator()</strong> method of LinkedList.</p>
+<h4>Example 2</h4>
+<p>[TABS_R id=4628]</p>
+<h5>Output:</h5>
+<p>The Integers in Reversed Order are:
+<strong>5 4 3 2 1</strong></p>
+<p><strong>Time Complexity:</strong> O(n), where <strong>n</strong> is the no of entries in the list. Here in our example, it is 5.</p>
+<p><strong>Output Explanation:</strong> The Structure of our linked list is: 1 → 2 → 3 → 4 → 5.
+With the help of the descendingIterator() method of the linked list, we can traverse the list in reverse order.</p>
+<p>This blog tried to discuss the descendingIterator method of the LinkedList. If you want to practice more questions on linked lists, feel free to solve them on Linked List. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
