@@ -1,0 +1,38 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645528688305-complete%20binary%20tree.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given the level order traversal of a binary tree, in the form of a linked list. We have to construct the complete binary tree from its linked list representation.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Suppose the given linked list is 10 -&gt; 12 -&gt; 13 -&gt; 23 -&gt; 30 -&gt; 36. For each i<sup>th</sup> node, its children are the (2i+1)<sup>th</sup> and (2i+2)<sup>nd</sup> nodes of the list. So, the children of 10 are 12 and 13. The children of 12 are 23 and 30. The children of 13 are 36 and NULL. All other nodes children's are NULL. Hence, the complete binary tree is :-</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-Complete-Binary-Tree-from-its-Linked-List-input-01.png" alt="" /></p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-Complete-Binary-Tree-from-its-Linked-List-ouput-01.png" alt="" /></p>
+<p><strong>Output:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-Complete-Binary-Tree-from-its-Linked-List-input-01.png" alt="" /></p>
+<p><strong>Explanation:</strong> As we can see, the output has a complete binary tree that has been created from its linked list representation.</p>
+<p>This is a very interesting problem. We have to keep in mind that if the index of the root node is x (using 0 based indexing), then its left and right children are stored at the indices 2x+1 and 2x+2. We cannot directly access the nodes, so we have to traverse through the linked list. Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>What will be the root of the binary tree? The head. Yes, the head will be the root of the binary tree, as we are given the level order traversal. As we now know the root of the tree, we also know that the next two nodes of the linked list are the left and right children of the root.</p>
+<p>So, now we know the partial binary tree. We are going to do a level order traversal of the binary tree using a queue and traverse the given linked list at the same time.</p>
+<p>At every step, we will pick one node from the queue, and make the next two nodes of the linked list the children of the current(parent) node. After this, we are going to enqueue the next two nodes to the queue.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Base Case - If the head is NULL, then make the root NULL.</li>
+<li>Create a queue.</li>
+<li>Enqueue the first node of the linked list, and make it the root.</li>
+<li>Traverse through the list, and do the following</li>
+<li>Dequeue a node from the queue. This node is the current parent. Add the next two nodes of the linked list as the children of the current node(parent).
+Now, enqueue the two nodes in the queue.</li>
+<li>Continue this till the end of the linked list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Construct-a-Complete-Binary-Tree-from-its-Linked-List-Representation-dry-run-01.png" alt="" /></p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=3668]</p>
+<h4>Output</h4>
+<p><strong>Inorder Traversal of the constructed Binary Tree is</strong>
+23 12 30 10 36 13</p>
+<p>[forminator_quiz id="3687"]</p>
+<p><strong>Space Complexity:</strong> O(n), the space required to create the binary tree.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to construct a complete binary tree from its linked list representation. This is an important question when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
