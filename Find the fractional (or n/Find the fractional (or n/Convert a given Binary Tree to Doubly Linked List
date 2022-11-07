@@ -1,0 +1,81 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645528725414-binary%20to%20doubly%20linked%20list-05-04.png)
+The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.
+
+### Problem Statement
+In this problem, we are given a binary tree. We have to convert the given binary tree to a doubly-linked list.
+
+### Problem Statement Understanding
+We have to store the inorder traversal of the given binary tree in the newly created linked list. 
+
+#### Sample Input:
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/4_1-01.png)
+
+#### Sample Output: 
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/4_2-01.png)
+
+#### Explanation: 
+The output doubly linked list contains the in-order traversal of the given binary tree.
+
+We should note that the order of the nodes in the doubly linked list must be the same as the in-order traversal of the binary tree. The first node of the in-order traversal must be the head of the doubly linked list. The left and right pointers will be used as previous and next pointers, respectively. Let us have a glance at the approach.
+
+### Approach#1
+In this approach, we will traverse do an inorder traversal of the binary tree. We will add the nodes at the beginning of the newly created linked list, and update the head every time. But there is a problem. Since we will insert at beginning, the order or the linked list that we will recieve, will be reversed.
+
+To correct that, we can do a reverse inorder traversal of the tree, i.e. we will traverse through the right subtree before the left subtree.
+
+### Algorithm
+- Base Case - If the root is NULL, then simply return.
+- Recur for the right subtree.
+- Make the current root’s right point to head, and head’s left pointer to the the current root. By doing this, we are adding the current root to the head , and make the current root the head.
+- After the above step, recur for the left subtree.
+- Recursively, the tree will be traversed and the doubly linked list will be created as discussed.
+
+### Dry run
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/08/4_3-01.png)
+
+
+#### Code Implementation
+
+[TABS_R id=3495]
+
+#### Output :
+**Extracted Doubly Linked list is:**
+20 12 30 11 36 15
+
+**Time Complexity:** O(N), as tree traversal is needed.
+
+**Space Complexity:** O(N), for the recursion stack and the doubly linked list.
+
+Now, let us have a look at another approach. The time complexities of both the approaches are the same.
+
+
+### Approach#2
+The approach is going to be pretty simple. We will do the in-order traversal of the given tree, and one by one, change the links of each node that we encounter. The doubly linked list will be created In-Place. Let us have a look at the algorithm to get a clearer look. 
+
+### Algorithm
+- Base Case - If the root is NULL, return NULL.
+- Create a node prev and initialize with NULL.
+- Recur for the left subtree.
+- Now, if prev is NULL, then the root will be the head of our doubly linked list.
+- Else, the left of the root will point to prev and the right of prev will point to the root.
+- After the above conditional statements, change the value of prev to root.
+- In the end, recur for the right subtree.
+
+#### Code Implementation
+
+[TABS_R id=3496]
+
+
+#### Output: 
+20 12 30 11 36 15
+
+
+**Time Complexity:** O(N), as a simple in-order traversal is needed.
+
+**Space Complexity:** O(N), the space required for recursion stack.
+
+
+So, in this article, we have tried to explain the most efficient approach to covert a binary tree to a doubly-linked list. This is a very important problem when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link [Linked List](https://mycode.prepbytes.com/interview-coding/practice/linked-list).
