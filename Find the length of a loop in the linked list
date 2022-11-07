@@ -1,0 +1,48 @@
+The linked list is one of the most important concepts and data structures to learn while preparing for interviews. As we know a LinkedList allows only insertions and deletion at constant time, to get access to any random element we still need linear time. But this problem somewhat uses traversals too but in an interesting way. 
+
+In this problem, we are given a LinkedList (root node) and are asked to find the length of the cycle/loop that is present in the LinkedList. Let me explain this with an example :-
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/07/38_1-1.png)
+
+The above-Linked List has a loop that has 6 nodes in the loop/cycle. Hence, this shall return 6 as the answer.
+Well, the very first task that I can observe is to determine whether the LinkedList contains a cycle or not. So, it shall follow from the same algorithm, and then we can try to think of any modifications to find its length also.
+
+### Approach #1
+The first approach is based on maps. The idea is to store the address of the nodes as the key and their position as the values. So, when we traverse and insert into the map if we come across a node that points to an address that is already present in the map that means there is a cycle present in the LinkedList. From this, we can find the length by simply subtracting the current position from the position of the matched node as `position - map[currnode]`.
+
+### Algorithm
+- Start traversing every node of the linked list present and maintain the position(incremented with every node) in the map.
+- While inserting also check if that node is present in the map, that will mean we have come across that node and there is a cycle cause we are visiting the node again. 
+	- If the node is not present in the map - increment the position counter and insert the current node address in the map.
+	- If the node is present in the map - then there is a cycle and we can find the number of nodes from `position - map[currnode]`
+
+**Code Implementation**
+[TABS_R id=3408]
+
+**Output**: 5
+
+**Time Complexity**: O(n), where n is the number of nodes.
+**Space complexity**: O(n), for using a map 
+
+As you can see, this method uses some extra space, we have to try to think of something better to reduce the extra space at least. 
+
+### Approach #2
+The next idea is based on Floyd’s Cycle detection algorithm. The concept is to use two pointers, one fast-moving another slow-moving. Both the pointers traverse the linked list with different speeds and when they meet each other that means there’s a cycle present in the LinkedList. Save the address of this node and take a counter with 1 and start incrementing it while traversing the LinkedList again from the common point with another pointer. Once we reach the common pointer again, then we will have our number of nodes in cycle count in the pointer. We will return this count.
+
+### Algorithm
+- Take two pointers, a fast pointer, and a slow pointer pointing to the head initially.
+- Traverse both the pointers as `slowptr = slowptr-&gt;next` (1 node at a time), and `fastptr = fastptr-&gt;next-&gt;next` (2 nodes at a time).
+- When slowptr == fastptr, the common point is the node for the head of the cycle.
+- Fix one pointer to this node and take count = 0 and move the other pointer from the common point one by one in the linked list and increment the counter by 1 in each step
+- When the other pointer reaches the common point then stop the iteration and return the count.
+
+**Code Implementation**
+[TABS_R id=3410]
+
+**Output**: 5
+
+[forminator_quiz id="3414"]
+
+**Space complexity**: O(1), no extra space is used.
+
+So, in this blog, we have tried to explain how you can find the length of the cycle present in LinkedList. You can use any of these approaches, either by using a map or by using Floyd’s cycle detection algorithm although the second approach is the most efficient one and should be preferred. If you want to practice such problems check out PrepBytes - [PrepBytes MyCode Contests](https://mycode.prepbytes.com/interview-coding/practice/linked-list)
