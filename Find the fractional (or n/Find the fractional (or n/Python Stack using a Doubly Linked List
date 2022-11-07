@@ -1,0 +1,81 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922643867-99.Python%20stack_Artboard%206.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we have to implement a stack, with the help of a doubly linked list.</p>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-6.png" alt="" /></p>
+<p><strong>Output</strong>
+For the input 4 3 2 1 our doubly linked list, which will have all functionalities of a stack, will be</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/double-linked-list-1.png" alt="" /></p>
+<p>and 1 will be the head of the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s think about how a stack works.
+It follows the LIFO(last in first out) principle. This means the element inserted at the last will be accessible to us.</p>
+<p>Now, lets recall what a doubly-linked list is. A doubly linked list has two pointers for every node:</p>
+<ul>
+<li>prev, which points to the previous node in the linked list.</li>
+<li>next, which points to the node next to the current node in the linked list.</li>
+</ul>
+<p>If we can amend the inserting new node operation in doubly linked list such a way that the current inserted element is always at the head of the linked list and is the first element accessible to us if we want to access an element from linked list, then we can see that our linked list is mimicking the behavior of stack.</p>
+<p>Similarly, we will try to think of other operations such as pop(), top(), etc of stack and how we can implement these operations using doubly linked list.</p>
+<p>If our input is 4 3 2 1, then our doubly linked list, which will have all functionalities of a stack, will be</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/double-linked-list-1.png" alt="" /></p>
+<p>Where the head will be pointing to 1 in the linked list.</p>
+<p>If input is 5 6 7 8, the the doubly linked list having all the functionalities of the stack will be</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/double-linked-list2-2.png" alt="" /></p>
+<p>Head will be pointing to 8.</p>
+<p>Let us have a glance at the algorithm.</p>
+<h3>Algorithm</h3>
+<p>There are mainly 6 functions of a stack. We will learn each function's approaches one by one. </p>
+<h4>push()</h4>
+<p>In the push() function, we push the element into the stack, and make it the top. </p>
+<p>So, to do the same with a doubly-linked list, we will check if the list is Null or not:</p>
+<ul>
+<li>If it is Null, then make the new data the head. </li>
+<li>If the list is not empty, then make the prev of head point to the new node, the next of new node point to the head and the prev of new node point to Null. </li>
+</ul>
+<p>In the end, the new node will become the head.</p>
+<h4>pop()</h4>
+<p>In the pop() function, we pop the topmost element of the stack and print it. </p>
+<p>So, to do the same with a doubly-linked list, first, we will check if the list is Null or not:</p>
+<ul>
+<li>If it is Null, then return None. </li>
+<li>If there is only one node in the list, then remove the head, and return None. </li>
+<li>If both the base cases fail, we will store the head.data . Now, we will increment the head, and make the prev of head point to Null. </li>
+</ul>
+<p>In the end, we will return the head.data that we stored.</p>
+<h4>top()</h4>
+<p>In the top() function, we have to return the top element of the stack. </p>
+<p>So, to do the same with a doubly-linked list, we will simply return the head.data.</p>
+<h4>size()</h4>
+<p>In the size() function, we have to return the size of the stack. </p>
+<p>So, to do the same with a doubly-linked list, we will simply create a counter and initialize it with 0. Then we will traverse through the list and increment the counter by 1 till we reach the end. </p>
+<p>In the end, we will return the counter, as that will be the size of the list.</p>
+<h4>isEmpty()</h4>
+<p>In the isEmpty() function, we have to return true if the stack is empty, else false. </p>
+<p>So, to do the same with a doubly-linked list:</p>
+<ul>
+<li>If the head is Null, we will return true.</li>
+<li>Else we will return false.</li>
+</ul>
+<h4>printstack()</h4>
+<p>In the Printstack() function, we have to print the stack. </p>
+<p>So, to do the same with a doubly-linked list, we will simply do a list traversal and print the elements one by one.</p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Python-Stack-using-a-Doubly-Linked-List-image-1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Python-Stack-using-a-Doubly-Linked-List-image-2.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Python-Stack-using-a-Doubly-Linked-List-image-3.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Python-Stack-using-a-Doubly-Linked-List-image-4.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3897]</p>
+<h3>Output</h3>
+<p><strong>Stack operations using Doubly LinkedList</strong>
+<strong>stack elements are:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;
+<strong>Top element is</strong>  1
+<strong>Size of the stack is</strong>  4
+<strong>stack elements are:</strong> 3-&gt;4-&gt;
+<strong>stack is empty:</strong> False</p>
+<p><strong>Time Complexity:</strong> O(n), as list traversal is needed.
+[forminator_quiz id="3896"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to implement a stack in python, using a doubly-linked list. This is a must-do problem as it requires the basic concepts of the doubly linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
