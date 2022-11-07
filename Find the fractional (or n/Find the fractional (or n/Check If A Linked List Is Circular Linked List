@@ -1,0 +1,81 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645185840215-linked%20list%20circular%20linked%20list-08-08.png)
+
+<h3>Problem Statement</h3>
+<p>Given a singly linked list, check if it is circular or not.</p>
+<h4>Examples</h4>
+<p><strong>Input:</strong> </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-8.png" alt="" /></p>
+<p><strong>Output:</strong> NO</p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-2-7.png" alt="" /></p>
+<p><strong>Output:</strong> YES</p>
+<p><strong>Input:</strong>  </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-3-1.png" alt="" /></p>
+<p><strong>Output:</strong> NO</p>
+<h3>Problem Statement Understanding</h3>
+<p>Before checking for a circular linked list, do you know what is a circular linked-list?</p>
+<p>A linked list is called circular if its last node points back to its first node.</p>
+<p>Now we will be able to understand the examples given above.</p>
+<ul>
+<li>For linked list </li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-1-8.png" alt="" /></p>
+<p>Here the last node points to NULL, hence it is not a circular linked-list.</p>
+<ul>
+<li>For linked list </li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-2-7.png" alt="" /></p>
+<p>Here the last node points back to the first node, hence it is a circular linked-list.</p>
+<ul>
+<li>For the linked list </li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-3-1.png" alt="" /></p>
+<p>Here, the last node points don’t point back to the first node. So, it is not a circular linked list.</p>
+<p>I hope you got the problem, now before moving to the approach section, try to think how will you approach it?</p>
+<h3>Approach 1</h3>
+<p>One simple approach is to store the head of the linked list and now start traversing the linked list from next node of head and check if:</p>
+<ul>
+<li>We again reached the head, it means that the linked list is circular linked list.</li>
+<li>If we reached null, or we got stuck in a cycle that doesn’t include head node, it means that the linked list is not a circular linked list.</li>
+</ul>
+<p>This approach is pretty simple, but here we will see how using cycle detection technique we find out if a linked list is circular or not in the next approach.</p>
+<h3>Approach 2</h3>
+<p>I hope you got an idea of what a circular linked list is. </p>
+<p>Let’s now look at how to identify such a linked list.</p>
+<h4>Helpful Observations</h4>
+<ul>
+<li>One thing we can observe is that only the linked lists containing a cycle can be a circular linked-list. So, if a linked list doesn’t have any cycle, we know that it is not circular.</li>
+<li>Another observation is that circular linked-lists have a cycle, and the cycle starts at the first node itself.</li>
+<li>So, finally, a linked list with a cycle will be called a circular linked list only if the point at which the cycle starts is the first node.</li>
+</ul>
+<p>To identify a linked list as a circular linked list, we need to make the following checks:</p>
+<ul>
+<li>If the linked list contains a cycle or not.</li>
+<li>If it has a cycle, then whether the node at which the cycle starts is the head node or not.</li>
+</ul>
+<p>Let’s state this in another way:</p>
+<ul>
+<li>A linked list is called circular if the next pointer of the last node of the list points back to the first node. If this pointer points to NULL or any other previous nodes (other than the first node), then the linked list won’t be called circular.</li>
+</ul>
+<p>Since it is clear what we need to do, take some time and think about how to implement it.</p>
+<p>You must know how to detect a cycle in a linked list before proceeding further.</p>
+<p>Below is the algorithm explaining the steps we need to take to implement our idea.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Detect a cycle in the given linked list (we will use Floyd’s cycle detection algorithm).</li>
+<li>If no cycle is found, then the linked list is linear. So return false.</li>
+<li>Else, if the cycle is found, find the starting point of the cycle.</li>
+<li>If the first node is the starting point, then the linked list is circular and return true.</li>
+<li>Else return false.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Check-If-A-Linked-List-Is-Circular-Linked-List-1.png" alt="" /></p>
+<h3>Code Implementation:</h3>
+<p>[TABS_R id=4118]</p>
+<h3>Output</h3>
+<p>NO
+YES
+NO</p>
+<p><strong>Time complexity:</strong> O(n), where n is the number of nodes in the linked list.
+[forminator_quiz id="4119"]</p>
+<p>Through this article, we learned how to check if a linked list is circular or not. Problems like these are good for strengthening your concepts in LinkedList. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
