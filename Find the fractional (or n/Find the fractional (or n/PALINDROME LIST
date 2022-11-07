@@ -1,0 +1,76 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645180815871-Article_430.png)
+### Concepts Used
+> Linked list,recursion ,stack.
+
+### Difficulty Level
+> Easy
+
+### Problem Statement :
+> Check whether the given linked list is a palindrome or not.
+
+#### Example:
+```
+2
+3
+2 5 2  true
+5
+4 5 6 3 4  false
+
+First list is a palindrome since the first element is same as the last and middle one is common.
+Second list is not a palindrome because the second element does not match the fourth element in the list.
+```
+
+<a href="https://mycode.prepbytes.com/problems/linked-list/PALNDRM" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+
+### EXPLANATION:
+#### Approach 1(Linked list reversal):
+&gt;Get the middle of the linked list.
+&gt;
+&gt;Reverse the second half of the linked list.
+&gt;
+&gt;Check if the first half and second half are identical.
+&gt;
+&gt;Construct the original linked list by reversing the second half again and attaching it back to the first half.
+
+
+**Note**:` This approach takes O(n) time and O(1) extra space.`
+
+#### Approach 2(Using recursion):
+> Use two pointers `left` and `right`. Move right and left using recursion and check for following in each recursive call.Sub-list is palindrome.Value at current left and right are matching.
+> If both above conditions are true then return true.
+
+```cpp
+    bool isPalindrome(Node*& left, Node* right)
+    {
+	// base case
+	if (right == nullptr)
+		return true;
+
+	// return false on first mismatch
+	if (!isPalindrome(left, right->next))
+		return false;
+
+	// copy left pointer
+	Node* prevLeft = left;
+	
+	// advance the left pointer to the next node
+	// this change would reflect in the parent recursive calls
+	left = left->next;
+
+	// In order for linked list to be palindrome, the character at the left
+	// node should match with the character at the right node
+	return (prevLeft->data == right->data);
+    }
+
+```
+
+#### Approach 3(Using stack):
+> A simple solution is to use a stack of list nodes. This mainly involves three steps.Traverse the given list from head to tail and push every visited node to stack.Traverse the list again. For every visited node, pop a node from stack and compare data of popped node with currently visited node.If all nodes matched, then return true, else false.
+
+**Note**: `This approach takes O(n) time and O(n) extra space(stack)`.
+
+### SOLUTIONS:
+[TABS_R id=1796]
+[forminator_quiz id="1797"]
+<p>This article tried to discuss Linked List, Recursion, Stack. Hope this blog helps you understand and solve the problem. To practice more problems on Linked List, Recursion, Stack you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.</p>
