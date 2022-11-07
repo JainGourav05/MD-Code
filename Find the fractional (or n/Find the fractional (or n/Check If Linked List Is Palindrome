@@ -1,0 +1,57 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645012115383-Article_200.png)
+<h3>Problem Statement</h3>
+<p>We will be given a linked list, and we need to find whether the given list is palindrome or not.</p>
+<h3>Problem Statement Understanding</h3>
+<p>To understand this problem statement, let us take examples.</p>
+<p>If the given linked list is 3→1→18→1→3→NULL, and now according to the problem statement, we need to determine whether the given linked list is palindrome or not.</p>
+<ul>
+<li>If we iterate the given list forward and print the elements, we will get: 3,1,18,1,3</li>
+<li>Now, if we iterate the given list backward and print the elements, we will get: 3,1,18,1,3.</li>
+<li>We can see that no matter we iterate forward or backward, we are getting the same output at the end. So, the given list is a palindrome.</li>
+</ul>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<p>To check whether a linked list is a palindrome or not, we need to traverse the list backward from the last node of the list, but as our linked list is a singly linked list, we cannot move backwards in the list.</p>
+<p>To solve the above problem, we will use a stack and store all the elements of the list in the stack while forward iteration of the list.</p>
+<ul>
+<li>After that, we will again iterate the list and will simultaneously pop an element from the stack at each iteration and will check if this popped element is equal to the current element of the list or not.</li>
+<li>If all the elements are equal, then the list is a palindrome. Else, It is not a palindrome.</li>
+</ul>
+<p><strong>Time Complexity:</strong> O(n), where n is the total number of nodes in the list
+<strong>Space Complexity:</strong> O(n), due to the stack</p>
+<p>The above approach seems fine, but we are using a stack that is increasing the space complexity. So, we need to think of a better approach where no extra space is used. </p>
+<h3>Approach 2</h3>
+<p>Since we cannot move backward in the list, we need to devise an algorithm to get our work done.</p>
+<p>We can reverse the second half of the list and then simultaneously compare the elements from the first and second half of the list.</p>
+<ul>
+<li>If all elements of first and the second half are equal, then the list is a palindrome.</li>
+<li>Else, the list is not a palindrome.</li>
+</ul>
+<h3>Algorithm</h3>
+<p>1) If the list is empty or it has only one node then simply return true as an empty list or a list with a single node is always a palindrome.
+2) Initialize two pointers <strong>slow</strong> and <strong>fast</strong> with the first node of the list (finding the middle node of the linked list).</p>
+<ul>
+<li>Run a while loop till the <strong>fast</strong> reach the last or last second node of the list.</li>
+<li>In each iteration, advance <strong>slow</strong> forward by one node and <strong>fast</strong>  forward by two nodes.</li>
+<li>Now, when the <strong>fast</strong> is at the end of the list, <strong>slow</strong> will be pointing to the middle node of the linked list.
+3) Now, reverse the second half of the linked list starting from <strong>slow-&gt;next</strong> to the last node of the linked list.
+4) After that, simultaneously iterate through the first half and the second half of the linked list using pointers <strong>head</strong> and <strong>slow</strong>:</li>
+<li>If the data of the node to which <strong>head</strong> and <strong>slow</strong> are pointing are not equal, return false.</li>
+<li>Else, advance <strong>slow</strong> and <strong>head</strong> by one node.
+5) After execution of the above while loop, return true from the function.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2.jpg" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5807]</p>
+<h4>Output</h4>
+<p>The list is a palindrome</p>
+<p><strong>Time Complexity:</strong> O(n), n is the total number of nodes in the list.
+[forminator_quiz id="5808"]</p>
+<p>So, in this blog, we have tried to explain how you can Check If a Linked List Is Palindrome most optimally. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
