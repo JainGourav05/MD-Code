@@ -1,0 +1,70 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922083555-88.Partitioning-a-linked-list_Artboard%201.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Proper understanding of concepts based on Linked Lists can give you an edge in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, given a linked list and a value X, we are required to partition it such that all nodes less than X come before nodes greater than or equal to x. </p>
+<p><strong>Note:</strong> You should maintain the original relative order of the nodes in each of the two partitions.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s understand the problem statement with help of examples.</p>
+<p>If the given linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input-10.png" alt="" /></p>
+<p>It means that we have to move all nodes smaller than 3 before the nodes having values greater than or equal to 3. Also, while partitioning the linked list around value 3,  the original relative order of the nodes in each of the two partitions should be maintained.</p>
+<p>So our final resultant linked list after partitioning will look like:
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/output-4.png" alt="" /></p>
+<p>This statement <strong>maintains the original relative order of the nodes in each of the two partitions</strong> implies that while partitioning, the nodes in each of the two partitions should be in the same order as they are present in the original linked list.</p>
+<ul>
+<li>From the above linked list, we can see that 1, 2 and 2 will come in the first partition(nodes smaller than X) and 4, 3 and 7 will come in the second partition(nodes greater than or equal to X).</li>
+<li>If we carefully compare the resultant linked list and the original linked list we can clearly see that 1, 2 and 2, the nodes of first partition are in the same order in the resultant list as they were in the original linked list (2 is occurring after 1 and another 2 is occurring after 2). Similarly, the nodes of the second partition 4, 3 and 7 are also in the same order as they were in the original linked list (3 is occurring after 4 and another 5 is occurring after 3).</li>
+</ul>
+<p><strong>Explanation:</strong> In the resultant linked list, first there will be the elements of the first partition (elements or nodes smaller than X) and then there will be the elements of the second partition (elements greater than or equal to X). Also, both the partitions will preserve the order from the original linked list.</p>
+<p>Now I think from the above example the problem is clear, we will have to now think of how we can approach this problem.</p>
+<h3>Approach</h3>
+<p>As we need all the nodes having value smaller than X before nodes having value greater than or equal to X, so we will have to divide the original linked list into two sections: </p>
+<ul>
+<li>A list of nodes with values less than X and,</li>
+<li>A list of nodes with values higher than or equal to X. </li>
+</ul>
+<p>Then, after diving the original linked list, we'll use pointers to stitch them back together after the division such that all the nodes having smaller value than X comes before nodes having greater value of equal to X.</p>
+<h4>The algorithm in brief:</h4>
+<p>We will traverse the original linked list as normal, and we will select in which linked list a node should belong to based on its value. </p>
+<ul>
+<li>If a node's value is less than X, it will be appended to the <strong>low-container list</strong>, which keeps track of nodes with values less than X.</li>
+<li>Otherwise, it will be appended to the <strong>high-container list</strong>, which keeps track of nodes with values greater than or equal to X.</li>
+</ul>
+<p>Finally, after traversing, we'll sew the end node of the first linked list (the <strong>low-container list</strong>) to the head node of our second list (the <strong>high-container list</strong>). This way, we can maintain the order of elements in the list.</p>
+<p>After the complete traversal of the original linked list, the <strong>low-container</strong> list will have all the nodes having value smaller than X, while the <strong>high-container</strong> list will have all the nodes having values greater than or equal to X.</p>
+<p>A few buffers will be required to maintain track of the partitioned lists.</p>
+<ul>
+<li><strong>new_Head:</strong> Head of the new modified linked list.</li>
+<li><strong>low_Head:</strong> Head of low-container linked list.</li>
+<li><strong>high_Head:</strong> Head of high-container linked list.</li>
+<li><strong>less:</strong> A pointer that will help us in linking every node with the value lower than X together, this way we will get the low-container list. It will act as an iterator for the low-container linked list.</li>
+<li><strong>more:</strong> A pointer which will help us in linking every node with the value higher or equal to the X together, this way we will get the high-container list. It will act as an iterator for the high-container linked list.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Check if <strong>head == NULL</strong>, If true, return NULL.</li>
+<li>Initialize <strong>new_Head</strong>, <strong>low_Head</strong>, <strong>high_Head</strong>, <strong>less</strong> and <strong>more</strong> to NULL.</li>
+<li>Begin iterating the original linked list. We'll try to make two distinct linked lists (<strong>low-container list</strong> and <strong>high-container list</strong>) out of the original linked list by just changing the links.</li>
+<li>While traversing the original linked list:
+<ul>
+<li>If a node is having value smaller than X, it will get appended to the end of <strong>low-container list</strong>.</li>
+<li>If a node is having value greater than or equal to X, it will get appended to the end of <strong>high-container list</strong>.</li>
+</ul></li>
+<li>Once the traversal of the original linked list is over, the <strong>low-container list</strong> will be a list having all the nodes with values smaller than X and the <strong>high-container list</strong> will contain all the nodes from the original list having values greater than or equal to X.</li>
+<li>The heads of the two linked lists above will both point to the first node of their own lists.</li>
+<li>Finally, all that remains is to stitch the lists back together. The <strong>low-container linked list's</strong> last node should point to the head of the <strong>high-container linked list</strong>. </li>
+<li>We will return the head of <strong>high-container list</strong> if the <strong>low-container list</strong> does not exist (the original linked list does not contains any nodes with a value less than X) and if the <strong>low-container list</strong> exists we will make <strong>new_Head</strong> point to head of <strong>low-container</strong>(<strong>low_Head</strong>) and will return <strong>new_Head</strong>.</li>
+</ul>
+<p>The problem has been solved only by adjusting the links.</p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Partitioning-a-linked-list-around-a-given-value-and-keeping-the-original-order-1.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Partitioning-a-linked-list-around-a-given-value-and-keeping-the-original-order-2.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Partitioning-a-linked-list-around-a-given-value-and-keeping-the-original-order-3.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4209]</p>
+<h4>Output</h4>
+<p>1→2→2→4→3→7</p>
+<p><strong>Time Complexity:</strong> O(N) – we are traversing through the original linked list and only creating 2 linked lists out of it.</p>
+<p>[forminator_quiz id="4210"]</p>
+<p>In this article, we have tried to solve the problem of partitioning a linked list around a given value while maintaining the original order. This problem is interesting as well as important from the interview’s point of view. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
