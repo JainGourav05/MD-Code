@@ -1,0 +1,79 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645174449305-Article_399.png)
+### Concepts Used
+> Linked lists, Heaps/priority queue(efficient soltution)
+
+### Difficulty Level
+> Hard
+
+### Problem Statement :
+&gt;Yor are given K sorted linked lists. You have to merge K sorted linked lists into one sorted list. The size of the linked list maybe different.
+
+<a href="https://mycode.prepbytes.com/problems/linked-list/MERGEKSORLIST" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+#### Example:
+```
+Input:
+[
+list[1]:4−>6−>8−>10−>15
+list[2]:1−>5−>9
+list[3]:2−>3−>7−>11
+]
+
+Output: 
+1−>2−>3−>4−>5−>6−>7−>8−>9−>10−>11−>15
+```
+
+### EXPLANATION:
+#### Approach 1`(Brute force):`
+&gt;All the given lists are sorted, which means that the head of each list would be the smallest element in its chain. So we could extract the minimum from the k head nodes and append it to the result list.
+&gt;
+&gt;`Time complexity`: `O(kN)` where `k` is the number of linked lists.Almost every selection of nodes in final linked costs `O(k)` `(k-1 times comparison)`.
+&gt;
+&gt;`Space complexity`: `O(1)`. 
+
+#### Approach 2:
+The idea is to insert all the node values from all the `k` lists into an array. Sorting the array and creating a new linked list from the sorted array will give the required output.
+
+**Pseudo code:**
+```
+     ListNode mergeKLists(ListNode[] lists, int k)
+     {
+    // x array to store all the values from lists
+    int x[]
+    for(i = 0 to k) 
+    {
+        ListNode temp = lists[i]
+        while(temp is not null)
+       {
+            // append the value of temp to x
+            x.add(temp.val)
+            temp = temp.next
+        }
+    }
+    // sort all the values of x
+    sort(x)
+    // Head node to return
+    ListNode head(-1)
+    ListNode temp = head
+    for(i = 0 to x.size()) {
+        ListNode newVal(x[i])
+        temp.next = newVal
+        temp = temp.next
+    }
+    return head.next
+    } 
+```
+
+ &gt;`TIME COMPLEXITY`: O(NlogN).
+ &gt;`SPACE COMPLEXITY`: O(N),
+ &gt;where `N` is the total number of nodes 
+ 
+#### Approach 3`(Heaps):`
+Create a priority queue.Insert the first node from all the lists into the priority queue.Loop until the priority queue is not empty Extract the minimum node from the queue and add it to our result list.Add the next node (if present) from the extracted node list.
+ Return the resultant list.
+
+### SOLUTIONS:
+[TABS_R id=1807]
+[forminator_quiz id="1808"]
+
+<p>This article tried to discuss Linked lists, Heaps/priority queue. Hope this blog helps you understand and solve the problem. To practice more problems on Linked lists, Heaps, Priority queue you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.</p>
