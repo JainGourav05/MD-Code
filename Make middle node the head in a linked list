@@ -1,0 +1,31 @@
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a singly linked list. We have to find the middle of the linked list and set it as the head of the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Suppose the linked list is 1 - &gt; 2 - &gt; 6 - &gt; 4 -&gt; 5. Here, the middle is 6. Now, we will have to remove this from the middle, and make it the head of the list. So, the final Linked list will be 6 - &gt; 1 - &gt; 2 - &gt; 4 - &gt; 5</p>
+<p><strong>Input:</strong> 1 2 6 4 5 </p>
+<p><strong>Output:</strong> 6 1 2 4 5</p>
+<p><strong>Explanation:</strong> As the middle node is 6, it becomes the head of the linked list. </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/43_1-01.png" alt="" /></p>
+<p>As we know, to find the middle of a linked list, the best method is the two-pointer method. We will make use of the slow and fast pointer. As soon as we will find the middle node using the slow and fast pointer, we will change the necessary links and make it as the head of the list. Let us have a glance at the approach.</p>
+<h3>Approach</h3>
+<p>Firstly, we have to find the middle of the linked list. For that, we can use the two-pointer method. Initially, both the pointers will point to the head of the linked list. Then, we will move both of the pointers. The fast pointer will jump two places, whereas the slow pointer will one place. When the fast pointer will reach the end of the linked list, the slow pointer will be pointing to the middle of the linked list. We also have to keep the track of the previous node of the middle.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Create two pointers- slow and fast. Initially, both the pointers will pointer to the head of the linked list.</li>
+<li>Now, we will keep storing the slow pointer in prev, and make the slow pointer jump one place and the fast pointer jump two places.</li>
+<li>When the fast pointer will reach the end of the linked list, the slow pointer will be pointing to the middle of the linked list.</li>
+<li>Now, we have the slow pointer pointing to the middle of the linked list, and the prev is pointing to the previous node of the middle.</li>
+<li>For the final part, make the node prev point to the next of the middle element, and make the middle point to the head. By doing this, we are removing the connection between the middle and its previous node. </li>
+<li>Lastly, make the middle pointer the head.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/43_2-01-1.png" alt="" /></p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=3711]</p>
+<p><strong>Output</strong>
+Linked list before: 1 2 6 4 5
+Linked list after : 6 1 2 4 5</p>
+<p>[forminator_quiz id="3597"]</p>
+<p><strong>Space Complexity:</strong> O(1), as only temporary variable are being created.</p>
+<p>So, in this article, we have tried to explain the most efficient approach to make the middle node head in a linked list. The question uses the two-pointer method which makes it an important one for coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
