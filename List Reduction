@@ -1,0 +1,88 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645527281916-Article_378.png)
+### CONCEPTS USED:
+&gt;Linked list
+
+### DIFFICULTY LEVEL:
+&gt;Hard 
+
+
+
+### PROBLEM STATEMENT`(`SIMPLIFIED`)`:
+> Given a linked list of `N` nodes such that each node have a lower case alphabet `(a - z)`. Your task is to remove the nodes which have the same data and are next to each other.
+>    
+
+<a href="https://mycode.prepbytes.com/problems/linked-list/STRD" title="Go to mycode.prepbytes.com" target="_blank" rel="noopener noreferrer"><u><strong>See original problem statement here</strong></u></a>
+
+#### For Example:
+```
+Input : bddbcgdghgii
+
+Output: cgdghg
+
+Explanation : bddbcgdghgii -> bbcgdghg -> cgdghg
+```
+
+### SOLVING APPROACH:
+
+1. The idea is to create another list `temp` to store the reduced version of the original list. 
+
+2. Traverse the original list and perform the following operations :-
+ 
+ 1. If the `temp` list is empty, simply append the current element into the list.  
+ 2. If the `temp` list is not empty, check if the last element inserted is equal to the current element, If `Yes` remove the last element added.  
+ 3. Else if the last element is not equal to the current element, append the current element into the list. Finally our original list will be reduced and stored in the `temp` list.
+
+
+#### ILLUSTRATION:
+```
+list = bddbcgdghgii
+temp is empty
+
+Start traversing the list :-
+
+for 1st element b, temp is empty so append into it 
+temp = b
+
+for 2nd element d, b is not equal to d so append into it
+temp = bd
+
+for 3rd element d, d is equal to d so remove already added d
+temp = b
+
+for 4th element b, b is equal to b so remove already added b, temp becomes empty now
+temp = 
+
+for 5th element c, temp is empty so append into it
+temp = c
+
+for 6th element g, g is not equal to c so append into it
+temp = cg
+
+for 7th element d, d is not equal to g so append into it
+temp = cgd
+
+for 8th element g, g is not equal to d so append into it
+temp = cgdg
+
+for 9th element h, h is not equal to g so append into it
+temp = cgdgh
+
+for 10th element g, g is not equal to h so append into it
+temp = cgdghg
+
+for 11th element i, i is not equal to g so append into it
+temp = cgdghgi
+
+for 12th element i, i is equal to i so remove already added i
+temp = cgdghg
+
+So, our final reduced list is cgdghg
+```
+
+### SOLUTIONS:
+[TABS_R id=2038]
+**Space Complexity**: `O(N)`, for creating an `Additional linked list`.
+
+[forminator_quiz id="2135"]
+
+This article tried to discuss **Linked list**. Hope this blog helps you understand and solve the problem. To practice more problems on Linked list you can check out <a href="https://mycode.prepbytes.com/competitive-coding/practice">MYCODE | Competitive Programming</a>.
