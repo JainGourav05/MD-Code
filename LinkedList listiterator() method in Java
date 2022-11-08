@@ -1,0 +1,21 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644915339292-linked%20list%20listiterator-04.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<p>In this article, we are going to learn how to use the LinkedList listIterator() method in Java.</p>
+<h3>Approach and Algorithm</h3>
+<h4>listIterator() method</h4>
+<p>This method returns a list-iterator containing all the same elements as that of the given LinkedList, in the same sequence, starting from a specific index that is passed as a parameter to the listIterator() method.</p>
+<p><strong>Syntax :</strong> <strong>ListIterator newlist= LinkedList.listIterator(int index)</strong></p>
+<p><strong>Note:</strong> The index specifies the position form where the ListIterator will start operating and return values.</p>
+<p><strong>Return value:</strong> Returns the list made using the ListIterator, starting from the given index.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4176]</p>
+<h4>Output</h4>
+<p>LinkedList: [Coding, is, Fun, 10, 20]
+The list is as follows:
+Fun
+10
+20</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the number of elements present starting from the given index, till the end of the list.
+[forminator_quiz id="4161"]</p>
+<p>So, in this article, we have tried to explain how to use LinkedList listIterator() method in Java. Java Collections is an important topic when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
