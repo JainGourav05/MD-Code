@@ -1,0 +1,102 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645007849150-Article_170.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts to know while preparing for interviews. Having a good grasp of a linked list can be a huge plus point in coding interviews.</p>
+<h3>Problem Statement</h3>
+<p>We will be given two numbers in the form of a linked list, and we need to return a third list that will be the product of both the given lists.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's try to understand the problem with the help of an example:</p>
+<p>If the linked lists given to us be <strong>list1 = 2→3→5→NULL</strong> and <strong>list2 = 1→4→NULL</strong>.</p>
+<ul>
+<li>In numeric form, <strong>list1 = 2→3→5→NULL</strong> can be represented as <strong>235</strong> and <strong>list2 = 1→4→NULL</strong> can be represented as <strong>14</strong>.</li>
+<li>So, according to the problem statement, we need to multiply the given linked lists, i.e., find the product of the numeric form of list1 and list2, and return the product in the form of a linked list.</li>
+<li>The output list will be <strong>3→2→9→0→NULL</strong>, because the product of the numeric form of list1 and list2 is *<em>235</em>14 = 3290**.</li>
+</ul>
+<p>Let’s take another example. If the linked lists given to us be <strong>list1 = 6→7→4→NULL</strong> and <strong>list2 = 2→9→5→NULL</strong>.</p>
+<ul>
+<li>In this case, the numeric form of list1 will be <strong>674</strong>, and list2 will be <strong>295</strong>. So, our output will be the linked list representation of *<em>674</em>295 = 198830<strong>, which will be </strong>1→9→8→8→3→0→NULL**.</li>
+</ul>
+<h5>Some more examples</h5>
+<p>Sample Input 1: </p>
+<ul>
+<li>list1: 1→3→5→NULL</li>
+<li>list2: 2→3→4→NULL</li>
+</ul>
+<p>Sample Output 1: 3→1→5→9→0→NULL</p>
+<p>Sample Output 2:</p>
+<ul>
+<li>list1: 1→6→4→8→NULL</li>
+<li>list2:  1→2→3→4→NULL</li>
+</ul>
+<p>Sample Output 2: 2→0→3→3→6→3→2→NULL</p>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<ul>
+<li>The input list given to us will contain the most significant digit as the head and the least significant as the last node.</li>
+<li>We know that, for multiplication, we need to start multiplying the digit from the least significant digit to the most significant one.</li>
+<li>We cannot traverse backward in the list so, first, we need to reverse both the lists.</li>
+<li>Now, we will multiply each digit of the second list one by one with a complete first list (just as we do a normal multiplication on pen-paper).</li>
+<li>We will multiply the first digit of the second list with the complete first list and save it to use afterwards.</li>
+<li>Then, we will multiply the second digit of the second list with the complete first list and add this list with the previously obtained list by shifting the elements of this list by one place to the right. </li>
+<li>We will repeat the above steps of multiplication of digits of second list with the complete first list until we reach the second list's end.</li>
+<li>Remember to take care of carry while doing addition and multiplication.</li>
+<li>Finally, we will reverse the obtained list and return it.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Reverse both the linked lists.</li>
+<li>Create a <strong>dummy node</strong> with a value of -1 and name it as <strong>ans</strong>. Also, initialize a pointer <strong>ans_itr</strong> with the address of the dummy node and a pointer <strong>l2_itr</strong> with the head of the second list.</li>
+<li>Now, run a while loop till <strong>l2_itr</strong> is not NULL.</li>
+<li>Create a <strong>head</strong> pointer that will call <strong>multiplyLinkedListWithDigit</strong> function with <strong>l1</strong> and <strong>l2_itr-&gt;data</strong> as parameters. (This function will multiply the single digit of the second list’s node with the complete first list).</li>
+<li>Now, control moves to <strong>multiplyLinkedListWithDigit function</strong>:
+<ul>
+<li>Create a <strong>dummy node</strong> with a value of -1 and name it <strong>head</strong>. Also, initialize a pointer named <strong>curr</strong> with it and an integer variable <strong>carry</strong> with zero.</li>
+<li>Run a while loop till <strong>l1</strong> is not NULL or carry is non-zero.</li>
+<li>Calculate the <strong>sum</strong> variable as the sum of <strong>carry</strong> and If <strong>l1</strong> is not NULL, then the product of <strong>digit</strong> and <strong>l1-&gt;data</strong>.</li>
+<li>Now, update <strong>carry</strong> by removing the last digit from the <strong>sum</strong> by doing <strong>sum/10</strong>.</li>
+<li>Update <strong>sum</strong> as the last digit of sum, i.e., <strong>sum %= 10</strong>.</li>
+<li>Create a new node with the value of sum and attach it after the <strong>curr</strong> node.</li>
+<li>If  <strong>l1</strong> is not NULL, advance <strong>l1</strong> by a node </li>
+<li>Advance <strong>curr</strong> pointer by one node.</li>
+<li>After execution of the while loop, return <strong>head-&gt;next</strong> as the head was the dummy node created initially.</li>
+</ul></li>
+<li>Now, advance the <strong>l2_itr</strong> to the next node for further multiplication.</li>
+<li>Update the <strong>ans_itr</strong> function by calling the <strong>addTwoLinkedList function</strong> with <strong>ans_itr</strong> and <strong>head</strong> as parameters.</li>
+<li>Now the control moves to <strong>addTwoLinkedList function</strong>:
+<ul>
+<li>Initialize a <strong>prev</strong> pointer with the head of the first list and an integer variable <strong>carry</strong> with zero.</li>
+<li>Run a while loop till <strong>l2</strong> is not NULL or <strong>carry</strong> is non-zero.</li>
+<li>Calculate <strong>sum</strong> by adding <strong>carry</strong>, <strong>prev-&gt;next-&gt;data</strong> if <strong>prev-&gt;next</strong> is not NULL and <strong>l2-&gt;data</strong> if l2 is not NULL.</li>
+<li>Now, update <strong>carry</strong> by removing the last digit from the <strong>sum</strong> by doing <strong>sum/10</strong>.</li>
+<li>Update <strong>sum</strong> as the last digit of <strong>sum</strong> i.e., <strong>sum %= 10</strong>.</li>
+<li>Check if <strong>prev-&gt;next</strong> is NULL or not.</li>
+<li>If it is not NULL then, assign <strong>sum</strong> value to <strong>prev-&gt;next-&gt;data</strong>.</li>
+<li>Else, create a new node with <strong>sum</strong> value and attach it after <strong>prev</strong>.</li>
+<li>If <strong>l2</strong> is not NULL, advance <strong>l2</strong> by one node.</li>
+<li>Advance <strong>prev</strong> by one node.</li>
+<li>After execution of the loop, return <strong>l1</strong>.</li>
+</ul></li>
+<li>Advance <strong>ans_itr</strong> by one node.</li>
+<li>After completion of the while loop, advance <strong>ans</strong> by one node, as <strong>ans</strong> was a dummy node created initially.</li>
+<li>Now, reverse the list having <strong>ans</strong> as head and return it.</li>
+</ul>
+<p><strong>Note:</strong> To understand the algorithm better, follow along with code.</p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-26.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-26.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-15.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_4-10.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_5_p_6.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_7_p_8.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5285]</p>
+<h3>Output</h3>
+<p>Linked list obtained by multiplying list1 and list2:
+3 -&gt; 2 -&gt; 9 -&gt; 0 -&gt; NULL</p>
+<p><strong>Time Complexity:</strong> O(N*M), where N and M are the numbers of nodes in the linked list 1 and 2.
+<strong>Space Complexity:</strong> O(X), where X will be the number of nodes in the resultant list.</p>
+<p>So, in this blog, we have tried to explain how you can multiply two linked lists in the most optimal way. This is one of the good problems that helps you strengthen your concepts in LinkedList and if you want to practice more such problems, you can checkout <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked List)</a>.</p>
