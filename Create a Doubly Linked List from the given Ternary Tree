@@ -1,0 +1,87 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645007594981-Article_164.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a ternary tree, and we have to convert it to a doubly linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with the help of examples.</p>
+<p><strong>Note:</strong> A ternary tree is very much similar to a binary tree, but instead of having two children, it has three children left, middle, and right.</p>
+<p>Let’s assume that the given ternary tree is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-22.png" alt="" /></p>
+<ul>
+<li>According to the problem statement, we need to convert this given ternary tree to a doubly linked list.</li>
+<li>After converting the given tree to doubly linked list, our doubly linked list will look like: </li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-23.png" alt="" /></p>
+<p>Taking another example, if the given ternary tree is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-13.png" alt="" /></p>
+<ul>
+<li>Then, in this case, after conversion, our doubly linked list will be:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_4-9.png" alt="" /></p>
+<p>Now, I think from the above examples, the problem statement is clear. Let’s see how we can approach it.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Before moving on further, let’s see some helpful observations, which will help us to approach this problem.</p>
+<h4>Helpful Observations</h4>
+<p>Let’s compare the relative position of nodes in the binary tree and doubly linked list.</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_5-5.png" alt="" /></p>
+<ul>
+<li>Node 15 is the root node, so it occurs first in the doubly linked list. It is not part of any subtree rooted at some other node, i.e., it is not a child of any other node.</li>
+<li>In the resultant doubly linked list, node 4 will occur before nodes 9, 5, and 1 as they are children's of node 4.</li>
+<li>Similarly, node 6 will occur before nodes 2, 7, and 10 as they are the children's of node 6.</li>
+</ul>
+<p>Hence, it is clear from above observations that every node should be inserted first in the doubly linked list, followed by its children's.</p>
+<ul>
+<li>If we consider the children's of node 4, we observe that node 9 is before node 5 and node 5 is before node 1 in the doubly linked list.</li>
+<li>If we consider the children's of node 6, we observe that node 2 is before node 7 and node 7 is before node 10 in the doubly linked list.</li>
+</ul>
+<p>Hence, it is clear from above observations that from children's, the left child will be inserted first, followed by the mid-child and at last the right child. </p>
+<p>In this way, our doubly linked list will be formed.</p>
+<h3>Approach</h3>
+<p>While creating a Doubly Linked List from a ternary tree, the Doubly Linked List must follow the following properties:</p>
+<ul>
+<li>The <strong>left pointer</strong> of a node in ternary tree will act a <strong>prev</strong> pointer in the Doubly Linked List.</li>
+<li>The <strong>right pointer</strong> of a node in ternary tree will act a <strong>next</strong> pointer in the Doubly Linked List.</li>
+<li>The <strong>middle pointer</strong> of a ternary tree node will point to null.</li>
+</ul>
+<p>To create a desired Doubly Linked List from the given Ternary tree: </p>
+<ul>
+<li>We need to traverse the given tree using preorder traversal and insert the nodes in our Doubly Linked List following the preorder traversal of the tree.</li>
+</ul>
+<p>In <strong>preorder traversal</strong>, the root is visited first, followed by its left child and then right child. So, we will add the node in our doubly linked list as soon as it is visited while doing preorder traversal on the given ternary tree.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>
+<p>Create <strong>head</strong> and <strong>tail</strong> of the linked list (<strong>head</strong> will be the starting point of the Doubly Linked List, and <strong>tail</strong> will store the last node of the Doubly Linked List).</p>
+</li>
+<li>
+<p>Perform a preorder traversal on the given tree.</p>
+</li>
+<li>
+<p>If the node is not present already in our linked list, then insert the node at the tail of the linked list. To insert a node to the list, we will use tail pointer. Suppose we have to add a node to the list, then:</p>
+<ul>
+<li>First, the <strong>tail.right</strong> will point to <strong>node</strong> to be inserted <strong>(tail.right = node)</strong>.</li>
+<li>Then <strong>node.left</strong> will point to <strong>tail</strong> <strong>(node.left = tail)</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Finally, output the desired Doubly Linked List.</p>
+</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_6-5.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_7-5.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_8-6.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_9-2.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_10-1.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5318]</p>
+<h4>Output</h4>
+<p>Converted Doubly linked list
+15 4 9 5 1 6 2 7 10 8</p>
+<p><strong>Time Complexity:</strong> O(n), where n is the total number of nodes in the given tree. We are traversing the tree which takes linear time.</p>
+<p>[forminator_quiz id="5319"]</p>
+<p>So, in this blog, we have tried to explain how you can create a doubly linked list from a ternary tree. This is one of the good problems that helps you strengthen your concepts in LinkedList and if you want to practice more such problems, you can checkout <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked List)</a>.</p>
