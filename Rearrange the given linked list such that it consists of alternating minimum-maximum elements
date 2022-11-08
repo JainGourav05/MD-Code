@@ -1,0 +1,111 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645000410738-Article_130.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a LinkedList (root node) and we are asked to rearrange it such that after rearrangement, it will contain alternating minimum and maximum elements in the following format:</p>
+<ul>
+<li>The first element should be the minimum element. </li>
+<li>The second element should be the maximum element. </li>
+<li>The third element should be the next minimum and the fourth element should be the next maximum and so on.</li>
+</ul>
+<p>Let’s see an example:
+<strong>Input</strong>:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-6.png" alt="" /></p>
+<p><strong>Output</strong>:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/output-5.png" alt="" /></p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s first understand the problem statement with the help of examples.</p>
+<p>If the given linked list is: head →12 → 4 → 5 → 9 → 10 → 6.
+We can form our output list having alternating minimum-maximum elements following the below steps.</p>
+<ul>
+<li>
+<p>As 4 is the minimum element so, it will be the first element in the resultant list.</p>
+<ul>
+<li>Resultant list after this step: head →4 </li>
+</ul>
+</li>
+<li>
+<p>12 is the maximum element so, it will be the second element in the resultant list.</p>
+<ul>
+<li>Resultant list after this step: head →4 → 12</li>
+</ul>
+</li>
+<li>
+<p>5 is the next minimum after 4 so, it is the third element. </p>
+<ul>
+<li>Resultant list after this step: head →4 → 12 → 5 </li>
+</ul>
+</li>
+<li>
+<p>10 is the next maximum after 12 so, it is the fourth element. </p>
+<ul>
+<li>Resultant list after this step: head →4 → 12 → 5 → 10 </li>
+</ul>
+</li>
+<li>
+<p>6 is the next minimum after 5 so, it is the fifth element. </p>
+<ul>
+<li>Resultant list after this step: head →4 → 12 → 5 → 10 → 6 </li>
+</ul>
+</li>
+<li>
+<p>9 is the next maximum after 10 so, it is the sixth element.</p>
+<ul>
+<li>Resultant list after this step: head →4 → 12 → 5 → 10 → 6 → 9</li>
+</ul>
+</li>
+<li>
+<p>Our final resultant linked list having alternating minimum-maximum elements will be: head →4 → 12 → 5 → 10 → 6 → 9</p>
+</li>
+</ul>
+<p>Now I think from the above examples, the problem statement is clear. So let's see how we will approach it. Any Ideas?</p>
+<ul>
+<li>If not, it's okay. We will see in the next section some helpful observations using which we will try to devise our algorithm.</li>
+</ul>
+<p>Let’s move to the next section.</p>
+<h3>Helpful Observations</h3>
+<ol>
+<li>
+<p>If we sort the given list we get:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-1.png" alt="" /></p>
+</li>
+<li>
+<p>If we reverse the sorted list after the middle element we get:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-2.png" alt="" /></p>
+</li>
+<li>
+<p>The first half of the linked list from observation 2, which contains linked list sorted in ascending order.</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-3.png" alt="" /></p>
+</li>
+<li>
+<p>The second half of the linked list from observation 2, which contains linked list sorted in descending order.</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-4.png" alt="" /></p>
+</li>
+</ol>
+<p>Here, on careful observation we can see that our resultant list head →4 → 12 → 5 → 10 → 6 → 9 is nothing but just a combination of the alternate nodes from the two lists in observations 3 and 4. So, we will use this observation to create our algorithm.</p>
+<h3>Approach and Algorithm</h3>
+<ul>
+<li>Sort the given list. Here, we will be using merge sort to sort the given list. You can sort the list using any sorting method you like. </li>
+<li>Get the middle element using the tortoise and hare approach. The tortoise and hare approach is the efficient way to find the middle element of a list.</li>
+<li>Reverse the list after the middle element and store it as a separate list.</li>
+<li>Create a new empty list pointed by the result pointer.</li>
+<li>Alternatively, add elements from the firstList and the reversedList starting with the firstList as we have to add in minimum and maximum order.</li>
+<li>After adding all the elements from the firstList and the reversedList into the list pointed by the result. The result will contain the required list having alternating minimum-maximum elements.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-5.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-6.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-7.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Rearrange-the-given-linked-list-such-that-it-consists-of-alternating-elements-8.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4890]</p>
+<h4>Output</h4>
+<p>4 12 5 10 6 9</p>
+<p><strong>Time Complexity</strong>: O(n*logn), where n is the number of nodes. </p>
+<ul>
+<li>O(n*logn) time is used to sort the list. </li>
+<li>O(n) time is used to find the mid element. </li>
+<li>O(n) time is used to reverse the list.</li>
+<li>O(n) to create the resultant list from the first list and reversed list.
+Summing up we get O(n<em>logn + n + n + n) = O(n</em>logn).</li>
+</ul>
+<p>[forminator_quiz id="4889"]</p>
+<p>So, in this blog, we have tried to explain how you can rearrange a given list such that it consists of alternating minimum-maximum elements in the most efficient way. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
