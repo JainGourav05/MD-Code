@@ -1,0 +1,73 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644913591769-Java.util.LinkedList.offer%28%29%2C%20offerFirst%28%29%2C%20offerLast%28%29%20in%20Java_Artboard%201.png)
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<p>The linked list additionally contains a function that handles the task of flexible element addition and helps addition both at the front and rear of the list ().
+These functions actually <strong>offer</strong> the facility and are termed as offer().</p>
+<h3>offer(Element x) Method</h3>
+<p><strong>Syntax:</strong> public boolean offer (Element x)</p>
+<p><strong>Parameters:</strong> <strong>x</strong>, the element to be added.</p>
+<p><strong>Return Value:</strong> This function returns true after successful execution.</p>
+<p>This function adds the given element to the end of the list, i.e., that element becomes the tail of the list. We will just call the offer(Element x) function.</p>
+<p><strong>Input</strong>
+[Coding, is], Element to be added: Fun</p>
+<p><strong>Output</strong>
+[Coding, is, Fun]</p>
+<p><strong>Explanation:</strong> As we can see, “Fun” was added as the tail of the list.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4637]</p>
+<h5>Output</h5>
+<p>The initial Linked list is : [Coding, is]
+LinkedList after insertion using offer() : [Coding, is, Fun]</p>
+<p><strong>Time Complexity:</strong> O(1), as the new element gets added to the end of the list.</p>
+<p><strong>Space Complexity:</strong> O(1)</p>
+<h3>offerFirst(Element x) Method</h3>
+<p><strong>Syntax:</strong> public boolean offerFirst (Element x)</p>
+<p><strong>Parameters:</strong> <strong>x</strong>, the element to be added.</p>
+<p><strong>Return Value:</strong> This function returns true after successful execution.</p>
+<p>This function adds the given element to the start of the list, i.e., that element becomes the head of the list. We will just call the offerFirst(Element x) function.</p>
+<p><strong>Input</strong>
+[Coding, is], Element to be added - Fun</p>
+<p><strong>Output</strong>
+[Fun, Coding, is]</p>
+<p><strong>Explanation:</strong> As we can see, <strong>Fun</strong> was added as the head of the list.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4638]</p>
+<h5>Output</h5>
+<p>The initial Linked list is : [Coding, is]
+LinkedList after insertion using offerFirst() : [Fun, Coding, is]</p>
+<p><strong>Time Complexity:</strong> O(1), as the new element gets added at the front of the list. </p>
+<p><strong>Space Complexity:</strong> O(1)</p>
+<h3>offerLast(Element x) Method</h3>
+<p><strong>Syntax:</strong> public boolean offerLast (Element x)</p>
+<p><strong>Parameters:</strong> <strong>x</strong>, the element to be added.</p>
+<p><strong>Return Value:</strong> This function returns true after successful execution.</p>
+<p>This function adds the given element to the end of the list, i.e. that element becomes the tail of the list. We will just call the offerLast(Element x) function.</p>
+<p><strong>Input</strong>
+[Coding, is], Element to be added - Fun</p>
+<p><strong>Output</strong>
+[Coding, is, Fun]</p>
+<p><strong>Explanation:</strong> As we can see, “Fun” was added as the tail of the list.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=4639]</p>
+<h5>Output</h5>
+<p>The initial Linked list is : [Coding, is]
+LinkedList after insertion using offerLast() : [Coding, is, Fun]</p>
+<p><strong>Time Complexity:</strong> O(1), as the new element gets added to the end of the list.</p>
+<p><strong>Space Complexity:</strong> O(1)</p>
+<h3>Practical Application</h3>
+<p>This <strong>flexible addition</strong> characteristic of these functions can be used in priority addition in queues where items with a larger number than the threshold must be handled before those with a lower number. This is discussed in the code below.</p>
+<p>In the below code, we have two lists. One contains all the elements and the other one is empty. All the elements of the first list that have a value greater than the threshold will get added to the front of the second list using <strong>offerFirst()</strong>, and the elements that have a value lesser than the threshold will get added to the end of the second list using <strong>offerLast()</strong>.</p>
+<h5>Input</h5>
+<p>List 1: [15, 19, 8, 111, 3, 12]
+List 2: Empty
+Threshold = 13</p>
+<h5>Output</h5>
+<p>List 1: [15, 19, 8, 111, 3, 12]
+List 2: [12, 111, 19, 15, 8, 3]</p>
+<p><strong>Explanation:</strong>  As we can see, all the elements of list 1 that were greater than the threshold (13), were added to the front of list 2 and the elements of list 1 that were lesser than the threshold (13) were added to the end of the list 2.</p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4640]</p>
+<h4>Output</h4>
+<p>The initial Linked list is : [15, 19, 8, 111, 3, 12]
+The prioritized Linked list is : [12, 111, 19, 15, 8, 3]</p>
+<p>So, in this article, we have tried to explain how to use <strong>offer(), offerFirst() and offerLast()</strong> functions in Java. Java Collection Framework is very important when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
