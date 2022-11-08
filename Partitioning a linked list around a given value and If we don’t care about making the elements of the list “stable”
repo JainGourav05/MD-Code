@@ -1,0 +1,55 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644922044898-87Partitioning_Artboard%206.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given a linked list and an integer <strong>X</strong>. We need to partition the linked list around this integer <strong>X</strong> such that all elements that are less than <strong>X</strong> should occur before all elements having a value greater than or equal to <strong>X</strong>.</p>
+<h3>Problem Statement understanding:</h3>
+<p>To understand this problem statement, let us learn programming languages online and take an example.</p>
+<p>If the given linked list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/input-1.png" alt="" /></p>
+<p>and X = 5</p>
+<ul>
+<li>Here, <strong>X</strong> = 5 so, nodes with data less than <strong>X</strong> are: <strong>1,2,3</strong>.</li>
+<li>Nodes with data greater than or equal to <strong>X</strong> are: <strong>5,8,12</strong>.</li>
+<li>We need to keep <strong>1,2,3</strong> before <strong>5,8,12</strong>.</li>
+<li>Remember that the order of elements does not matter to us as long as the criteria are satisfied, i.e., elements having a value less than <strong>X</strong> should be before the elements with a value greater than or equal to <strong>X</strong>.</li>
+<li>So, the final output will be 1→2→3→5→8→12→NULL</li>
+</ul>
+<p>Let us take another example:
+If the linked list is 9→1→10→27→42→2→NULL and <strong>X</strong> = 10</p>
+<ul>
+<li>As explained in the above example, similarly, the output linked list after partitioning the linked list around <strong>X</strong> = 10 will be: 1→9→2→10→27→42→NULL</li>
+</ul>
+<p><strong>Note:</strong> The order of the elements does not matter, i.e., in the final linked list, the elements smaller than <strong>X</strong> should be before the elements greater than or equal to <strong>X</strong>. The order of the occurrence of the elements in the final linked list need not be the same as the order of occurrence in the initial given linked list.  We can change the order of occurrence of elements as long as the main condition is satisfied.</p>
+<p>Also, multiple correct outputs are possible for this problem statement.</p>
+<p>Now let's have a look at some helpful observations.</p>
+<h3>Helpful Observations</h3>
+<ul>
+<li>We need to separate the nodes with values less than <strong>X</strong> from those with values greater than or equal to <strong>X</strong>.</li>
+<li>The order of occurrence of nodes does not matter to us.</li>
+<li>Multiple correct solutions exist for this problem.</li>
+</ul>
+<h3>Approach</h3>
+<ul>
+<li>Here, we will keep track of two pointers i.e., <strong>head</strong> and <strong>tail</strong> pointers of the list</li>
+<li>When we encounter an element that is less than <strong>X</strong>, we will insert it before the <strong>head</strong> and update the <strong>head</strong> pointer.</li>
+<li>When we encounter an element greater than or equal to <strong>X</strong>, we will insert it after the tail node and will update the tail node.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Initialize two pointers named <strong>current</strong> and <strong>tail</strong> with the starting node of the original linked list.</li>
+<li>Loop in the linked list using this pointer <strong>current</strong>, starting from first to the last node, and store the next pointer of the <strong>current node</strong> in another variable before inserting the <strong>current node</strong> <strong>before head</strong> or <strong>after tail</strong>.</li>
+<li>If the current node has a value less than <strong>X</strong>, insert it before <strong>head</strong> and update the <strong>head</strong>.</li>
+<li>If the current node has a value greater than or equal to <strong>X</strong>, insert it after the <strong>tail</strong> and update the <strong>tail</strong> pointer.</li>
+<li>Update the <strong>current node</strong> with the <strong>next</strong> pointer stored in step 2.</li>
+<li>After the loop ends, make the <strong>next pointer of the tail node point to NULL</strong> to avoid the cycle in the newly created list.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Partitioning-a-linked-list-around-a-given-value1.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Partitioning-a-linked-list-around-a-given-value-2.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/Partitioning-a-linked-list-3.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4652]</p>
+<h4>Output</h4>
+<p>2 1 3 12 5 8</p>
+<p><strong>Time Complexity:</strong> O(n), Where <strong>n</strong> is the number of nodes in the list.
+[forminator_quiz id="4653"]</p>
+<p>So, in this blog, we have tried to explain how you can partition a linked list around a given value without caring about maintaining the stability in elements of the list in the most optimal way. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
