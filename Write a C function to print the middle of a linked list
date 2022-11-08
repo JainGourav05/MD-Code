@@ -1,0 +1,74 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645011930920-Article_194.png)
+<h3>Intoduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a linked list. We have to find the middle of the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let's suppose we have a linked list whose length is <strong>L</strong>, then the middle of the linked list will be the <strong>(L/2)</strong><sup>th</sup> node of the linked list.</p>
+<p>Suppose the given list is 5 → 10 → 3 → 4 → 8. </p>
+<ul>
+<li>The length of this linked list is 5.</li>
+<li>So, (5/2) = 2<sup>nd</sup> node will be the middle node of the linked list.</li>
+<li>The middle of the linked list will be the node at 2<sup>nd</sup> position, which is 3, considering 0 based indexing.</li>
+</ul>
+<p>Taking another example, let’s assume that the given linked list 1 → 3 → 5 → 7 → 9 → 11. </p>
+<ul>
+<li>In this case, the length of this linked list is 6. So, (6/2) = 3<sup>rd</sup> node will be the middle node of the linked list.</li>
+<li>The middle of the linked list will be the node at 3<sup>rd</sup> position, which is 7, considering 0 based indexing.</li>
+</ul>
+<p>Now, I think from the above examples, the problem statement is clear. Let’s see how we can approach it.</p>
+<p>Before moving to the further to approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>There are two solutions to this problem. One is the naive one and the second one is the optimal solution. The naive solution requires two traversals of the list, while the optimal solution only requires a single traversal of the linked list. </p>
+<p>Let's have a glance at the naive approach and then see what we can do to optimize it.</p>
+<h3>Approach and Algorithm (Naive approach)</h3>
+<p>Here, in this approach, we first calculate the length of the list. Let the length be <strong>len</strong>. </p>
+<ul>
+<li>Now, we traverse till the <strong>(len/2)</strong><sup>th</sup> node and print it as it is obviously the middle node of the list.</li>
+</ul>
+<p>This is the naive approach to solve this problem, but as we are preparing for coding interviews of big companies, we should be familiar with technique to find the middle node of the linked list without finding the length first. </p>
+<p>The optimal solution requires a single traversal of the linked list and is the best way to find the middle of a linked list.</p>
+<p><strong>Time Complexity:</strong> O(N) - two traversals required.</p>
+<p><strong>Space Complexity:</strong> O(1), as only temporary variables are being created.</p>
+<p><strong>Now, let us discuss the approach in which we can find the middle of a linked list with a single traversal</strong>.</p>
+<p>What if we start by taking two pointers, say <strong>slow</strong> and <strong>fast</strong>, and make both of them point to the <strong>head</strong> initially.</p>
+<ul>
+<li>Now, what will happen if we make the <strong>slow</strong> jump one place and the <strong>fast</strong> jump two places (<strong>fast moving with twice the speed of slow</strong>). </li>
+<li>If we notice carefully, by doing the above step, when the <strong>fast</strong> will reach the end of the list, the <strong>slow</strong> will be pointing to the <strong>middle</strong> of the list. With the help of this technique, we can reach the <strong>middle node of a linked list in a single pass</strong>.</li>
+</ul>
+<p><strong>Note:</strong> The reason why our <strong>slow</strong> pointer will be pointing to the <strong>middle</strong> of the linked list when the <strong>fast</strong> pointer is at the end is that, as our <strong>slow</strong> pointer is travelling with half the speed of <strong>fast</strong> pointer so when the <strong>fast</strong> pointer will reach the end of the linked list, till that time <strong>slow pointer will have only travelled half the distance as travelled by fast pointer</strong> and hence it will be at the <strong>middle of the linked list</strong>.</p>
+<p>Do you know what the above-explained method is called? </p>
+<ul>
+<li>This method is called the <strong>tortoise and hare method</strong> or the <strong>slow and fast pointer method</strong>. The slow and fast pointer method has been explained in detail in the approach section and the dry run.</li>
+</ul>
+<p>Let us have a glance at the approach.</p>
+<h3>Approach (Optimal)</h3>
+<p>Let us see what the <strong>slow and fast pointer technique</strong> is:</p>
+<ul>
+<li>Initially, both the pointers will point to the <strong>head</strong> of the linked list. </li>
+<li>Then, we will move both of the pointers. 
+<ul>
+<li>The <strong>fast pointer</strong> will jump <strong>two places</strong>, whereas the <strong>slow pointer</strong> will <strong>one place</strong>. </li>
+</ul></li>
+<li>When the <strong>fast pointer</strong> will reach the end of the linked list, the <strong>slow pointer</strong> will be pointing to the <strong>middle of the linked list</strong>.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>Create two pointers say <strong>slow</strong> and <strong>fast</strong>. Initially, point both the <strong>slow</strong> and the <strong>fast</strong> to the head of the list.</li>
+<li>Now, the <strong>slow</strong> will jump one place, and the <strong>fast</strong> will jump two places until the <strong>fast</strong> reaches the end of the list.</li>
+<li>When the <strong>fast pointer reaches the end</strong> of the list, the <strong>slow will be pointing to the middle</strong> of the list.</li>
+<li>In the end, return the data of the <strong>slow pointer</strong>, as the slow will be pointing to the middle of the list.</li>
+</ul>
+<h3>Dry Run</h3>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-5.png)
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5527]</p>
+<h4>Output:</h4>
+<p>The Linked List is : 5-&gt;10-&gt;15-&gt;4-&gt;8-&gt;NULL
+The middle element is 15</p>
+<p><strong>Time Complexity:</strong> O(n), a single list traversal is needed.
+[forminator_quiz id="5528"]</p>
+<p>So, in this article, we have tried to explain the most efficient approach to find the middle of a linked list. This is an important concept when it comes to coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
