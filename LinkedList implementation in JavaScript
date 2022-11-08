@@ -1,0 +1,28 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644915297885-linked%20list%20implementation%20in%20javascript_Artboard%203.png)
+<h3>Introduction</h3>
+<p>A linked list is a linear data structure, which stores data in the form of non-contiguous memory blocks in the memory. It is similar to an array as it is linear but offers dynamic size.</p>
+<p>A node of a linked list needs to store at least $2$ information:
+1) The data stored in the node
+2) The pointer to the next node</p>
+<p>While creating a new node, we can initialize its value with the value passed and next as null.</p>
+<p>[TABS_R id=3747]</p>
+<p>Now let’s further implement the linked list:</p>
+<h4>push_front(x)</h4>
+<p><strong>push_front(x)</strong> will add a new node containing the value as x, to the front of the linked list and the head will be updated to point to this new node.</p>
+<p>[TABS_R id=3748]</p>
+<h4>push_back(x)</h4>
+<p><strong>push_back(x)</strong> will add a new node with value x at the end of the linked list</p>
+<ul>
+<li>If the linked list is empty, then push_back will be the same as push_front and the new node will be the head node.</li>
+<li>Else we traverse till the last node and add a new node there</li>
+</ul>
+<p>[TABS_R id=3753]</p>
+<h4>pop_front()</h4>
+<p><strong>pop_front()</strong> will remove and return the value in the node at the front of the linked list. If the linked list is empty, then this function will return null.</p>
+<p>[TABS_R id=3754]</p>
+<h4>pop_back()</h4>
+<p><strong>pop_back()</strong> will remove and return the value in the node at the end of the linked list. If the linked list is empty, this function will return null.</p>
+<p>[TABS_R id=3755]</p>
+<h4>Implementation of linkedList class along with all above functionalities</h4>
+<p>[TABS_R id=3719]</p>
+<p>In this article, we understood how to implement a linear data structure called a linked list in JavaScript. To understand it better, I would highly recommend you to solve some problems on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
