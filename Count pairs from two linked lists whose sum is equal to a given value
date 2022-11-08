@@ -1,0 +1,78 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645012316328-Article_207.png)
+
+<h3>Problem Statement</h3>
+<p>We will be given two linked lists and an integer target as input, and we need to count pairs of integers in both lists such that each element of the pair belongs to different lists and their sum is equal to the given target integer.</p>
+<h3>Problem Statement Understanding</h3>
+<p>To understand the problem statement, let’s take an example.</p>
+<p>If the linked lists given to us are 1→3→5→8→NULL, 6→4→1→NULL, and the target = 9. Then, according to the problem statement:</p>
+<ul>
+<li>We need to find pairs of integers such that each element of the pair belongs to a different list, and their sum is equal to 9.</li>
+<li>All such pairs are - (3,6), (8,1) and (5,4) </li>
+<li>There are three possible pairs, so; we need to print 3 as output, i.e., the total count of possible pairs.</li>
+</ul>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<p>The naive approach that comes to our mind is that first, select a node in the first list and for each selected node in the first list, iterate in the second list and check if the sum of node’s (selected node from first list + node from the second list) is equal to the target or not.</p>
+<p><strong>Time Complexity:</strong> O(N<sup>2</sup>), N is the number of nodes in a list.
+<strong>Space Complexity:</strong> O(1)</p>
+<p>The above approach gives the correct result, but its time complexity is high. Can we reduce the time complexity? Let us find out If we can do so in the below approach.</p>
+<h3>Approach 2</h3>
+<ul>
+<li>In this approach, we store all elements of the first list in a HashSet.</li>
+<li>Then, we iterate on the elements of the second list and find if the difference in the value of the current element of the second list and target exists in hash or not.</li>
+<li>If it exists in the HashSet, then we will increase the count by one.</li>
+</ul>
+<h3>Algorithm</h3>
+<p>1) Initialize a <strong>result</strong> variable with 0 and create an unordered set.
+2) Push all elements of the first list in the set created above.
+3) Run a while loop till <strong>head2</strong> (pointer to the second list) is not NULL.</p>
+<ul>
+<li>Check if <strong>(target - head2-&gt;data)</strong> exists in the set or not
+<ul>
+<li>If it exists then, increment the <strong>result</strong> by one.</li>
+</ul></li>
+<li>Move the pointer <strong>head2</strong> forward by one node.
+4) After the loop is executed, return <strong>result</strong> from the function.</li>
+</ul>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5868]</p>
+<h4>Output</h4>
+<p>Count of pairs having sum 9 are: 3</p>
+<p><strong>Time Complexity:</strong> O(n), n is the number of nodes in a list.
+<strong>Space Complexity:</strong> O(n), n is the number of nodes in a list.</p>
+<p>In the above approach, we are using extra space to store the elements in a hash set. Can we reduce the extra space used? Let us find out If we can do so in the below approach.</p>
+<h3>Approach 3</h3>
+<ul>
+<li>At first, we need to <strong>sort the first list in ascending order and the second list in descending order</strong>.</li>
+<li>The above step is performed so that we can predict whether moving forward in the lists is going to increase our current sum or decrease it.</li>
+<li>It is evident that moving forward in the first list is going to increase the pair sum, and moving forward in the second one is going to decrease it.</li>
+<li>Now, we will initialize two different pointers at the head of both lists.</li>
+<li>We will compute the sum pointed by the pointers in each step, and If the <strong>sum is equal to the target</strong>, we will increase our result by one and move both pointers simultaneously.</li>
+<li>If the <strong>sum is less than the target</strong>, we need to increase it so we will move the pointer of the first list forward by one node.</li>
+<li>Else, we will move the pointer of the second list by one node.</li>
+</ul>
+<h3>Algorithm</h3>
+<p>1) Sort the <strong>first list in ascending order and the second list in descending order</strong>.
+2) Initialize a variable <strong>result</strong> by 0.
+3) Run a while loop till any one of <strong>first</strong> or <strong>second</strong> becomes NULL.
+4) Calculate <strong>sum</strong> as the sum of data of nodes pointed by <strong>first</strong> and <strong>second</strong> pointers.
+5) If the <strong>sum</strong> is equal to the <strong>target</strong>, increase the <strong>result</strong> by one and move both pointers forward by one node.
+6) If the <strong>sum</strong> is greater than the <strong>target</strong>, move the <strong>second</strong> pointer forward by one node.
+7) Else, move the <strong>first</strong> pointer forward by one node.</p>
+<p><strong>Note:</strong> For simplicity, in dry run and code implementation, we took the first and the second linked lists, which are already sorted in ascending and descending order, respectively. If you want to know how to sort a linked list, please feel free to refer to this <a href="https://www.prepbytes.com/blog/linked-list/c-program-for-merge-sort-for-linked-lists/">article</a> for sorting related concepts of linked list. Also, inside the code implementation, we haven't provided the sorting function (function to sort the linked list); if you want to take unsorted linked lists, please sort them in proper format (the first list will be sorted in ascending order and the second list in descending order) using code from the above-mentioned article, before passing them to <strong>countPairs()</strong> function in the code.</p>
+<p>Also, note that to sort a linked list in descending order, you can first sort the linked list in ascending order, and then you can reverse the sorted linked list. </p>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-6.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2_3.jpg" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5867]</p>
+<h4>Output</h4>
+<p>Count of pairs having sum 9 are: 3</p>
+<p><strong>Time Complexity:</strong> O(N log N), N is the number of nodes in the list
+<strong>Space Complexity:</strong> O(1)</p>
+<p>So, in this blog, we have tried to explain how to count pairs from two linked lists whose sum is equal to a given value, most optimally. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
