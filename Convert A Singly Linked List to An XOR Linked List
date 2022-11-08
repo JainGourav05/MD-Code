@@ -1,0 +1,67 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608471712-Article.jpg)
+
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<h3>XOR Linked List</h3>
+<p>XOR linked list is the memory-efficient version of the doubly linked list, in which the next pointer of every node stores the XOR of the previous and next node’s address. A XOR linked list uses only one address space per node to store the address of the previous and next node, while a  doubly linked list uses two address spaces per node to store the address of the previous and next list node (prev, next). </p>
+<p>To learn more about XOR linked list, please visit this article <a href="https://www.prepbytes.com/blog/linked-list/memory-efficient-doubly-linked-list/">Memory Efficient Doubly Linked List</a>.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given a singly linked list and have to convert it to the XOR linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>In this problem, we will be discussing how we can convert a singly linked list to XOR linked list. We will be provided with a singly linked list as the input, and our task will be to somehow convert this singly linked list to a XOR linked list.</p>
+<p><strong>Given singly linked list</strong></p>
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608488946-Image-01.png)
+
+<p><strong>Converted XOR linked list</strong></p>
+
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608507841-Image-02.png)
+
+<p><strong>An important XOR property:</strong></p>
+<ul>
+<li>If <strong>A XOR B = C</strong>, then <strong>A XOR C = B</strong>, as well as <strong>B XOR C = A</strong>.</li>
+</ul>
+<h3>Approach</h3>
+<p>In a XOR linked list, each pointer stores the XOR of prev and next node address, so the approach is: </p>
+<ul>
+<li>First, we traverse the singly linked list and keep track of the previous node in a pointer. </li>
+<li>While we are traversing the list, we will change the next pointer of every node as <strong>curr.next = XOR(prev, next)</strong>.</li>
+</ul>
+<h3>Algorithm</h3>
+<p>1) Create three nodes:</p>
+<ul>
+<li>A <strong>current node</strong>, initially <strong>pointing to the head</strong>.</li>
+<li>A <strong>previous node</strong>, initially <strong>pointing to the null</strong>.</li>
+<li>A <strong>next node</strong>, initially <strong>pointing to the current.next</strong>.
+2) Iterate while <strong>current is not null</strong>:</li>
+<li>Update <strong>next to current.next</strong>.</li>
+<li>Update <strong>current.next to XOR(prev, next)</strong>.</li>
+<li>Update <strong>previous to current</strong>.</li>
+<li>Update <strong>current to next</strong>.</li>
+</ul>
+<h4>printingXOR()</h4>
+<ul>
+<li>In the <strong>PrintingXOR function</strong>, we will start with a node previous, which will point to NULL, and a node current, which will point to the head. </li>
+<li>Now, we will print current.data. </li>
+<li>For the traversal, we will now need the address of the next node. We can get that by calculating <strong>address(previous node) XOR address(current.next)</strong>. </li>
+<li>After getting the next node address, we will update our previous to current and current to the next node address. </li>
+<li>This process will go on till we reach the end of the list.</li>
+</ul>
+<h3>Algorithm</h3>
+<p>1) Create a <strong>previous node</strong>, a <strong>current node</strong>, and a <strong>next node</strong>.
+2) Make <strong>previous point to NULL</strong> and <strong>current to the head</strong>.
+3) Iterate while <strong>current</strong> is not null:</p>
+<ul>
+<li>Print current.data.</li>
+<li>Store the address of the next node as <strong>address(previous) XOR address(current.next)</strong>.</li>
+<li>Update the <strong>previous to current</strong> and the <strong>current to the next node address</strong>.</li>
+</ul>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5942]</p>
+<h3>Output</h3>
+<p>Singly Linked List Before Conversion:
+53 69 96 27
+After Conversion to XOR Linked List:
+53 69 96 27</p>
+<p><strong>Time Complexity</strong>: O(n), as we are only traversing the list.</p>
+<p>So, in this article, we have tried to explain the most effective way to convert singly linked list to XOR linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at <a href="https://www.prepbytes.com/">PrepBytes</a>, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
