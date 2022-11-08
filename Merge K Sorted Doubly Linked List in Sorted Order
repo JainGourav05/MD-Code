@@ -1,0 +1,75 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645012425288-Article_211.png)
+<h3>Problem Statement</h3>
+<p>In this problem, we will be given <strong>K</strong> sorted doubly linked lists. We need to merge all lists such that the newly created doubly linked list is also in sorted order.</p>
+<p>If you want to see how to merge <strong>K</strong> sorted singly-linked lists, check out these articles <a href="https://www.prepbytes.com/blog/linked-list/merge-k-sorted-linked-lists-set-1/">merge K sorted linked lists(set 1)</a> and <a href="https://www.prepbytes.com/blog/linked-list/merge-k-sorted-linked-lists-set-2-using-min-heap/">merge K sorted linked lists(set 2 - using Min heap)</a>.</p>
+<h3>Problem Statement Understanding</h3>
+<p>The problem statement is quite straightforward, we will be given <strong>K</strong> doubly-linked lists that are sorted in nature, and then we need to form a doubly-linked list using the nodes of all the given linked lists such that the newly formed list is sorted in order. </p>
+<p>Let's try to understand the problem with the help of an example:
+If the sorted doubly-linked lists given to us are:
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-10.jpg" alt="" /></p>
+<ul>
+<li>Then, according to the problem statement, we need to merge all these given linked lists into a single doubly linked list in such a way that after merging, the final list is also sorted in nature.</li>
+<li>The list that we need to return must contain all the nodes of all three given lists in sorted order.</li>
+<li>So, after merging, the newly formed sorted list will be:
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2-10.jpg" alt="" /></li>
+</ul>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<ul>
+<li>Initialize a <strong>result list</strong> with the <strong>first list</strong>.</li>
+<li>Traverse all <strong>K</strong> lists one by one, starting from the second list, and merge them with the initialized result list using the <strong>merge two sorted list</strong> concepts.</li>
+<li>At last, when we have traversed all the <strong>K</strong> lists, our result list will be containing all the nodes of the <strong>K</strong> lists in sorted order.</li>
+<li>Finally, we can return this <strong>result list</strong> as our output.</li>
+</ul>
+<p>To see how to merge two sorted linked lists, check out this <a href="https://www.prepbytes.com/blog/linked-list/merge-two-sorted-linked-lists/">article</a>.</p>
+<h4>Some Important Observations</h4>
+<ul>
+<li>Every time we add a sorted list into our result list, its size increases by <strong>n</strong>.</li>
+<li>So, when we add the second list, the complexity is <strong>2n</strong>. Then, on adding the third list, the complexity is <strong>3n</strong>. Similarly, when we are adding the K<sup>th</sup>  list, the complexity is *<em>K</em>n**.
+<ul>
+<li>So, the total complexity is <strong>(2n + 3n + 4n + ….. + K<em>n) = n </em> ( 2+3+4+...+K)</strong>, which is asymptotically equal to (n*K<sup>2</sup> ).</li>
+</ul></li>
+</ul>
+<p><strong>Time Complexity:</strong> O(n* K<sup>2</sup> ), <strong>n</strong> is the number of nodes in the list, and <strong>K</strong> is the total number of lists
+<strong>Space Complexity:</strong> O(1)</p>
+<p>We can observe that if the number of lists given is quite large, then the above approach will result in TLE. So, we need to reduce the time complexity, which is possible if we use the divide and conquer technique.</p>
+<h3>Approach 2</h3>
+<ul>
+<li>In this approach, we merge the linked lists in pairs.
+<ul>
+<li>In the first iteration, we will have <strong>K/2</strong> pairs so; we will merge them using the merge two sorted lists concept.</li>
+<li>Then after the first iteration, we will have <strong>K/2</strong> lists, i.e., <strong>K/4</strong> pairs of lists to merge.</li>
+<li>After each iteration, the number of lists to be merged will reduce by half of their previous count.</li>
+<li>At last, we will be left with a single list which will contain all lists merged in sorted order.</li>
+</ul></li>
+</ul>
+<h3>Algorithm</h3>
+<p>1) Initialize a variable <strong>back</strong> with the last index of the array containing the head of all the lists.
+2) Run a while loop till <strong>back</strong> is not equal to zero.</p>
+<ul>
+<li>Inside while loop, we need to merge pairs so, initialize two variables, i.e., <strong>i</strong> with 0 and <strong>j</strong> with <strong>back</strong>.</li>
+<li>Now, we need to run a while loop as long as <strong>i</strong> is less than <strong>j</strong>.</li>
+<li>Now merge i<sup>th</sup> and j<sup>th</sup> list and store it as an i<sup>th</sup>  element of the array.</li>
+<li>Now, increment <strong>i</strong> by one and decrement <strong>j</strong> by one.</li>
+<li>If <strong>i</strong> is greater than or equal to <strong>j</strong>, we need to update <strong>back</strong> by <strong>j</strong>.
+3) After execution of both the while loops, we need to return the first element of the array.
+4) In case you are not aware of how to merge two sorted linked lists, please check this <a href="https://www.prepbytes.com/blog/linked-list/merge-two-sorted-linked-lists/">article</a>.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_3-8.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_4-6.jpg" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5897]</p>
+<h4>Output</h4>
+<p>First linked list: 2 , 3 , 5 , NULL
+Second linked list: 1 , 4 , 8 , NULL
+Third linked list: 6 , 7 , 9 , NULL
+Final merged linked list: 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , NULL</p>
+<p><strong>Time Complexity:</strong> O( n<em> K </em> log(K) ), <strong>n</strong> is the number of nodes in the list and <strong>K</strong> is the total number of lists.
+[forminator_quiz id="5892"]</p>
+<p>So, in this blog, we have tried to explain how you can merge K sorted doubly linked lists in the most optimal way. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
