@@ -1,0 +1,138 @@
+<h3>Introduction</h3>
+<p>One of the most crucial data structures to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.</p>
+<p>A Linked List is a linear data structure. Unlike arrays, the elements are not stored at contiguous locations. The linked list nodes are linked using pointers.</p>
+<h3>Linked List Creation</h3>
+<p><strong>Structure of a node:</strong>
+Each linked list node consists of 2 parts:</p>
+<ul>
+<li><strong>Data:</strong> The Data which is stored at a particular address.</li>
+<li><strong>Reference:</strong> Contains the address of the next node of the linked list.</li>
+</ul>
+<p><strong>Creating class Node:</strong>
+[TABS_R id=5434]</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2-3.png)
+
+<p>A  linked List can be created by linking together the nodes. </p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-4.png)
+
+<ul>
+<li>The first node of the list is called a <strong>head</strong>, and the last node of the list is called a <strong>tail</strong>. </li>
+<li>Each and every node in the list can be accessed by traversing through the list from <strong>head</strong> to <strong>tail</strong>.</li>
+</ul>
+<p>In this article, we will be explaining how to add a new node in the linked list at the end or at any specified position. We will also explain how to delete any existing node in the Linked List.</p>
+<h3>Insertion Operations</h3>
+<h4>Inserting at the end of the linked list</h4>
+<p>In this, we will insert a new node at the end of the Linked List. </p>
+<p>For example, if we have a Linked List  2→4→6→8→10, and we want to insert 12 at the end of the linked list.</p>
+<ul>
+<li>After inserting 12 at the end of the given linked list, our updated linked list will be: 2→4→6→8→10→12.</li>
+</ul>
+<h4>Algorithm</h4>
+<ul>
+<li>As a Linked List is represented by the <strong>head</strong> pointer, so to insert a new node at the end of the linked list, we will use another pointer <strong>tail</strong> which will always point to the last node of the list.</li>
+<li>First, we will create a new node to be inserted, let’s say <strong>new_node</strong>, with given data.</li>
+<li>Then we will check if the <strong>head</strong> is null or not. 
+<ul>
+<li>If the <strong>head</strong> is null, then make:</li>
+<li>head = new_node</li>
+<li>tail = new_node</li>
+<li>Else, if the <strong>head</strong> is not null, then make:</li>
+<li>tail.next = new_node</li>
+<li>tail = new_node</li>
+</ul></li>
+</ul>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=5435]</p>
+<h5>Output</h5>
+<p>Adding a new node with value 5 at the end of the linked list
+5
+Adding a new node with value 4 at the end of the linked list
+5 4
+Adding a new node with value 3 at the end of the linked list
+5 4 3
+Adding a new node with value 2 at the end of the linked list
+5 4 3 2 </p>
+<h3>Inserting at specific position in the linked list</h3>
+<p>In this method, we will traverse up to <strong>n</strong> elements, where <strong>n</strong> is equal to given position and add the node at that position.</p>
+<p>For example, if we have a Linked List 1→2→3→4, and we want to insert a node with data = 5 at the 2<sup>nd</sup> position in the linked list.</p>
+<ul>
+<li>After inserting a new node with data = 5 at 2<sup>nd</sup> position in our linked list, our resultant linked list will look like: 1→2→5→3→4.</li>
+<li><strong>Note:</strong> Take 0 based indexing while finding positions.</li>
+</ul>
+<h4>Algorithm</h4>
+<ul>
+<li>If the position is equal to 1, add the <strong>new_node</strong> before the <strong>head node</strong>. 
+<ul>
+<li>new_node.nextNode = headNode;</li>
+<li>head = new_node;</li>
+</ul></li>
+<li>Otherwise, iterate up to the <strong>specified position</strong> using <strong>headNode</strong> and then do the following steps:
+<ul>
+<li>new_node.nextNode = headNode.nextNode;</li>
+<li>headNode.nextNode = new_node;</li>
+</ul></li>
+</ul>
+<p><strong>Note:</strong> Variables names in the algorithm are the same as that in code, so for better understanding, go through code and algorithm at the same time.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=5436]</p>
+<h5>Output</h5>
+<p>Original Linked List: 1-&gt;2-&gt;3-&gt;4
+Linked list after adding a node with data 24 at position 5: 1-&gt;2-&gt;3-&gt;4-&gt;24
+Linked list after adding a node with data 39 at position 1: 39-&gt;1-&gt;2-&gt;3-&gt;4-&gt;24
+Linked list after adding a node with data 18 at position 7: 39-&gt;1-&gt;2-&gt;3-&gt;4-&gt;24-&gt;18</p>
+<h3>Deletion Operations</h3>
+<p>In this section, we will see how to delete the first occurrence of the specified node from the linked list, i.e., deleting the first occurrence of a given <strong>key</strong> from the linked list.</p>
+<p>For example, if we have a Linked List  2→4→6→4→10, and we want to delete the first occurrence of node with value 4 <strong>(key = 4)</strong> from the linked list. </p>
+<ul>
+<li>After deleting the first occurrence of node with value 4 from the linked list, our resultant linked list will be: 2→6→4→10.</li>
+</ul>
+<h4>Algorithm</h4>
+<ul>
+<li>
+<p><strong>Condition1:</strong> If the <strong>key</strong> is at the head.</p>
+<ul>
+<li>Change the <strong>head node</strong> to the <strong>next node</strong> of the <strong>current head</strong>.</li>
+<li>list.head = current_Node.next;</li>
+</ul>
+</li>
+<li>
+<p><strong>Condition 2:</strong> The key is either in the <strong>middle</strong> or <strong>last</strong>, except at the <strong>head</strong>.</p>
+<ul>
+<li>
+<p>In this condition, find the <strong>previous node</strong> of the node to be deleted.</p>
+</li>
+<li>
+<p>prev = current_Node;</p>
+</li>
+<li>
+<p>current_Node = current_Node.next;</p>
+</li>
+<li>
+<p>Make the <strong>previous node</strong> of the node to be deleted point to the next node of the <strong>current node</strong>.</p>
+</li>
+<li>
+<p>prev.next = current_Node.next;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Condition 3:</strong> The key is not in the list.</p>
+<ul>
+<li>Print <strong>key not found</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> Variables names in the algorithm are the same as that in code, so for better understanding, go through code and algorithm at the same time.</p>
+<h4>Code Implementation</h4>
+<p>[TABS_R id=5437]</p>
+<h4>Output</h4>
+<p>Linked List :- 2 6 1 8 9 0 3 5
+2 is found and deleted
+Linked List :- 6 1 8 9 0 3 5
+8 is found and deleted
+Linked List :- 6 1 9 0 3 5
+20 not found
+Linked List :- 6 1 9 0 3 5 </p>
+<p>This article explains how you can add a new node in the linked list at the end or at any specified position. It also explains how you can delete any existing node from the Linked List. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
