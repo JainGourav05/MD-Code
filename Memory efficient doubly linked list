@@ -1,0 +1,53 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1644916273183-77memory%20efficient_Artboard%202.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Useful Observation</h3>
+<p>As we know, a doubly-linked list requires two fields for previous and next pointers other than the data field. It ends up taking extra space for the previous pointer. In a memory-efficient doubly linked list, we only need one field with each node other than the data fields.</p>
+<p>The memory-efficient linked list is called a <strong>XOR</strong> list. We use the concept of <strong><em>XOR</em></strong> in this implementation.</p>
+<h5>An important XOR property</h5>
+<p>If A <strong><em>XOR</em></strong> B = C, then A <strong><em>XOR</em></strong> C=B, as well as B <strong><em>XOR</em></strong> C=A</p>
+<h3>Approach</h3>
+<p>The approach is going to use the bitwise XOR operation. Using it, we can create a XOR list that requires only one field for addressing. Let us see with an example.</p>
+<p>If the list is </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/47_1-01.png" alt="" /></p>
+<p>Here, the address of each node will contain the XOR of the previous node address and the next node address. </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/47_2-01.png" alt="" /></p>
+<ul>
+<li>Node A : A -&gt; next = NULL <strong><em>XOR</em></strong> address of (B)</li>
+<li>Node B : B -&gt; next = address of (A) <strong><em>XOR</em></strong> address of (C)</li>
+<li>Node C : C -&gt; next = address of (B) <strong><em>XOR</em></strong> address of (D)</li>
+<li>Node D : D -&gt; next =  address of (C) <strong><em>XOR</em></strong> NULL</li>
+</ul>
+<p>Using this, we can traverse the list both in the forward and backward direction without using an extra previous pointer. </p>
+<p>We are going to understand how the <strong>Insert at the beginning</strong> and <strong>PrintList</strong> functions work.</p>
+<h3>Insert at beginning</h3>
+<p>The new node will always be added before the head node. Now, as the previous pointer of the new node will be NULL, so the next of the new node will be NULL <strong><em>XOR</em></strong> address(head). By completing this step, the new node will point to the head. </p>
+<p>Now, we have to update the next of the head node. The next pointer of the head node will be the address(new node) <strong><em>XOR</em></strong> address(next node). In the end, we will make the new node our new head. </p>
+<h4>Algorithm</h4>
+<ul>
+<li>Create the new node.</li>
+<li>The next of the new node will be NULL XOR address(head)</li>
+<li>We need to update the next of the head node. So, the next of the head node will be address(new node) <strong><em>XOR</em></strong> address(next node)</li>
+<li>Finally, make the new node the head.</li>
+</ul>
+<h3>PrintList</h3>
+<p>In the PrintList function, we will start with a node previous, which will point to NULL, and a node current which will point to the head. Now, we will print current - &gt; data. For the traversal, we will now need the address of the next node. We can get that by calculating the address(previous node) <strong><em>XOR</em></strong> address(next node). After getting the next node address, we will update our previous to current, and current to the next node address. This process will go on till we reach the end of the list.</p>
+<h4>Algorithm</h4>
+<ul>
+<li>Create a previous node and a current node. Previous will point to NULL and current will point to the head.</li>
+<li>Print current - &gt; data.</li>
+<li>Store the address of the next node as address(previous) <strong><em>XOR</em></strong> address(current - &gt; next).</li>
+<li>Update the previous to current, and the current to the next node.</li>
+<li>Keep repeating the above process till the end of the list traversal</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/47_3-01.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3620]</p>
+<p><strong>Output</strong><br />
+40 30 20 10</p>
+<h4>Time Complexity</h4>
+<p><strong>Insert at beginning</strong> - O(1), as no traversal is performed.</p>
+<p><strong>PrintList</strong> - O(N) since we are traversing the list once. </p>
+<p>[forminator_quiz id="3619"]</p>
+<p>So, in this article, we have tried to explain the implementation of an efficient doubly linked list. This implementation saves us from the hassle of storing the previous pointer every time. The efficiency of this implementation is what makes this question an important one for coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
