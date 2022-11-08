@@ -1,0 +1,44 @@
+<h3>Problem Statement</h3>
+<p>We will be given a linked list and an integer <strong>K</strong>. We need to attach the last node of the list to the K^{th} node from starting of the list.</p>
+<h3>Problem Statement Understanding:</h3>
+<p>To understand this problem statement, let us take an example.</p>
+<p>If the given linked list is 3→1→8→2→4→NULL and <strong>K = 3</strong>, then according to the problem statement:</p>
+<ul>
+<li>In the given linked list the third node of the list is <strong>8</strong>.</li>
+<li>So, we need to attach the tail of the list, i.e., <strong>4</strong> with <strong>8</strong>.</li>
+<li>So, after connecting <strong>4</strong> to <strong>8</strong>, the list will look like this:</li>
+</ul>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_3-2.jpg" alt="" /></p>
+<p>At this point, we have understood the problem statement. Now we will try to formulate an approach for this problem.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<p>1) Firstly, we need to reach the K^{th} node of the list.
+2) After we reach the K^{th} node, we need to save this node’s address in a pointer variable.
+3) Then, we need to reach the end of the list and connect it with the K^{th} node (using the pointer variable which we used to store the address of K^{th} node in step 2).</p>
+<h3>Algorithm</h3>
+<p>1) Initialize a <strong>count</strong> variable with <strong>1</strong> and a variable <strong>temp</strong> with the first node of the list.
+2) Run a while loop till the <strong>count</strong> is less than <strong>K</strong>.</p>
+<ul>
+<li>Inside the while loop, in each iteration, increment <strong>count</strong> by one and move <strong>temp</strong> by one node.
+3) Save the <strong>temp</strong> in the <strong>kth_node</strong> variable.
+4) Run a while loop till <strong>temp</strong> is not NULL.</li>
+<li>Inside the while loop, advance <strong>temp</strong> by one node in each iteration.
+5) At last, connect <strong>temp</strong> with <strong>kth_node</strong> i.e., <strong>temp-&gt;next = kth_node</strong>.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-1-1.jpg" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2-4.jpg" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5835]</p>
+<h4>Output</h4>
+<p>Given list
+3 1 8 2 4
+Modified list
+3 1 8 2 4 8 </p>
+<p><strong>Time Complexity:</strong> O(n), n is the total number of nodes in the list
+[forminator_quiz id="5836"]</p>
+<p>So, in this blog, we have tried to explain how you can make a loop at $K^{th}$ position in the linked list most optimally. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
