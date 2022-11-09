@@ -1,0 +1,113 @@
+<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608254851-Article.jpg" alt="" />
+<h3>Introduction</h3>
+One of the most crucial <a title="data structures" href="https://www.prepbytes.com/prepbytes-courses/data-structures-algorithms-course">data structures</a> to learn while preparing for interviews is the linked list. In a coding interview, having a thorough understanding of Linked Lists might be a major benefit.
+<h3>Problem Statement</h3>
+In this Problem, we are given a binary tree, and we have to convert it to a <a href="https://www.prepbytes.com/blog/linked-list/doubly-circular-linked-list-introduction-and-insertion/">circular doubly linked list</a>.
+<h3>Problem Statement Understanding</h3>
+Let’s try to understand the problem statement with the help of examples.
+
+Let’s assume that the given binary tree is:
+
+<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608301807-Image-01.png" />
+<ul>
+ 	<li>According to the problem statement, we need to convert this given binary tree to a circular doubly linked list.</li>
+ 	<li>After the conversion, our circular doubly linked list will look like this:</li>
+</ul>
+Taking another example, if the given binary tree is:
+
+<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608343508-Image-03.png" />
+<ul>
+ 	<li>Then, in this case, our circular doubly linked list will be:<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608323924-Image-02.png" />Now, I think from the above examples, the problem statement is clear. Let’s see how we can approach it.
+
+Before moving to the approach section, try to think about how you can approach this problem.
+<ul>
+ 	<li>If stuck, no problem, we will thoroughly see how to approach this problem in the next section.</li>
+</ul>
+Before moving on further, let’s see some helpful observations, which will help us approach the problem.
+<h4>Helpful Observations</h4>
+To check the relative position of nodes in the binary tree and circular doubly linked list, let’s name every node.
+
+<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608380945-Image-05.png" />
+
+After naming the nodes in the binary tree, we can observe that:
+<ul>
+ 	<li>The root node is <strong>A</strong>, with <strong>B</strong> as its left child and <strong>C</strong> as its right child.</li>
+ 	<li><strong>B</strong> has <strong>D</strong> as its left child and <strong>E</strong> as its right child.</li>
+ 	<li><strong>C</strong> has <strong>F</strong> as its left child and <strong>G</strong> as its right child.</li>
+</ul>
+In the converted circular doubly linked list, we can observe that:
+<ul>
+ 	<li>Node <strong>B</strong> has <strong>D</strong> as its previous node, which was its left child in the binary tree, and <strong>E</strong> as its next node, which was its right child in the binary tree.</li>
+ 	<li>Node <strong>C</strong> has <strong>F</strong> as its previous node, which was its left child in the binary tree, and <strong>G</strong> as its next node, which was its right child in the binary tree.</li>
+</ul>
+So, from the above observations, you might think that we can just make the previous pointer of a node point to its left child and the next pointer point to its right child.
+<ul>
+ 	<li>Yes, that is partially true because, if you see carefully, you can see that in the binary tree the node <strong>A</strong> has <strong>B</strong> as its left child, but in the converted doubly linked list its previous pointer is pointing to <strong>E</strong> not <strong>B</strong>.</li>
+</ul>
+Another observation here is that all the nodes in the left subtree rooted at a node lie on the left side of the node in the list. Similarly, all the nodes in the right subtree rooted at a node lie on the right side of the node in the list.
+<ul>
+ 	<li>We can achieve this using inorder traversal of the tree.</li>
+</ul>
+<strong>Inorder traversal:</strong> In inorder traversal, first visit the left subtree, then the root, and then right subtree:
+
+<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608402800-Image-06.png" />
+
+If we do the inorder traversal of the above-given tree, we will get <strong>7 2 8 0 9 3 10</strong>.
+
+On careful observation, you can see, the values are in the same order as in our output circular doubly linked list.
+
+So, the key takeaways are:
+<ul>
+ 	<li>The left child can only be replaced with the previous node and the right child with the next node.</li>
+ 	<li>The nodes of the doubly linked list should follow the same order as the inorder traversal of the tree.</li>
+</ul>
+<h3>Approach</h3>
+<ul>
+ 	<li>We first convert the left subtree to a circular doubly linked list and then convert the right subtree to a circular doubly linked list.</li>
+ 	<li>Now the question arises, how do we convert the left subtree or the right subtree to a circular doubly linked list. And the answer is recursion.</li>
+ 	<li>A subtree follows all the properties of the parent tree. So this problem is similar to the original problem.
+<ul>
+ 	<li>We treat the left child of the root as the new root and convert the subtree rooted at the left child(left child of the left child of the original root) of the new root(left child of the original root) and then convert the new root and then the subtree rooted at the right child of the new root.</li>
+ 	<li>We perform this operation recursively until the problem becomes trivial to solve. By trivial problem, I mean converting a binary tree that has at most three nodes, a root, left child, and right child. This problem can be solved easily as we just first append the left child to the list, then the root, and then the right child.</li>
+</ul>
+</li>
+ 	<li>From the above observations, it is clear that the list will have nodes in the same order as the inorder traversal of the tree. So, we first concatenate the left list with the root and then concatenate the right list to it.</li>
+ 	<li>To concatenate two lists, we will perform the following steps:
+<ul>
+ 	<li>Create a link from the last node of the first list to the first node of the second list and vice versa.</li>
+ 	<li>Create a link from the first node of the first list to the last node of the second list and vice versa.</li>
+</ul>
+</li>
+</ul>
+<h3>Algorithm</h3>
+To convert the given binary tree to a circular doubly linked list, we will do the preorder traversal of the binary tree.
+<h4>convertToCircularDLL(root)</h4>
+1) If the <strong>root</strong> is null, return null.
+2) Recursively convert <strong>left subtree</strong> to a circular doubly linked list (say <strong>left list</strong>).
+3) Recursively convert <strong>right subtree</strong> to a circular doubly linked list (say <strong>right list</strong>).
+4) Set <strong>root.left</strong> and <strong>root.right</strong> as <strong>root</strong>.
+5) Concatenate the <strong>left list</strong> with <strong>root</strong>.
+6) Concatenate the list we got after concatenating the <strong>left list and the root with the right list</strong>.
+7) Return the final concatenated list.
+
+<strong>Note:</strong> As you can see that earlier, we mentioned that our output list is equivalent to the inorder traversal of the given binary tree, but here in approach, we are using preorder traversal to generate the list. Actually, instead of preorder traversal, we can also use inorder traversal to generate the output list. In case of inorder traversal in function <strong>convertToCircularDLL(root)</strong>, first, we will recursively convert the left subtree and will concatenate the left list with root, and then we will recursively convert the right subtree and will finally concatenate the right list with the concatenated output of left list and root and will return it.
+<h4>concatenateLists(left list, right list)</h4>
+1) If the <strong>left list is null</strong>, return the <strong>right list</strong>.
+2) If the <strong>right list is null</strong>, return the <strong>left list</strong>.
+3) Create a variable to <strong>store the last node of the left list</strong>.
+4) Create a variable to <strong>store the last node of the right list</strong>.
+5) Create a link from the <strong>last node of the left list</strong> to the <strong>first node of the right list</strong> and vice versa.
+6) Create a link from the <strong>first node of the left list</strong> to the <strong>last node of the right list</strong> and vice versa.
+<h3>Dry Run</h3>
+<img src="https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1657608425090-Image-07.png" />
+<h3>Code Implementation</h3>
+[TABS_R id=5945]
+<h4>Output</h4>
+7 2 8 0 9 3 10
+
+<strong>Time Complexity:</strong> O(n), where n is the total number of nodes in the given binary tree. To convert the given binary tree to the circular doubly linked list we traverse the binary tree, which takes linear time. It is not possible to solve this problem in time less than linear time because that would mean we do not traverse each node and have missed some nodes.
+
+<strong>Space complexity:</strong> O(h), where h is the height of the binary tree. At any instant, the space occupied by the recursive stack is at most h.
+
+So, in this blog, we have tried to explain how you can convert a given binary Tree to a circular doubly linked list. If you want to solve more questions on Linked List, which are curated by our expert mentors at <a href="https://www.prepbytes.com/">PrepBytes</a>, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</li>
+</ul>
