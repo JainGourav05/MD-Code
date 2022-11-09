@@ -1,0 +1,56 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645186209077-Find%20modular%20node_Artboard%206.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we have been given a linked list and a positive integer k. Our task is to find the last node whose <strong>n%k==0</strong>, where n denotes the position of this last node in the linked list.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem with the help of examples by referring online programming courses.</p>
+<p>Suppose we are given a linked list A → B → C → D → E → F and k = 3.</p>
+<ul>
+<li>According to the problem statement, we have to find the last node of the linked list whose <strong>n%k==0</strong>, where this n denotes the node's position in the linked list. </li>
+<li>For the above given linked list, we can see that only for n=3 and n=6 our <strong>n%k==0</strong>. But as 6&gt;3:
+<ul>
+<li>So we will have to return the 6<sup>th</sup> node of the linked list as our output, as it is the last node of the linked list for which <strong>n%k==0</strong>.</li>
+</ul></li>
+</ul>
+<p><strong>Output:</strong> F</p>
+<p>If the linked list is A → B → C → D → E → F → G → H → I and k = 4.</p>
+<ul>
+<li>For the above given linked list, we can see that only for n=4 and n=8 our n%k==0. But as 8&gt;4: 
+<ul>
+<li>So we will have to return the 8<sup>th</sup> node of the linked list as our output, as it is the last node of the linked list for which n%k==0.</li>
+</ul></li>
+</ul>
+<p><strong>Output:</strong> H</p>
+<p><strong>Note:</strong> Here in this problem, we are considering 1 based indexing.</p>
+<h5>Some more examples</h5>
+<p>Input : </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input2-3.png" alt="" /></p>
+<p>Output : 6</p>
+<p>Input : </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input3.png" alt="" /></p>
+<p>Output : 9</p>
+<p>Now I think from the above examples the problem is clear, and now we have to think about how we can approach it.</p>
+<h3>Approach</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>We will traverse the linked list and whenever for any node <strong>i%k==0</strong> (<strong>i</strong> denotes the position of the current <a href="https://www.prepbytes.com/blog/linked-list/bubble-sort-for-linked-list-by-swapping-nodes/" title="node">node</a> in the linked list) we will update our modular node to be equal to the current node.</li>
+<li>Finally, we will have our modular node at the end of the loop, and now we can return it.</li>
+</ul>
+<p>The algorithm for the approach is explained below.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>We will take a pointer <strong>modNode</strong> and initialize it with NULL. This pointer will keep track of the last node whose <strong>i%k==0</strong>. </li>
+<li>Now we will traverse the list and for every <strong>i%k==0</strong>, we will update our <strong>modNode</strong> to be equal to the current node.</li>
+<li>Finally, at the end when our list traversal is over, we will return modNode as our output.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Find-modular-node-in-a-linked-list-1.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Find-modular-node-in-a-linked-list-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=4497]</p>
+<h4>Output</h4>
+<p>Modular node is 7</p>
+<p><strong>Time Complexity:</strong> O(n), as we are traversing the complete length of the list
+[forminator_quiz id="4496"]</p>
+<p>So, in this article, you have learnt how to get the value of the modular node in the Linked List. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
