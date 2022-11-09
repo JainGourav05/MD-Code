@@ -1,0 +1,56 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645283217253-sorted%20and%20rotated%20linked%20list_Artboard%206.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts and data structures to learn while preparing for interviews. Having a good grasp of Linked Lists can be a huge plus point in a coding interview.</p>
+<h3>Problem Statement</h3>
+<p>In this question, we are given a linked list. This linked list was sorted and then rotated by X elements. We have to find the value of X.</p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand the problem statement with help of examples.</p>
+<p>Suppose the given list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input.png" alt="" /></p>
+<p>Let us first discuss what counting rotations in a sorted and rotated list means. </p>
+<p>Let's sort this given list. The sorted list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-1-sorted-list.png" alt="" /></p>
+<p>Now, let's remove the last two elements and add them to the front of the list, we will get:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-1-1.png" alt="" /></p>
+<p>That’s it. That is the question. In this explanation, we have rotated the sorted list by 2 elements. In the question, we are given a rotated list. We have to return the number of elements by which it was rotated.</p>
+<p><strong>Input:</strong></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/input.png" alt="" /></p>
+<p><strong>Output:</strong> Linked list rotated elements: 2</p>
+<p><strong>Explanation:</strong> We can see that if we add the first two elements to the end of the linked list, it becomes sorted. Hence, 2 rotations is the answer.  </p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Count-rotations-in-a-sorted-rotated-linked-list.png" alt="" /></p>
+<p>Let’s take one more example, say if the given list is:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-2-1.png" alt="" /></p>
+<p>If we sort this list, we will get a list:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-2-sort-list-.png" alt="" /></p>
+<p>Now we can see that if in the sorted list we move the last 3 elements and add them to the front, we will get:</p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/example-2-1.png" alt="" /></p>
+<p>which is the same as the list which was given to us in the input.</p>
+<p>From this, we can say that the linked list, which was given to us in the input, was initially rotated by 3 elements. So our output will be 3.</p>
+<p>Now, I think the problem statement is clear from the above examples. No try to think how you can approach this problem before moving to the approach in the next section?</p>
+<p>We are going to use a linked list traversal and compare the elements. Let us look at this simple yet efficient approach.</p>
+<h3>Approach</h3>
+<p>Firstly, we have to notice that the values are not sorted now. Now, what caused this distortion? </p>
+<p>A few of the elements from the end of the sorted linked list were added to the start of the list. We can get a hint here. </p>
+<p>We will keep comparing adjacent elements:</p>
+<ul>
+<li>If the current node value is lesser than or equal to the next node value, nothing changes. </li>
+<li>But, if the current value is greater than the next node value, it means that the order isn't sorted from this point, so we have found the initial starting point of our previously sorted linked list, and we will break the loop.</li>
+</ul>
+<p>We will have to keep a counter variable which will be incremented till it doesn’t reach the break condition. Let us have a look at the algorithm.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>Initialize the count variable with 0.</li>
+<li>One by one, keep comparing adjacent node values and increase the count.</li>
+<li>If, at any point, the current node value is greater than the next node value, break from the loop.</li>
+<li>Return the count.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/08/Count-rotations-in-a-sorted-rotated-linked-list-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=3916]</p>
+<h3>Output</h3>
+<p>10 11 1 3 5
+<strong>Linked list rotated elements:</strong> 2</p>
+<p><strong>Time Complexity:</strong> O(n), as no nested traversal is needed.
+<strong>Space Complexity:</strong> O(1).</p>
+<p>So, in this article, we have tried to explain the most efficient approach to count rotations in a sorted and rotated linked list. This is a simple question, but we have to prevent overflows while traversing through the linked list. It uses many of our basic concepts, and that is what makes this question quite an important one for coding interviews. If you want to solve more questions on Linked List, which are curated by our expert mentors at PrepBytes, you can follow this link <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Linked List</a>.</p>
