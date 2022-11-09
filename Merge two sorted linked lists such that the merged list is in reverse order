@@ -1,0 +1,97 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645007374578-Article_155.png)
+<h3>Introduction</h3>
+<p>The linked list is one of the most important concepts to know while preparing for interviews. Having a good grasp of a linked list can be a huge plus point in coding interviews.</p>
+<h3>Problem Statement</h3>
+<p>In this problem, we are given two sorted linked lists, and we are asked to merge the two lists in such a way that the new merged list is in reverse order. </p>
+<h3>Problem Statement Understanding</h3>
+<p>Let’s try to understand this problem with the help of examples.</p>
+<p>If the given linked lists are:
+<strong>list 1:</strong> 3→7→10→14.
+<strong>list 2:</strong> 12→13→15.</p>
+<ul>
+<li>According to the problem statement, we need to merge the list 1 and list 2 in such a way that the final merged list is in the reverse order.</li>
+<li>When we actually merge the list 1 and list 2, our merged list will be 3→7→10→12→13→14→15.</li>
+<li>And our output will be the reverse of this merged list, which is 15→14→13→12→10→7→3.</li>
+</ul>
+<p>Taking another example, if the linked lists are:
+<strong>list 1:</strong> 1→2→3→9.
+<strong>list 2:</strong> 4→5→11→17.</p>
+<ul>
+<li>In this case, when we merge list 1 and list 2, our merged list will be 1→2→3→4→5→9→11→17.</li>
+<li>And our output will be the reverse of this merged list, which is: 17→11→9→5→4→3→2→1.</li>
+</ul>
+<h5>Some more examples</h5>
+<p>Sample Input 1: </p>
+<ul>
+<li>list 1: 1→3→5→7</li>
+<li>list 2: 2→4→6→8</li>
+</ul>
+<p>Sample Output 1: </p>
+<ul>
+<li>8→7→6→5→4→3→2→1</li>
+</ul>
+<p>Sample Input 2:</p>
+<ul>
+<li>list 1: 2→5→10→15</li>
+<li>list 2: 3→6→7</li>
+</ul>
+<p>Sample Output 2: </p>
+<ul>
+<li>15→10→7→6→5→3→2</li>
+</ul>
+<p>Now, I think from the above examples, the problem statement is clear. Let’s see how we can approach it.</p>
+<p>Before moving to the approach section, try to think how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Well, the most naive idea is:</p>
+<ul>
+<li>Reverse the first list.</li>
+<li>Reverse the second list. </li>
+<li>And then merge two reversed linked lists.
+Using these above steps, we will get our required output.</li>
+</ul>
+<p>Another similar approach is first to merge both the list and then finally reverse the merged list.</p>
+<p>Both of the above approaches will work fine, but can we do this with some in-place algorithm and only one traversal using O(1) extra space? </p>
+<ul>
+<li>Let’s see the approach for the same. </li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach</h3>
+<p>This approach is based on a merge style process. </p>
+<ul>
+<li>First, we initialize the resultant linked list as empty. </li>
+<li>And then, traverse both the linked lists from beginning to end and compare the current nodes of both the linked lists and insert the smaller of two at the beginning of the resultant linked list. </li>
+<li>Finally, our resultant linked list will have the merged list in reverse order.</li>
+</ul>
+<p>The following algorithm will explain the approach in detail.</p>
+<h3>Algorithm</h3>
+<ul>
+<li>First, initialize the resultant linked list <strong>result</strong> as an empty list.</li>
+<li>Let <strong>h1</strong> and <strong>h2</strong> be the two pointers pointing to the head of <strong>list 1</strong> and <strong>list 2</strong>, respectively.</li>
+<li>Now we will traverse the two given linked lists <strong>while(h1!=NULL &amp;&amp; h2!=NULL)</strong>.
+<ul>
+<li>We will find the smaller of two nodes pointed by <strong>h1</strong> and <strong>h2</strong>.</li>
+<li>After finding the smaller of the two nodes, we will insert the node with the smaller value at the front of the <strong>result</strong> list.</li>
+<li>Then we will move forward in the linked list with a smaller node value.</li>
+</ul></li>
+<li>If either of the linked lists is traversed completely, then insert all the remaining nodes of another list into the <strong>result</strong> list.</li>
+<li>Finally, after all these steps, we will have our merged list in reverse order.</li>
+</ul>
+<h3>Dry Run</h3>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_1-11.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_2-12.png" alt="" />
+<img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_3-6.png" alt="" /></p>
+<p><img src="https://blog.prepbytes.com/wp-content/uploads/2021/09/p_4-2.png" alt="" /></p>
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5090]</p>
+<h4>Output</h4>
+<p>Original linked list 1:
+3 -&gt; 7 -&gt; 10 -&gt; 14 -&gt; NULL
+Original linked list 2:
+12 -&gt; 13 -&gt; 15 -&gt; NULL
+Merged list in reverse order:
+15 -&gt; 14 -&gt; 13 -&gt; 12 -&gt; 10 -&gt; 7 -&gt; 3 -&gt; NULL</p>
+<p><strong>Time Complexity:</strong> O(max(m,n)), where m, n are the size of Linked Lists.
+[forminator_quiz id="5091"]</p>
+<p>This blog tried to discuss how you can merge two sorted linked lists such that the merge list is in the reversed order with no extra space and linear time complexity. This is a basic problem and is good for strengthening your concepts in LinkedList and if you want to practice more such problems, you can checkout <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked List)</a>.</p>
