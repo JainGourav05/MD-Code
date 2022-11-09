@@ -1,0 +1,122 @@
+![](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1645011497773-Article_184.png)
+<h3>Introduciton</h3>
+<p>The linked list is one of the most important concepts to know while preparing for interviews. Having a good grasp of a linked list can be a huge plus point in coding interviews.</p>
+<h3>Problem Statement</h3>
+<p>Given a linked list in which each node will have an extra arbitrary pointer pointing to NULL initially. We need to make that arbitrary pointer point to the greatest valued node on the right side of that node.</p>
+<h3>Problem Statement Understanding</h3>
+<p>The problem statement is quite straightforward; we will be given a singly linked list in which, apart from the next pointer, we will also have an arbit pointer which will be NULL initially, and we need to make that arbit pointer point to the greatest value in the right part of the list.</p>
+<p>Let's try to understand the problem with the help of examples.</p>
+<p>Let the input given to us be:</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_1-6.png)
+
+<ul>
+<li>For each node, we need to find the biggest valued node in its right and attach its arbit pointer to the biggest node.</li>
+<li>For nodes ‘7’ and ‘2’, the biggest value in their right is node ‘12’ so, we will make the arbit pointer of both the nodes point to node with value ‘12’.</li>
+<li>Similarly, for nodes ‘12’ and ‘1’, the biggest value in their right is node ‘8’ so, we will make the arbit pointer of both the nodes point to node with value  ‘8’.</li>
+<li>And for node ‘8’, there is no node on its right side. So, its arbit pointer remains NULL.</li>
+</ul>
+<p>So, the output will be:</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_2-4.png)
+
+<p>Taking another example, if the given linked list is:</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_3-3.png)
+
+<ul>
+<li>Now, in this case, for ‘5’ the biggest valued node on the right side of ‘5’ is the node with value ‘9’, so we will make arbit pointer of node ‘5’ point to node with value ‘9’.</li>
+<li>Similarly, for each node, we will make their arbit pointer point to the greatest valued node on their right side. Arbit of ‘9’ will point to ‘8’, arbit of ‘7’ will point to ‘8’, arbit of ‘8’ wil point to ‘6’ and arbit of ‘6’ will point to NULL as there are no nodes on right size of the node with value ‘6’.</li>
+</ul>
+<p>So, our output will be:</p>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_4-2.png)
+
+<p>Now, I think from the above examples, the problem statement is clear. Let’s see how we can approach it.</p>
+<p>Before moving to the approach section, try to think about how you can approach this problem.</p>
+<ul>
+<li>If stuck, no problem, we will thoroughly see how we can approach this problem in the next section.</li>
+</ul>
+<p>Let’s move to the approach section.</p>
+<h3>Approach 1</h3>
+<p>Our approach will be simple:</p>
+<ul>
+<li>We will keep two iterators for iterating the list.</li>
+<li>Once we fix the first iterator, we will move the second iterator from first iterators next till the end of the list to find the maximum valued node.</li>
+<li>After that, we will connect the arbit pointer of the node pointed by the first iterator to the maximum valued node found by the second iterator.</li>
+<li>We repeat the same process for each node.</li>
+</ul>
+<p><strong>Time Complexity:</strong> O(n<sup>2</sup>), n is the number of nodes in the list.
+<strong>Space Complexity:</strong> O(1), no extra space used.</p>
+<p>The above approach seems trivial but, it has a huge time complexity of O(n<sup>2</sup>). Can we reduce that and make our code more efficient in terms of time?</p>
+<ul>
+<li>The answer is yes, and let us see the way to do that in the below approach.</li>
+</ul>
+<p>Let’s move to a more optimized approach.</p>
+<h3>Approach 2</h3>
+<ul>
+<li>Every time, to find the greatest valued node corresponding to a node, we need to look right in the list (iterate the list from node's next to the end of the list), to make things simpler, we can think of iterating the list from end to start.</li>
+<li>We cannot iterate the list backward so, we need to reverse the list first, if we want to do so.</li>
+<li>Now, after reversing the list, we only need to keep the address of the max-valued node in a variable and update it on each iteration.</li>
+<li>On reaching each node, we will have a max valued node in its left, stored in a variable, and we just need to connect the node’s <strong>arbit</strong> pointer to the stored node.</li>
+<li>Finally, after connecting the <strong>arbit</strong> pointers of each node of the list, we need to reverse the list again to keep it to its original form.</li>
+</ul>
+<h3>Algorithm</h3>
+<ul>
+<li>First, reverse the given linked list.</li>
+<li>Initialize a pointer <strong>max_node</strong> with the first node in the reversed list.</li>
+<li>Initialize a pointer <strong>curr</strong> with the second node in the reversed list.</li>
+<li>Run a while loop till <strong>curr</strong> is not NULL.</li>
+<li>Update arbit pointer of <strong>curr</strong> node with <strong>max_node</strong>.</li>
+<li>If <strong>curr</strong> data is greater than <strong>max_node</strong> data, then update <strong>max_node</strong> with <strong>curr</strong>.</li>
+<li>Advance <strong>curr</strong> by one node.</li>
+<li>Again reverse the list and return it.</li>
+</ul>
+<h3>Dry Run</h3>
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_5-2.png)
+
+![](https://blog.prepbytes.com/wp-content/uploads/2021/10/p_6-1.png)
+
+<h3>Code Implementation</h3>
+<p>[TABS_R id=5120]</p>
+<h4>Output</h4>
+<table>
+<thead>
+<tr>
+<th>node</th>
+<th>Next Pointer</th>
+<th>Arbit Pointer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>2</td>
+<td>12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12</td>
+<td>12</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Time Complexity:</strong> O(n), where n is the total number of nodes in the list
+[forminator_quiz id="5119"]</p>
+<p>So, in this blog, we have tried to explain how you can Point arbit pointer of each node in a given list to the greatest value right-side node in the most optimal way. This is a good problem to strengthen your concepts in LinkedList and if you want to practice more such problems, you can checkout <a href="https://mycode.prepbytes.com/interview-coding/practice/linked-list">Prepbytes (Linked List)</a>.</p>
